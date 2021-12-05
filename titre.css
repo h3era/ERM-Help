@@ -1,4 +1,4 @@
-@font-face {font-family: 'TITC';
+п»ї@font-face {font-family: 'TITC';
 	src: url('_font/TITC.eot?#iefix') format("embedded-opentype");
 	src: local('TITC'), url('_font/TITC.ttf') format('truetype'),
 	url('_font/TITC.woff') format('woff'), url('_font/TITC.svg') format('svg');
@@ -27,9 +27,9 @@ td	{text-align:center; vertical-align:middle}
 	border-left: 1 solid #5c4c3e;
 	color: #e2d180;
 	font:15 TITC;
-/* далее параметры IE6 не поддерживает */
+/* РґР°Р»РµРµ РїР°СЂР°РјРµС‚СЂС‹ IE6 РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚ */
 	display: inline-block;
-	box-sizing: border-box;			/* Ширина блока с полями */
+	box-sizing: border-box;			/* РЁРёСЂРёРЅР° Р±Р»РѕРєР° СЃ РїРѕР»СЏРјРё */
 	text-shadow: 0px 0px 10px #655332;
 	-moz-text-shadow: 0px 0px 10px #0099FF;
 	-webkit-text-shadow: 0px 0px 10px #0099FF}
