@@ -1,0 +1,924 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Таблица типов объектов</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+</head>
+<body>
+<p align="left"><font size="5">Таблица объектов в игре</font></p>
+
+<p><code id="WT">Поиск объекта:</code><br>
+
+<input class="obj_in" name="pole" type="text" id="text-to-find" value="" title="Введите номер (название) нужного объекта.."/>
+<input class="obj_go" type="button" onmouseover="this.style.cssText='color:maroon;background-color:#cfbfaf;cursor:hand'" onmouseout="this.style.cssText=null" onclick="javascript: FindOnPage('text-to-find'); return false;" value="Искать"/>
+</p>
+<table border="0" width="100%">
+	<tr id="N2">
+		<td width="5%">Номер</td>
+		<td><b id="step">Описание</b></td>
+	</tr>
+	<tr>
+		<td>0</td>
+		<td>Значок &quot;Пусто&quot;<br><small>Обычно можно встретить вместо картинки героя, если графика не найдена.</small></td>
+	</tr>
+	<tr>
+		<td><font color="#800000">1</font></td>
+		<td><font color="#800000">Пустышка</font></td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>Жертвенный алтарь</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">3</font></td>
+		<td><font color="#800000">Встать на якорь<br><small>Данный тип имеют все квадраты радом с водой, 
+		на которые можно высадиться, подтип = -1. 
+		Если квадрат имеет другой тип, на него высадиться нельзя.</small></font></td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>Арена</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">5</font></td>
+		<td><font color="#800000">Артефакт [0..170] – </font><a href="A1.htm" class="red">таблица артефактов</a></td>
+	</tr>
+	<tr>
+		<td>6</td>
+		<td>Ящик Пандоры</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">7</font></td>
+		<td><font color="#800000">Чёрный рынок</font></td>
+	</tr>
+	<tr>
+		<td>8</td>
+		<td>Лодка [подтип 0..2]</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">9</font></td>
+		<td><font color="#800000">Страж границы [0..7] – </font><a href="BG.htm" class="red">таблица стражей</a></td>
+	</tr>
+	<tr>
+		<td>10</td>
+		<td>Палатка ключника [0..7] – <a href="BG.htm">таблица палаток ключника</a></td>
+	</tr>
+	<tr>
+		<td><font color="#800000">11</font></td>
+		<td><font color="#800000">Буй</font></td>
+	</tr>
+	<tr>
+		<td>12</td>
+		<td>Костёр покинутого лагеря</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">13</font></td>
+		<td><font color="#800000">Картограф [0 - водяной, 1 - наземный, 2 - подземный]</font></td>
+	</tr>
+	<tr>
+		<td>14</td>
+		<td>Лебединое озеро</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">15</font></td>
+		<td><font color="#800000">Вуаль Тьмы</font></td>
+	</tr>
+	<tr>
+		<td>16</td>
+		<td><a name="cb"></a>Банк Существ [0..20] – <a href="CB.htm">таблица банков</a></td>
+	</tr>
+	<tr>
+		<td><font color="#800000">17</font></td>
+		<td><font color="#800000">Генератор существ 1 [0..100] – </font><a class="red" href="CreatureDwellings.htm">таблица жилищ</a></td>
+	</tr>
+	<tr>
+		<td>18</td>
+		<td>Генератор существ 2</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">19</font></td>
+		<td><font color="#800000">Генератор существ 3</font></td>
+	</tr>
+	<tr>
+		<td>20</td>
+		<td><u>подтип 0</u> - Сопряжение Элементалей (все 4 существа);<br>
+		<u>подтип 1</u> - Фабрика Големов (все 4 существа)</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">21</font></td>
+		<td><font color="#800000">Проклятая земля</font></td>
+	</tr>
+	<tr>
+		<td>22</td>
+		<td>Скелет</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">23</font></td>
+		<td><font color="#800000">Башня Марлетто</font></td>
+	</tr>
+	<tr>
+		<td>24</td>
+		<td>Ветхий корабль</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">25</font></td>
+		<td><font color="#800000">Утопия драконов</font></td>
+	</tr>
+	<tr>
+		<td>26</td>
+		<td>Событие</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">27</font></td>
+		<td><font color="#800000">Глаз мага</font></td>
+	</tr>
+	<tr>
+		<td>28</td>
+		<td>Домик фей</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">29</font></td>
+		<td><font color="#800000">Обломки</font></td>
+	</tr>
+	<tr>
+		<td>30</td>
+		<td>Фонтан удачи</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">31</font></td>
+		<td><font color="#800000">Фонтан молодости</font></td>
+	</tr>
+	<tr>
+		<td>32</td>
+		<td>Сад откровения</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">33</font></td>
+		<td><font color="#800000">Гарнизон [0 - обычный, 1 - антимагический]</font></td>
+	</tr>
+	<tr>
+		<td>34</td>
+		<td><a name="he"></a>Герой [0..155] – <a href="NumberHeroes.htm">таблица героев</a></td>
+	</tr>
+	<tr>
+		<td><font color="#800000">35</font></td>
+		<td><font color="#800000">Форт на холме</font></td>
+	</tr>
+	<tr>
+		<td>36</td>
+		<td>Грааль</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">37</font></td>
+		<td><font color="#800000">Хижина мага</font></td>
+	</tr>
+	<tr>
+		<td>38</td>
+		<td>Идол Удачи [0 - обычный, 1 - заснеженный]</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">39</font></td>
+		<td><font color="#800000">Навес</font></td>
+	</tr>
+	<tr>
+		<td>40</td>
+		<td>Декоративный объект [0 - снегопад, 1 - лавовая жижа, 2 - дождь]</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">41</font></td>
+		<td><font color="#800000">Библиотека Просвящения [0 - стандартная, 1 - заснеженная]</font></td>
+	</tr>
+	<tr>
+		<td>42</td>
+		<td>Маяк [-1, 0..7 – по <a href="GamersColor.htm">цвету игрока</a>]</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">43</font></td>
+		<td><font color="#800000">Монолит входа [0..7] – </font><a class="red" href="One-way%20monolith.htm">таблица монолитов</a></td>
+	</tr>
+	<tr>
+		<td>44</td>
+		<td>Монолит выхода [0..7] – <a href="One-way%20monolith.htm">таблица монолитов</a></td>
+	</tr>
+	<tr>
+		<td><font color="#800000">45</font></td>
+		<td><font color="#800000">Двухсторонний монолит [0..7] – </font><a class="red" href="Two-way%20monolith.htm">таблица монолитов</a></td>
+	</tr>
+	<tr>
+		<td>46</td>
+		<td>Магические равнины</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">47</font></td>
+		<td><font color="#800000">Школа магии</font></td>
+	</tr>
+	<tr>
+		<td>48</td>
+		<td>Магический источник</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">49</font></td>
+		<td><font color="#800000">Магический колодец [0 - обычный, 1 - украшенный]</font></td>
+	</tr>
+	<tr>
+		<td>50</td>
+		<td>Пустышка</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">51</font></td>
+		<td><font color="#800000">Лагерь наёмников</font></td>
+	</tr>
+	<tr>
+		<td>52</td>
+		<td>Русалки</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">53</font></td>
+		<td><font color="#800000">Шахта [0..7] – </font><a class="red" href="Mines.htm">таблица шахт</a></td>
+	</tr>
+	<tr>
+		<td>54</td>
+		<td><a name="cr"></a>Монстр [0..196] – <a href="Creature.htm">таблица монстров</a></td>
+	</tr>
+	<tr>
+		<td><font color="#800000">55</font></td>
+		<td><font color="#800000">Мистический сад</font></td>
+	</tr>
+	<tr>
+		<td>56</td>
+		<td>Оазис</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">57</font></td>
+		<td><font color="#800000">Обелиск</font></td>
+	</tr>
+	<tr>
+		<td>58</td>
+		<td>Обсерватория красного дерева</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">59</font></td>
+		<td><font color="#800000">Океанская бутыль</font></td>
+	</tr>
+	<tr>
+		<td>60</td>
+		<td>Огненный столп</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">61</font></td>
+		<td><font color="#800000">Звёздное колесо</font></td>
+	</tr>
+	<tr>
+		<td>62</td>
+		<td>Тюрьма</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">63</font></td>
+		<td><a name="pir"></a><font color="#800000">Пирамида [0..74] – </font><a class="red" href="NewObj.htm">таблица объектов WoG</a></td>
+	</tr>
+	<tr>
+		<td>64</td>
+		<td>Флаг единства</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">65</font></td>
+		<td><font color="#800000">Случайный артефакт</font></td>
+	</tr>
+	<tr>
+		<td>66</td>
+		<td>Случайный артефакт сокровище</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">67</font></td>
+		<td><font color="#800000">Случайный малый артефакт</font></td>
+	</tr>
+	<tr>
+		<td>68</td>
+		<td>Случайный большой артефакт</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">69</font></td>
+		<td><font color="#800000">Случайная реликвия</font></td>
+	</tr>
+	<tr>
+		<td>70</td>
+		<td>Случайный герой</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">71</font></td>
+		<td><font color="#800000">Случайный монстр</font></td>
+	</tr>
+	<tr>
+		<td>72</td>
+		<td>Случайный монстр 1</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">73</font></td>
+		<td><font color="#800000">Случайный монстр 2</font></td>
+	</tr>
+	<tr>
+		<td>74</td>
+		<td>Случайный монстр 3</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">75</font></td>
+		<td><font color="#800000">Случайный монстр 4</font></td>
+	</tr>
+	<tr>
+		<td>76</td>
+		<td>Случайный ресурс</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">77</font></td>
+		<td><font color="#800000">Случайный город</font></td>
+	</tr>
+	<tr>
+		<td>78</td>
+		<td>Лагерь беженцев</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">79</font></td>
+		<td><font color="#800000">Ресурс [0..7] – </font><a class="red" href="Resource.htm">таблица ресурсов</a></td>
+	</tr>
+	<tr>
+		<td>80</td>
+		<td>Святилище</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">81</font></td>
+		<td><font color="#800000">Учёный</font></td>
+	</tr>
+	<tr>
+		<td>82</td>
+		<td>Морской сундук</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">83</font></td>
+		<td><a name="T83"></a><font color="#800000">Хижина провидца [0 - соломенная хижина, 1 - грибная, 2 - древоподобная]</font></td>
+	</tr>
+	<tr>
+		<td>84</td>
+		<td>Склеп [0 - заснеженный]</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">85</font></td>
+		<td><font color="#800000">Кораблекрушение</font></td>
+	</tr>
+	<tr>
+		<td>86</td>
+		<td>Потерпевший кораблекрушение</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">87</font></td>
+		<td><font color="#800000">Верфь [-1, 0..7 – по
+		<a href="GamersColor.htm" class="red">цвету игрока</a>]</font></td>
+	</tr>
+	<tr>
+		<td>88</td>
+		<td>Святыня магического воплощения</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">89</font></td>
+		<td><font color="#800000">Святыня магического жеста</font></td>
+	</tr>
+	<tr>
+		<td>90</td>
+		<td>Святыня магической мысли</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">91</font></td>
+		<td><font color="#800000">Знак</font></td>
+	</tr>
+	<tr>
+		<td>92</td>
+		<td>Сирены</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">93</font></td>
+		<td><font color="#800000">Свиток с заклинанием [0..69] – </font><a class="red" href="Spell.htm">таблица заклинаний</a></td>
+	</tr>
+	<tr>
+		<td>94</td>
+		<td>Конюшня</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">95</font></td>
+		<td><font color="#800000">Таверна [0 - обычная, 1 - заснеженная]</font></td>
+	</tr>
+	<tr>
+		<td>96</td>
+		<td>Храм</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">97</font></td>
+		<td><font color="#800000">Гильдия воров</font></td>
+	</tr>
+	<tr>
+		<td>98</td>
+		<td>Город [0..8] – <a href="Towns.htm">таблица городов</a></td>
+	</tr>
+	<tr>
+		<td><font color="#800000">99</font></td>
+		<td><font color="#800000">Рынок</font></td>
+	</tr>
+	<tr>
+		<td>100</td>
+		<td>Камень знаний [0 - стандартный, 1 - заснеженный]</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">101</font></td>
+		<td><font color="#800000">Сундук с сокровищами [см. <a target="main" href="../Rec/UN.htm#B" class="red">!!UN:B</a>]</font></td>
+	</tr>
+	<tr>
+		<td>102</td>
+		<td>Древо знаний [0 - обычное, 1 - заснеженное]</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">103</font></td>
+		<td><font color="#800000">Врата подземного мира [0 - обычные, 1 - заснеженные]</font></td>
+	</tr>
+	<tr>
+		<td>104</td>
+		<td>Университет</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">105</font></td>
+		<td><font color="#800000">Телега</font></td>
+	</tr>
+	<tr>
+		<td>106</td>
+		<td>Фабрика военной техники</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">107</font></td>
+		<td><font color="#800000">Школа войны</font></td>
+	</tr>
+	<tr>
+		<td>108</td>
+		<td>Гробница воина</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">109</font></td>
+		<td><font color="#800000">Водяная мельница</font></td>
+	</tr>
+	<tr>
+		<td>110</td>
+		<td>Водоём</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">111</font></td>
+		<td><font color="#800000">Водоворот</font></td>
+	</tr>
+	<tr>
+		<td>112</td>
+		<td>Ветряная мельница</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">113</font></td>
+		<td><font color="#800000">Хижина ведьмы [0..27] – </font><a class="red" href="SecondarySkill.htm">таблица вторич.навыков</a></td>
+	</tr>
+	<tr>
+		<td>114</td>
+		<td>Щетка</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">115</font></td>
+		<td><font color="#800000">Куст</font></td>
+	</tr>
+	<tr>
+		<td>116</td>
+		<td>Кактус</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">117</font></td>
+		<td><font color="#800000">Каньон </font> </td>
+	</tr>
+	<tr>
+		<td>118</td>
+		<td>Кратер</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">119</font></td>
+		<td><font color="#800000">Мёртвая растительность</font></td>
+	</tr>
+	<tr>
+		<td>120</td>
+		<td>Цветы</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">121</font></td>
+		<td><font color="#800000">Замёрзшее озеро</font></td>
+	</tr>
+	<tr>
+		<td>122</td>
+		<td>Изгородь</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">123</font></td>
+		<td><font color="#800000">Холм</font></td>
+	</tr>
+	<tr>
+		<td>124</td>
+		<td>Нора</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">125</font></td>
+		<td><font color="#800000">Водоросль</font></td>
+	</tr>
+	<tr>
+		<td>126</td>
+		<td>Озеро</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">127</font></td>
+		<td><font color="#800000">Поток лавы</font></td>
+	</tr>
+	<tr>
+		<td>128</td>
+		<td>Озеро лавы</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">129</font></td>
+		<td><font color="#800000">Гриб</font></td>
+	</tr>
+	<tr>
+		<td>130</td>
+		<td>Бревно</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">131</font></td>
+		<td><font color="#800000">Мандрагора</font></td>
+	</tr>
+	<tr>
+		<td>132</td>
+		<td>Мох</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">133</font></td>
+		<td><font color="#800000">Курган</font></td>
+	</tr>
+	<tr>
+		<td>134</td>
+		<td>Гора</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">135</font></td>
+		<td><font color="#800000">Дуб</font></td>
+	</tr>
+	<tr>
+		<td>136</td>
+		<td>Пласт породы</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">137</font></td>
+		<td><font color="#800000">Сосна</font></td>
+	</tr>
+	<tr>
+		<td>138</td>
+		<td>Растение</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">143</font></td>
+		<td><font color="#800000">Дельта реки</font></td>
+	</tr>
+	<tr>
+		<td>147</td>
+		<td>Камни</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">148</font></td>
+		<td><font color="#800000">Песчаная дюна</font></td>
+	</tr>
+	<tr>
+		<td>149</td>
+		<td>Песчаная яма</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">150</font></td>
+		<td><font color="#800000">Куст</font></td>
+	</tr>
+	<tr>
+		<td>151</td>
+		<td>Череп</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">152</font></td>
+		<td><font color="#800000">Сталагмит</font></td>
+	</tr>
+	<tr>
+		<td>153</td>
+		<td>Пень</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">154</font></td>
+		<td><font color="#800000">Смоляная шахта</font></td>
+	</tr>
+	<tr>
+		<td>155</td>
+		<td>Деревья</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">156</font></td>
+		<td><font color="#800000">Виноград</font></td>
+	</tr>
+	<tr>
+		<td>157</td>
+		<td>Жерло вулкана</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">158</font></td>
+		<td><font color="#800000">Вулкан</font></td>
+	</tr>
+	<tr>
+		<td>159</td>
+		<td>Ива</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">160</font></td>
+		<td><font color="#800000">Юкка</font></td>
+	</tr>
+	<tr>
+		<td>161</td>
+		<td>Риф</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">162</font></td>
+		<td><font color="#800000">Случайный монстр 5</font></td>
+	</tr>
+	<tr>
+		<td>163</td>
+		<td>Случайный монстр 6</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">164</font></td>
+		<td><font color="#800000">Случайный монстр 7</font></td>
+	</tr>
+	<tr>
+		<td>165</td>
+		<td>Щётка</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">166</font></td>
+		<td><font color="#800000">Куст</font></td>
+	</tr>
+	<tr>
+		<td>167</td>
+		<td>Кактус</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">168</font></td>
+		<td><font color="#800000">Каньон</font></td>
+	</tr>
+	<tr>
+		<td>169</td>
+		<td>Кратер</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">170</font></td>
+		<td><font color="#800000">Мёртвая растительность</font></td>
+	</tr>
+	<tr>
+		<td>171</td>
+		<td>Цветы</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">172</font></td>
+		<td><font color="#800000">Замёрзшее озеро</font></td>
+	</tr>
+	<tr>
+		<td>173</td>
+		<td>Ограда</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">174</font></td>
+		<td><font color="#800000">Холм</font></td>
+	</tr>
+	<tr>
+		<td>175</td>
+		<td>Дыра</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">176</font></td>
+		<td><font color="#800000">Бурая водоросль</font></td>
+	</tr>
+	<tr>
+		<td>177</td>
+		<td>Озеро</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">178</font></td>
+		<td><font color="#800000">Поток лавы</font></td>
+	</tr>
+	<tr>
+		<td>179</td>
+		<td>Озеро лавы</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">180</font></td>
+		<td><font color="#800000">Грибы</font></td>
+	</tr>
+	<tr>
+		<td>181</td>
+		<td>Бревно</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">182</font></td>
+		<td><font color="#800000">Мандрагора</font></td>
+	</tr>
+	<tr>
+		<td>183</td>
+		<td>Мох</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">184</font></td>
+		<td><font color="#800000">Курган</font></td>
+	</tr>
+	<tr>
+		<td>185</td>
+		<td>Гора</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">186</font></td>
+		<td><font color="#800000">Дубовый лес</font></td>
+	</tr>
+	<tr>
+		<td>187</td>
+		<td>Горная порода</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">188</font></td>
+		<td><font color="#800000">Сосновый лес</font></td>
+	</tr>
+	<tr>
+		<td>189</td>
+		<td>Растение</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">190</font></td>
+		<td><font color="#800000">Дельта реки</font></td>
+	</tr>
+	<tr>
+		<td>191</td>
+		<td>Скала</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">192</font></td>
+		<td><font color="#800000">Песчаные дюны</font></td>
+	</tr>
+	<tr>
+		<td>193</td>
+		<td>Песчаная впадина</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">194</font></td>
+		<td><font color="#800000">Кустарник</font></td>
+	</tr>
+	<tr>
+		<td>195</td>
+		<td>Череп</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">196</font></td>
+		<td><font color="#800000">Сталагмит</font></td>
+	</tr>
+	<tr>
+		<td>197</td>
+		<td>Пень</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">198</font></td>
+		<td><font color="#800000">Смоляная яма</font></td>
+	</tr>
+	<tr>
+		<td>199</td>
+		<td>Деревья</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">200</font></td>
+		<td><font color="#800000">Виноградная лоза</font></td>
+	</tr>
+	<tr>
+		<td>201</td>
+		<td>Вулканическое отверстие</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">202</font></td>
+		<td><font color="#800000">Вулкан</font></td>
+	</tr>
+	<tr>
+		<td>203</td>
+		<td>Ивовый лес</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">204</font></td>
+		<td><font color="#800000">Юкковый лес</font></td>
+	</tr>
+	<tr>
+		<td>205</td>
+		<td>Риф</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">206</font></td>
+		<td><font color="#800000">Необитаемые холмы</font></td>
+	</tr>
+	<tr>
+		<td>207</td>
+		<td>Грязевые холмы</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">208</font></td>
+		<td><font color="#800000">Травяные холмы</font></td>
+	</tr>
+	<tr>
+		<td>209</td>
+		<td>Дикие холмы</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">210</font></td>
+		<td><font color="#800000">Подземные скалы</font></td>
+	</tr>
+	<tr>
+		<td>211</td>
+		<td>Болотные листья</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">212</font></td>
+		<td><font color="#800000">Пограничные ворота [<a href="BG.htm" class="red">0..7</a>]</font></td>
+	</tr>
+	<tr>
+		<td>213</td>
+		<td>Гильдия наёмников</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">214</font></td>
+		<td><font color="#800000">Лагерь героя</font></td>
+	</tr>
+	<tr>
+		<td>215</td>
+		<td>Страж прохода</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">216</font></td>
+		<td><font color="#800000">Случайное жилище</font></td>
+	</tr>
+	<tr>
+		<td>217</td>
+		<td>Жилище существ фиксированного уровня (подтип 0..6)</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">218</font></td>
+		<td><font color="#800000">Жилище существ, привязанное к городу (подтип 
+		 <a href="Towns.htm" class="red">0..8</a>)</font></td>
+	</tr>
+	<tr>
+		<td>219</td>
+		<td>Гарнизон (перпендикулярный).<br><small>Объект гарнизоном не является, и замещается игрой при загрузке карты.</small></td>
+	</tr>
+	<tr>
+		<td><font color="#800000">220</font></td>
+		<td><font color="#800000">Рудник</font></td>
+	</tr>
+	<tr>
+		<td>221</td>
+		<td>Торговый пост [0 - заснеженный рынок]</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">222</font></td>
+		<td><font color="#800000">Клеверное поле</font></td>
+	</tr>
+	<tr>
+		<td>223</td>
+		<td>Проклятая земля</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">224</font></td>
+		<td><font color="#800000">Дьявольский туман</font></td>
+	</tr>
+	<tr>
+		<td>225</td>
+		<td>Попутный ветер</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">226</font></td>
+		<td><font color="#800000">Огненные поля</font></td>
+	</tr>
+	<tr>
+		<td>227</td>
+		<td>Святая земля</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">228</font></td>
+		<td><font color="#800000">Прозрачные пруды</font></td>
+	</tr>
+	<tr>
+		<td>229</td>
+		<td>Магические облака</td>
+	</tr>
+	<tr>
+		<td><font color="#800000">230</font></td>
+		<td><font color="#800000">Магические равнины</font></td>
+	</tr>
+	<tr>
+		<td>231</td>
+		<td>Скалистая земля</td>
+	</tr>
+</table>
+<script language="JScript" src="search.js"></script></body></html>
