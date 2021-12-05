@@ -1,0 +1,25 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Триггер HM</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+</head>
+
+<body>
+<p align="center">
+<font size="5">Триггер <b>HM</b> (шаг героя)</font></p>
+<p><br>
+<b><font id="red">!?HM#;</font> - контроль над каждым шагом героя.</b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # – <a target="form" href="../Form/NumberHeroes.htm">номер героя</a> (-1 – любой)<br>
+Триггер вызывается перед каждым шагом героя (не после). Вы можете проверить месторасположение героя из переменных <b>v998</b>,<b>v999</b>,<b>v1000</b>. 
+Движение нельзя отменить.<br>
+На данный момент этот триггер выясняет следующее: 
+текущего героя (<a href="../Rec/HE.htm">!!HE-1</a>), 
+его координаты (<b>v998</b>, <b>v999</b>, <b>v1000</b> &rarr; X Y L); также флаг <b>1000</b> устанавливается на 1 (Истина), 
+если ходит человек-игрок, или на 0 (Ложь) – если ИИ.<br>
+Если вы используете !?HM-1; и !?HM5; (например), то сначала будет действовать !?HM-1, а потом !?HM5.<br>
+<u>Пример:</u>
+<script type="erm">!?HM-1;
+!!IF:M^Движение!^; - сообщение при перемещении любого героя
+!?HM0;
+!!IF:M^Двигается Оррин!^; - сообщение при перемещении Оррина</script></p>
+
+<script src="../erm.js"></script></body></html>

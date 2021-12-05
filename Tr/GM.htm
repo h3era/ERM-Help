@@ -1,0 +1,28 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Триггер GM</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+</head>
+
+<body>
+<p align="center">
+<font size="5">Триггер <b>GM</b> (сохранение/загрузка)</font></p>
+<p>&nbsp;</p>
+<p align="left"><b><font id="red">!?GM#;</font> 
+- триггер на сохранение и загрузку игры.<br>
+<font id="red">!?GM0;</font> - вызывается после загрузки сохранённой игры, но перед показом карты.<br>
+<font id="red">!?GM1;</font> - вызывается до сохранения игры, но после выбора слота сохранения.<br>
+</b><br>
+<u>Пример:</u>
+<script type="erm">ZVSE
+!?GM0;
+!!IF:M^Загружено^;
+!?GM1;
+!!IF:M^Сохранение...^;</script>
+<b><u>Комментарий</u>:</b> !?GM1 вызывается также каждый раз при автосохранении 
+(т.е. каждый день после нажатия кнопки &quot;Завершить ход&quot;).<br>Автосохранение можно 
+отменить командой <a href="../Rec/UN.htm#J5">UN:J5</a>. Обычно это не 
+рекомендуется, т.к. автосохранение является &quot;спасением&quot; игрока в случае появления какой-либо ошибки в игре.</p>
+<p id="Q1">См. также: <a href="../ERA/new_events.htm#1.1">Расширение функционала !?GM1 в ERA</a></p>
+
+
+<script src="../erm.js"></script></body></html>

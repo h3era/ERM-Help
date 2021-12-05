@@ -1,0 +1,202 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>Описание API ERA</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="../Rec/script.js"></script>
+</head>
+<body scroll="no">
+<DIV id="buttonMenu">
+
+<A style="position:absolute; right:4" href="#UP" CLASS="button" title="Вернуться к началу">&uarr;</a>
+
+<form target="_self" action="" style="text-align:left"> <SPAN CLASS="options">Перейти к:&nbsp;&nbsp;</SPAN>
+	<select name="menu" title="Быстрый переход к нужному описанию..." onchange="location=value">
+	<option selected value="#">------------ нажмите для выбора ------------</option>
+		<option value="#hook">Hook</option>
+		<option value="#apihook">ApiHook</option>
+		<option value="#clall">ClearAllIniCache</option>
+		<option value="#clini">ClearIniCache</option>
+		<option value="#execerm">ExecErmCmd</option>
+		<option value="#exterm">ExtractErm</option>
+		<option value="#error">FatalError</option>
+		<option value="#firevnt">FireEvent</option>
+		<option value="#firerm">FireErmEvent</option>
+		<option value="#txtunload">ForceTxtUnload</option>
+		<option value="#getbtn">GetButtonID</option>
+		<option value="#getgame">GetGameState</option>
+		<option value="#getaddr">GetRealAddr</option>
+		<option value="#killproc">KillThisProcess</option>
+		<option value="#loadimg">LoadImageAsPcx16</option>
+		<option value="#loadtxt">LoadTxt</option>
+		<option value="#color">NameColor</option>
+		<option value="#pexist">PatchExists</option>
+		<option value="#pexist">PluginExists</option>
+		<option value="#readsavsec">ReadSavegameSection</option>
+		<option value="#wrtsavsec">WriteSavegameSection</option>
+		<option value="#readstr">ReadStrFromIni</option>
+		<option value="#wrtstr">WriteStrToIni</option>
+		<option value="#recall">RecallAPI</option>
+		<option value="#redir">RedirectFile</option>
+		<option value="#glbredir">GlobalRedirectFile</option>
+		<option value="#redirmem">RedirectMemoryBlock</option>
+		<option value="#regist">RegisterHandler</option>
+		<option value="#reload">ReloadErm</option>
+		<option value="#savent">SaveEventParams</option>
+		<option value="#resent">RestoreEventParams</option>
+		<option value="#savini">SaveIni</option>
+		<option value="#wrtcode">WriteAtCode</option>
+	</select>
+</form>
+
+</DIV>
+
+<DIV id="text">
+<a name="up"></a>
+
+<h2 align="center">Описание экспортируемых функций ERA</h2>
+<p>Ниже будут описаны основые функции и процедуры ERA. Более полная технической документации располагается в каталоге <i class="file">Игра\Tools\Era\</i>, или же вы можете задать конкретные вопросы непосредственно на <a href="http://wforum.heroes35.net/forumdisplay.php?fid=182" target="blank">официальном форуме</a> проекта.</p>
+<ul>
+<li><a name="hook"></a><code>PROCEDURE <font id="red"><b>Hook</b></font> (HandlerAddr: POINTER; HookType: INTEGER; PatchSize: INTEGER; CodeAddr: POINTER); STDCALL;</code><br>
+Универсальная функция для установки программных перехватчиков в коде. Наиболее удобный и автоматизированный режим: <code>HookType = HOOKTYPE_BRIDGE</code>, 
+при котором низкоуровневый переходник к высокоуровневой функции будет сгенерирован автоматически.<br>
+<u>Пример высокоуровневой функции</u>:
+<div class="erm" id="Q1"><p><code>PROCEDURE Hook_X (Context: PHookHandlerArgs): LONGBOOL; STDCALL;</code></p>
+Функция возвращает флаг того, что нужно выполнить затёртый перехватчиком код по умолчанию. Этот код не должен содержать прыжков, но может содержать любые команды для работы со стеком. 
+Высокоуровневый перехватчик может изменять регистры через обращение к структуре THookHandlerArgs. Через неё же может быть изменён и адрес возврата в оригинальный код.</div><p></p></li>
+<li><a name="apihook"></a><code>PROCEDURE <font id="red"><b>ApiHook</b></font>; STDCALL;</code><br>
+Определяет минимальный размер заплатки самостоятельно, в отличие от функции <i class="event">Hook</i>.<br>
+И <i class="event">ApiHook</i>, и <i class="event">Hook</i> функции возвращают новый адрес затёртого кода в режиме моста (<code>BRIDGE</code>), 
+что позволяет вызывать также и оригинальные функции, минуя установленные перехватчики.<p></p></li>
+<li><a name="clall"></a><code>PROCEDURE <font id="red"><b>ClearAllIniCache</b></font>; STDCALL;</code><br>
+<p></p></li>
+<li><a name="clini"></a><code>PROCEDURE <font id="red"><b>ClearIniCache</b></font>; STDCALL;</code><br>
+Полностью очищает кэш загруженных в память ini-файлов.<p></p></li>
+<li><a name="execerm"></a><code>PROCEDURE <font id="red"><b>ExecErmCmd</b></font> (CmdStr: PCHAR); STDCALL;</code><br>
+Выполняет указанную одиночную ERM команду в формате <b id="erm"><span class="re">XX</span>:...</b> без условий.<br>
+<u>Пример</u>:
+<div class="erm" id="Q1"><p><code>ExecErmCmd('IF:L^Hello, World!^;');</code></p></div><p></p></li>
+<li><a name="exterm"></a><code>PROCEDURE <font id="red"><b>ExtractErm</b></font>; STDCALL;</code><br>
+Экспортирует все стандартные скрипты (00..99) в папку <i class="file">Data\s\ExtractedScripts</i>.<p></p></li>
+<li><a name="error"></a><code>PROCEDURE <font id="red"><b>FatalError</b></font> (Err: PCHAR); STDCALL;</code><br>
+Отображает сообщение о критической ошибке и тихо завершает текущий процесс.<p></p></li>
+<li><a name="firevnt"></a><code>PROCEDURE <font id="red"><b>FireEvent</b></font> (EventName: PCHAR; {n} EventData: POINTER; DataSize: INTEGER); STDCALL;</code><br>
+Генерирует событие и извещает о нём всех подписанных обработчиков. <code>EventData</code> указывает на блок параметров события (если есть), а <code>DataSize</code> определяет размер этого блока. 
+Посредством данного механизма можно передавать обработчикам ценную информацию о событии.<p></p></li>
+<li><a name="firerm"></a><code>PROCEDURE <font id="red"><b>FireErmEvent</b></font> (EventID: INTEGER); STDCALL;</code><br>
+Генерирует новое ERM событие путём вызова ERM функции с указанным номером. Такой вызов не сохраняет отрицательные <i>z</i>-переменные.<br>
+ERA обязует создателей плагинов сохранять предыдущие параметры событий (<a href="../Rec/SN_era.htm#X">SN:X</a>) через функцию <a href="#savent" class="event">SaveEventParams</a> ДО вызова <i class="event">FireErmEvent</i> и 
+восстанавливать через функцию <a href="#resent" class="event">RestoreEventParams</a> ПОСЛЕ вызова, чтобы каждое новое событие обладало своим набором <a href="../Rec/SN_era.htm#X">SN:X</a> параметров.<p></p></li>
+<li><a name="txtunload"></a><code>PROCEDURE <font id="red"><b>ForceTxtUnload</b></font> (Name: PCHAR); STDCALL;</code><br>
+Заставляет игру выгрузить txt-таблицу из памяти.<br>
+<i id="bold">Замечание:</i> используйте с осторожностью!<p></p></li>
+<li><a name="getbtn"></a><code>FUNCTION <font id="red"><b>GetButtonID</b></font> (ButtonName: PCHAR): INTEGER; STDCALL;</code><br>
+Функция даёт возможность получить уникальный идентификатор (ID) пользовательской кнопки по указанному имени в игровом диалоге. Если такое имя не было зарегистрировано, то функция вернёт -1.<br>
+<u><b onclick="HideIt(9)" class="h">Подробнее (<b id="show9">показать</b>)</b></u><div id="9" class="b">
+В ERA cтало возможным иметь пользовательские кнопки в большинстве игровых диалогах. Пользовательские кнопки описываются в <i class="file">*.btn</i> файлах, которые подгружаются из папки <i class="file">Data\Buttons</i> при старте игры. Каждый <i class="file">*.btn</i> файл (чистый txt-формат) содержит строки (по одной на кнопку) в следующем формате:
+<p><b class="erm_b" id="N3">Экран кнопки</b>;<b class="erm_b" id="N3">Уникальное имя кнопки</b>;<b class="erm_b" id="N3">DEF кнопки</b>;<b class="erm_b" id="N3">X</b>;<b class="erm_b" id="N3">Y</b>;<b class="erm_b" id="N3">Ширина</b>;<b class="erm_b" id="N3">Высота</b>;<b class="erm_b" id="N3">Длинное описание</b>;<b class="erm_b" id="N3">Короткое описание</b>;<b class="erm_b" id="N3">Код горячей клавиши</b></code></p>
+, где <code>[Экран кнопки]</code> может принимать одно из следующих значений:
+<ul id="T0">
+<li><code>Advmap</code> (для карты приключений)</li>
+<li><code>Town</code> (для города)</li>
+<li><code>Hero</code> (для экрана героя)</li>
+<li><code>Heroes</code> (для экрана встречи героев)</li>
+<li><code>Battle</code> (для экрана битвы)</li>
+<li><code>Dummy</code> (если кнопка не используется)</li></ul>
+Каждой такой настроенной кнопке автоматически назначается свой уникальный ID.<br>
+<u>Пример</u>:
+<div class="erm" id="Q1"><p><code>Hero;SecSkills.ScrollUp;ScrollUp.def;300;303;12;44;sss.scroll_up;sss.scroll_up;38</code></p></div>
+</div><p></p></li>
+<li><a name="getgame"></a><a name="state"></a><code>PROCEDURE <font id="red"><b>GetGameState</b></font> (VAR GameState: TGameState); STDCALL;</code><br>
+Получает текущее состояние игры в виде пары <a href="../Form/GameState.htm" target="form">идентификаторов диалогов</a>: главного родительского и текущего дочернего (0 = диалоги ещё не созданы).<br>
+Функция полезна для определения, в каком диалоге происходит нажатие клавиши.<br>
+По умолчанию от функции ID текущего диалога будет помещён в переменную v1.<br>
+<u><b onclick="HideIt(1)" class="h">Пример (<b id="show1">показать</b>)</b></u><div id="1" class="b">
+<script type="erm">!?FU(OnKeyPressed)&x1=81; нажата клавиша "Q"
+!!SN:F^GetGameState^/?y1; y1 - ID родительского диалога, y2 - текущего (v1 так же получит ID текущего диалога)
+!!FU&v1<>4662240:E;	выход, если не бой
+!!VRx2:S1;		запрет стандартной реакции</script>
+<u>Расшифровка примера</u>: <a href="../Rec/SN_era.htm#F">SN:F</a> вызывает внешнюю функцию <i class="event">GetGameState</i>. <b>?y1</b> означает передачу в качестве параметра адрес y1 в памяти (y1 занимает 4 байта, y2 тоже четыре).
+А функция на самом деле работает с адресом структуры в 8 байт из двух полей:<br>
+- родительский диалог (ID); приходится на y1<br>
+- дочерний (текущий) диалог (ID); приходится на y2<br>
+Если текущий диалог – экран боя и нажата клавиша <span class="key">Q</span>, то отменяем обработку нажатия, установив 2ой параметр события <a href="new_events.htm#2.3" class="event">OnKeyPressed</a> в 1.</div><p></p></li>
+<li><a name="getaddr"></a><code>FUNCTION <font id="red"><b>GetRealAddr</b></font> (Addr: POINTER): POINTER; STDCALL;</code><br>
+<p></p></li>
+<li><a name="killproc"></a><code>PROCEDURE <font id="red"><b>KillThisProcess</b></font>; STDCALL;</code><br>
+Тихо убивает текущий процесс.<p></p></li>
+<li><a name="loadimg"></a><code>FUNCTION <font id="red"><b>LoadImageAsPcx16</b></font> (FilePath, PcxName: PCHAR; Width, Height, MaxWidth, MaxHeight, ResizeAlg: INTEGER): {OU} Heroes.PPcx16Item; STDCALL;</code><br>
+Функция даёт возможность загружать любые PNG/JPG/BMP-файлы как игровые PCX-картинки, подходящие для замены внутриигровых изображений или для показа в диалогах. Она поддерживает ограничение размера (0 - без ограничений) и <a class="h" onclick="hidepic(10)" href="javascript:void(0)">алгоритмы масштабирования</a>.
+<div class="b" id="10" style="display: none;">
+<blockquote id="T0"><div id="step">RESIZE_ALG_NO_RESIZE = 0; // Не применять никакие ограничения и не менять размер картинки<br>
+RESIZE_ALG_STRETCH   = 1; // Задать ширину и высоту картинки для ширины и высоты окна, масштабировать непропорционально<br>
+RESIZE_ALG_CONTAIN   = 2; // Изменить размер картинки так, чтобы по крайней мере один из её размеров стал таким же, как размер окна, а другой стал меньше или равным размеру окна<br>
+RESIZE_ALG_DOWNSCALE = 3; // Только пропорционально сжимать картинки, не растягивать маленькие картинки<br>
+RESIZE_ALG_UPSCALE   = 4; // Только пропорционально масштабировать маленькие картинки, большие картинки оставлять как есть<br>
+RESIZE_ALG_COVER     = 5; // НЕ РЕАЛИЗОВАНО<br>
+RESIZE_ALG_FILL      = 6; // Использовать картинку как плитка для заполнения всего окна<br>
+
+Используйте ALG_STRETCH для установки фиксированных размеров, ALG_FILL - для заполнения окна плитками и ALG_DOWNSCALE - для настраиваемых диалогов, чтобы пропорционально сужать большие картинки.</div></blockquote></div><br>
+<u><b onclick="HideIt(2)" class="h">Пример (<b id="show2">показать</b>)</b></u><div id="2" class="b">
+Давайте возмём свою JPG-картинку для DL-диалога.
+<script type="erm">!!SN:F^LoadImageAsPcx16^/^Data\Pics\test.jpg^/^rW3.cust.pcx^/400/300/0/0/1;
+!!VRy1:Sv1; y1 - image resource
+... вызовем DL-диалог, где используется rW3.cust.pcx
+!!SN:F^DecRef^/y1; free image resource</script></div><p></p></li>
+<li><a name="loadtxt"></a><code>FUNCTION <font id="red"><b>LoadTxt</b></font> (Name: PCHAR): {n} PTxtFile; STDCALL;</code><br>
+Загружает txt-таблицу средствами игры.<p></p></li>
+<li><a name="color"></a><code>PROCEDURE <font id="red"><b>NameColor</b></font> (Color32: INTEGER; Name: PCHAR); STDCALL;</code><br>
+Функция должна вызываться в событии <i class="event">OnAfterCreateWindow</i> и предназначена для создания или переопределения названий цветов для <a href="color_text.htm">цветного текста ERA</a>.<br>
+<u>Пример</u>:
+<div class="erm" id="Q1"><p><code>NameColor($000000, 'bl'); теперь можно использовать {~bl}...{~} для чёрного текста</code></p></div><p></p></li>
+<li><a name="pexist"></a><code>FUNCTION <font id="red"><b>PatchExists</b></font> (Name: STRING): BOOLEAN; STDCALL;</code><br>
+<code>FUNCTION <font id="red"><b>PluginExists</b></font> (Name: STRING): BOOLEAN; STDCALL;</code><br>
+Проверяют наличие патча/плагина в ERA.<br>
+<u><b onclick="HideIt(3)" class="h">Пример (<b id="show3">показать</b>)</b></u><div id="3" class="b">
+<script type="erm">!!SN:F^PatchExists^/^fix erm tr r roads.bin^;
+!!IF&v1=0:M^Патч, исправляющий баг команды TR:R, не был найден!^;</script></div><p></p></li>
+<li><a name="readsavsec"></a><code>FUNCTION <font id="red"><b>ReadSavegameSection</b></font> (DataSize: INTEGER; {n} Dest: POINTER; SectionName: PCHAR): INTEGER; STDCALL;</code><br>
+Функция должна вызываться в событии <a href="new_events.htm#2.2" class="event">OnSavegameRead</a> и служит для чтения пользовательских данных из именованной файловой секции. 
+Последовательное чтение из одной и той же секции допустимо. Возвращает количество прочитанных байт.<p></p></li>
+<li><a name="wrtsavsec"></a><code>PROCEDURE <font id="red"><b>WriteSavegameSection</b></font> (DataSize: INTEGER; {n} Data: POINTER; SectionName: PCHAR); STDCALL;</code><br>
+Функция должна вызываться в событии <a href="new_events.htm#2.1" class="event">OnSavegameWrite</a> и служит для записи пользовательских данных в именованную файловую секцию. 
+Допускается последовательная запись в одну и ту же секцию.<p></p></li>
+<li><a name="readstr"></a><code>FUNCTION <font id="red"><b>ReadStrFromIni</b></font> (Key, SectionName, FilePath, Res: PCHAR): BOOLEAN; STDCALL;</code><br>
+Считывает значение из указанного ini-файла в буфер <code>Res</code>. При первом же чтении ini-файл анализируется, кэшируется и дальнейшие запросы приводят к выборкам из ассоциативного массива, 
+которые происходят очень быстро и без обращения к жёсткому диску.<p></p></li>
+<li><a name="wrtstr"></a><code>FUNCTION <font id="red"><b>WriteStrToIni</b></font> (Key, Value, SectionName, FilePath: PCHAR): BOOLEAN; STDCALL;</code><br>
+Записывает значение в ini-файл. Каждый вызов функции приводит к записи всего файла на диск.<p></p></li>
+<li><a name="recall"></a><code>FUNCTION <font id="red"><b>RecallAPI</b></font> (Context: PHookHandlerArgs; NumArgs: INTEGER): INTEGER; STDCALL;</code><br>
+<p></p></li>
+<li><a name="redir"></a><code>PROCEDURE <font id="red"><b>RedirectFile</b></font> (OldFileName, NewFileName: PCHAR); STDCALL;</code><br>
+<p></p></li>
+<li><a name="glbredir"></a><code>PROCEDURE <font id="red"><b>GlobalRedirectFile</b></font> (OldFileName, NewFileName: PCHAR); STDCALL;</code><br>
+<p></p></li>
+<li><a name="redirmem"></a><code>PROCEDURE <font id="red"><b>RedirectMemoryBlock</b></font> (OldAddr: POINTER; BlockSize: INTEGER; NewAddr: POINTER); STDCALL;</code><br>
+<p></p></li>
+<li><a name="regist"></a><code>PROCEDURE <font id="red"><b>RegisterHandler</b></font> (Handler: TEventHandler; EventName: PCHAR); STDCALL;</code><br>
+Регистрирует обработчик указанного события. Обработчики вызываются в порядке их регистрации. Список событий можно просмотреть в файле <i class="file">Tools\Era\SDK\triggers.txt</i>. 
+Два ключевых события, в которым должен быть расположен код инициализации модулей и регистрации обработчиков: <i class="event">OnBeforeWoG</i>, <i class="event">OnAfterWoG</i>.<p></p></li>
+<li><a name="reload"></a><code>PROCEDURE <font id="red"><b>ReloadErm</b></font>; STDCALL;</code><br>
+Вызывает полную перезагрузку и перекомпиляцию всех erm/ert скриптов (00..99). Аналогична нажатию клавиши <span class="key">F12</span>.<p></p></li>
+<li><a name="savent"></a><code>PROCEDURE <font id="red"><b>SaveEventParams</b></font>; STDCALL;</code><br>
+Сохраняет <a href="../Rec/SN_era.htm#X">SN:X</a> параметры события в стековой структуре.<p></p></li>
+<li><a name="resent"></a><code>PROCEDURE <font id="red"><b>RestoreEventParams</b></font>; STDCALL;</code><br>
+Восстанавливает сохранённые <a href="../Rec/SN_era.htm#X">SN:X</a> параметры из стековой структуры.<p></p></li>
+<li><a name="savini"></a><code>FUNCTION <font id="red"><b>SaveIni</b></font> (FilePath: PCHAR): BOOLEAN; STDCALL;</code><br>
+<p></p></li>
+<li><a name="wrtcode"></a><code>PROCEDURE <font id="red"><b>WriteAtCode</b></font></b></font> (Count: INTEGER; Src, Dst: POINTER); STDCALL;</code><br>
+Производит безопасное копирование блока памяти из источника в место назначения.<p></p></li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</DIV>
+<script src="../erm.js"></script></body></html>

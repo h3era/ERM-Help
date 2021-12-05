@@ -1,0 +1,36 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>Цветной текст</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="../script.js"></script>
+</head>
+<body>
+<h2 align="center">Цветной текст<a href="../ERA/index.htm" title="Работает только с ERA.."><img src="../Img/era.gif" class="TE"></a></h2>
+
+<p>Во всех игровых диалогах для текста используется комбинация из двух цветов: <span id="dl3">бежево-белого и<span id="dl2">золотисто-жёлтого.</span></span><br>
+Обрамляя текст специальными скобками: <b id="erm"><font class="st">{слово}</font></b>, - вы выделяете его таким &quot;жёлтым&quot; цветом. 
+Подобная практика называется &laquo;использование меток цвета&raquo;.</p>
+<p>ERA добавляет в игру поддержку цветных меток в следующем формате: 
+<b id="erm"><font class="st">{~название/код цвета}&hellip;текст, включая вложенные метки&hellip;{~}</font></b><br>
+Используется тот же принцип, что и в языке HTML:<br>
+Открывающая метка (<b id="erm"><font class="st">{~цвет}</font></b>) красит текст в указанный цвет до тех пор, пока не встретит метку другого цвета или закрывающую метку <b id="erm"><font class="st">{~}</font></b>. 
+Закрывающая метка возвращает предыдущий цвет.<br>
+Следующий пример наглядно проиллюстрирует вышесказанное:<br>
+<script type="erm">!!IF:M^Белый {~red} Красный {~gold} Золотой {~} Красный {~} Белый^;</script>
+В диалоге вы это увидите так: <span id="dl3">Белый <font color="red">Красный <font color="gold">Золотой</font> Красный</font> Белый</span></p>
+<p>Цвет текста может быть указан либо в числовом 16-ричном виде (xxxxxx, например: ff0057), либо через зарегистрированное имя цвета.<br>
+Полный список зарегистрированных 147 стандартных html-цветов можно просмотреть в 
+<a href="../Form/Colors.htm" target="form">таблице стандартных цветов</a>.</p>
+<p>Кроме этого, сторонние модули могут регистрировать новые имена в событии <i class="event">OnAfterCreateWindow</i>, 
+а также для них имеется список кратких синонимов цветов:
+<table id="step" border="0">
+<tr><td width="30"><b>r</b></td><td width="60">Red</td><td width="20" bgcolor="red"></td></tr>
+<tr><td><b>o</b></td><td>Orange</td><td bgcolor="orange"></td></tr>
+<tr><td><b>y</b></td><td>Yellow</td><td bgcolor="yellow"></td></tr>
+<tr><td><b>g</b></td><td>Green</td><td bgcolor="green"></td></tr>
+<tr><td><b>a</b></td><td>Aqua</td><td bgcolor="aqua"></td></tr>
+<tr><td><b>b</b></td><td>Blue</td><td bgcolor="blue"></td></tr>
+<tr><td><b>p</b></td><td>Purple</td><td bgcolor="purple"></td></tr>
+<tr><td><b>w</b></td><td>White</td><td bgcolor="white"></td></tr>
+</table>
+<p>&nbsp;</p>
+<script src="../erm.js"></script></body></html>

@@ -1,0 +1,26 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>Триггер BG</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+</head>
+
+<body>
+<p align="center">
+<font size="5">Триггер <b>BG </b>(действие в битве)</font></p>
+<p>&nbsp;</p>
+<p><b><font id="red">!?BG#;</font> 
+- этот боевой триггер срабатывает при каждом действии стека или героя 
+(колдовство, бегство или сдача).<br>
+<font id="red">!?BG1</font>; - срабатывает при передаче хода от одного существа к другому<br>
+<font id="red">!?BG0;</font> - срабатывает перед действием</b></p>
+<p>Переменная <b>v997</b> хранит номер текущего раунда:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v997=0 – первый раунд (после тактической расстановки)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v997=1 – второй раунд<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v997=2 – третий раунд<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&hellip;</p>
+<p><b><u>Комментарий</u>:</b> вы можете использовать этот триггер с ресивером <a href="../Rec/BG.htm">!!BG</a> 
+для поиска номера стека монстра (<a href="../Rec/BG.htm#N">!!BG:N</a>) и 
+использовать этот номер для изменений установок монстра (<a href="../Rec/BM.htm">!!BM</a>).
+Также, если герой убегает с поля боя, сначала срабатывает триггер <b>!?BG0;</b> и затем, после нажатия на ОК в окне потерь, срабатывает <b>!?BG1</b>.</p>
+
+</body></html>

@@ -1,0 +1,27 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>Триггер DL</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+</head>
+
+<body>
+<p align="center">
+<font size="5">Триггер <b>DL</b><a href="../Cont/TE.htm" title="Работает только с HoMM3:TE или позднее.."><img src="../Img/te.gif" class="TE"></a>(элемент диалога)</font></p>
+<p><br><font id="red"><b>!?DL;</b></font> <b>- Триггер настроенного диалога.</b><br>
+
+Срабатывает при любом действии мышки или клавиатуры (пока не поддерживается) на любом элементе диалога<br>
+При срабатывании триггера устанавливаются следующие переменные:<br>
+<b>&nbsp;&nbsp;&nbsp;v998</b> - номер диалога<br>
+<b>&nbsp;&nbsp;&nbsp;v999</b> - номер элемента<br>
+<b>&nbsp;&nbsp;&nbsp;v1000</b> - действие:<br>
+<span id="step">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 10 - нажат активный элемент "button"</span><br>
+<span id="step">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 12 - нажата <img src="../Img/LBM.gif" id="vc"></span><br>
+<span id="step">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 13 - отпущена <img src="../Img/LBM.gif" id="vc"></span><br>
+<span id="step">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 14 - нажата <img src="../Img/RBM.gif" id="vc"></span><br>
+
+<u>Пример</u>:
+<script type="erm">!?DL&v1000=13/v999=30721; нажали кнопку с id=30721
+!!DL:C1; закрыть диалог</script></p>
+<p id="Q1">См. также: ресивер <a href="../Rec/DL.htm">!!DL</a></p>
+<p>&nbsp;</p>
+<script src="../erm.js"></script></body></html>
