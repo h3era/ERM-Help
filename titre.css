@@ -1,0 +1,35 @@
+@font-face {font-family: 'TITC';
+	src: url('_font/TITC.eot?#iefix') format("embedded-opentype");
+	src: local('TITC'), url('_font/TITC.ttf') format('truetype'),
+	url('_font/TITC.woff') format('woff'), url('_font/TITC.svg') format('svg');
+	src: url('_font/TITC.eot');
+}
+
+body	{background-attachment:fixed; margin-top:2}
+img	{border:0 solid transparent}
+a	{text-decoration: none;color: #d3d3d3}
+td	{text-align:center; vertical-align:middle}
+.B	{width:42; height:18;}
+.col	{width:80; vertical-align:top}
+.TDc	{background: #301f11;
+	border-top: 1 solid #b5aba3;
+	border-right: 1 solid #120d09;
+	border-bottom: 1 solid #100c09;
+	border-left: 1 solid #614f41;
+	font-size: 14}
+
+.R {}
+.RA	{width: 42;height:19;
+	background: #2e1d10;
+	border-top: 1 solid #b0aba3;
+	border-right: 1 solid #120d09;
+	border-bottom: 1 solid #100c09;
+	border-left: 1 solid #5c4c3e;
+	color: #e2d180;
+	font:15 TITC;
+/* далее параметры IE6 не поддерживает */
+	display: inline-block;
+	box-sizing: border-box;			/* Ўирина блока с пол€ми */
+	text-shadow: 0px 0px 10px #655332;
+	-moz-text-shadow: 0px 0px 10px #0099FF;
+	-webkit-text-shadow: 0px 0px 10px #0099FF}

@@ -1,0 +1,225 @@
+body 	{background-image:url(Img/logo/intile.jpg);
+	background-attachment:fixed}
+wbr 	{display:inline-block}						/* активация переноса в ИЕ8+ */
+a	{color:#00e}
+a:hover {color:#4060e0}
+.table 	{border-collapse:collapse; border:0px solid black}
+td	{vertical-align:middle}
+img	{border:0 solid transparent}
+hr	{border:1 solid #282828}
+pre	{font:1em Times New Roman; margin:0}				/* показать текст как есть,сброс отступов блока*/
+dl	{margin:0 0 7 15}
+
+#time	{padding:0; width:100%; text-align:right; font:italic 7pt arial; display:block; position:relative; top:-4}
+table.o	{margin:5 0 5 30}
+table.o	td {width:18px; text-align:center; color:purple; padding:1px}	/* таблица расстановки как в UN:U*/
+
+.color	{border:1 dotted #666}				/* для таблицы цветов */
+.one td:nth-child(1) {text-align:center}				/* центровать текст 1го столбца */
+.two td:nth-child(2) {text-align:center}				/* центровать текст 2го столбца */
+.zebra tr:nth-child(odd) {color:#800000}				/* полосы на нечётных строках */
+.C	td {text-align:center}						/* таблица вся зацентрована*/
+
+.b	{display:none}							/* для скрытых div */
+
+.h 	{cursor:pointer}						/* курсор пальца */
+i.h	{font-style:normal}
+a.h	{color:#00e; border-bottom:1 dashed #00e; text-decoration:none}/* псевдоссылка */
+a.h:hover{color:#4060e0; border-bottom-color:#4060e0}
+.event	{color:#700020; font-style:normal; letter-spacing:-0.7px}	/* ссылка на именованное событие */
+a.event:hover{color:#706050; letter-spacing:-0.7px;
+	border-bottom:1 dashed #827560;
+	text-decoration:none}
+a.red	{color:#800000}							/* красная ссылка */
+a.red:hover {color:#806030}
+
+i.file	{font:bold 12 monospace; color:#333}				/* папки и файлы в тексте */
+
+.gray	{color:#2F4F4F; font:normal 15 Courier New;			/* серый моноширный текст с отступом */
+	 letter-spacing:-0.7px; margin-left:30px}
+
+.TE	{vertical-align:top; margin:0 3 0}
+.TE_c	{vertical-align:middle; margin:0}
+
+.sm	{font:normal 12 arial; text-align:center}
+
+#black	{color:black; padding:0 2; text-decoration:none; font-weight:normal}
+#dl	{color:#e1fce3;
+	font:13 Tahoma;	text-align:center;				/* блок как текст в игре */
+	background:url(Img/logo/Fond.png);
+	padding:6 5 8}
+#dl2	{color:#e6d2a0;
+	font:13 Tahoma;							/* текст выделен как в игре */
+	background:url(Img/logo/Fond.png);
+	padding:0 5 2}
+#dl3	{color:#e1fce3;
+	font:13 Tahoma;							/* текст как в игровом окне */
+	background:url(Img/logo/Fond.png); 
+	padding:0 5 2}
+
+.erm	{background-color:#c6b7a4}					/* фон как у ерм-кода */
+.erm_b	{background-color:#c6b7a4; padding:0 2 1;			/* ячейка c фоном */
+	border-collapse:collapse; border:1 solid maroon;
+	font:14 serif}					
+#erm	{background-color:#c6b7a4; font:normal 13 monospace, Courier New; white-space:pre}/* подсветить строку с ерм */
+#bold	{font-weight:bold}						/* жирность */
+#none	{text-decoration:none}						/* убрать подчёркивание */
+#red	{color:#A00000}							/* текст красный */
+#dred	{color:maroon}							/* текст тёмно-красным */
+#step	{margin-left:30px}						/* отступ строки */
+#WT	{color:#282828; border-bottom:1 dashed}				/* стильный жирный */
+#N1	{color:purple; font-weight:bold; border-bottom:1 dotted}	/* names or abbr */					
+#N2	{color:purple; font-weight:bold}				/* caption or nik */
+#N3	{color:purple; font-weight:normal}
+#ju	{text-align:justify}						/* выравнивание по ширине */
+#le	{text-align:left}						/* выравнивание слева */
+#ri	{text-align:right}						/* выравнивание справа */
+#top	{vertical-align:top}						/* выравнивание сверху */
+#vc	{vertical-align:middle}						/* отцентровать вертикально */
+#btm	{vertical-align:bottom}						/* выравнивание снизу */
+
+#T0	{margin-top:0; margin-bottom:7}					/* убрать отступ сверху,сбавить снизу */
+#T5	{margin-top:5}
+#Q1 	{color:#282828; font-size:14.5;					/* стильная цитата */
+	border-left-color:gray;						/* Цвет линии слева */
+	border-left-style:double;					/* Стиль линии */
+	border-left-width:3px;						/* Толщина линии */
+	padding-left:10px}						/* Расстояние между линией и текстом */
+#Q2 	{color:#282828; font-size:14.5;		
+	border-left-color:#B22222;					/* FireBrick */						
+	border-left-style:double;
+	border-left-width:4px;
+	padding-left:10px; position:relative; top:-10; left:-20}							
+
+.co	{color:#008000; font:normal 13 monospace, Courier New; letter-spacing:-0.5px}
+.in	{font-weight:bold; color:#808000}
+.re	{font-weight:bold; color:#800080}
+.st	{color:maroon}
+.tr	{font-weight:bold; color:#800000}
+.fl	{color:navy}
+
+.cut	{float:left;							/* основа для обрезания img */
+	margin:2;
+	overflow:hidden;
+	border:1 dashed #000}
+.cut img{display:inline; margin:-6px 0px -55px -110px}			/* настройка обрезки картинок -61px -55px -0px -55px; */
+
+
+/* Style sheet optimized for IE4x */
+
+/* these class styles are used for <span> tags simulating buttons & their div */
+
+#buttonMenu	{ color:#000; overflow:hidden;
+		font-size:70%;
+		font-family:Verdana, Arial, Sans Serif;
+		background:url('Img/logo/intile.jpg');
+		vertical-align:top;
+		z-index:2;
+		visibility:visible;
+		left:0; top:0;
+		text-align:left;
+		margin:0 1em 0 0;
+		position:absolute;
+		width:100%;
+		padding-left:10px;
+		padding-right:0.3em; padding-top:0.3em; padding-bottom:0.3em;
+		}
+						  
+a:link.button, a:visited.button, span.button { color:#00E; display:inline-block;
+			  background-color:#DDD;
+			  border-top-color:#EEE;
+			  border-left-color:#EEE;
+			  border-bottom-color:#666;
+			  border-right-color:#666;
+			  border-style:solid; border-width:1;
+			  text-decoration:none;
+			  text-align:center;
+			  font-weight:bold;
+			  height:1.4em; width:17px; cursor:hand;
+			}
+			
+a:hover.button	{ color:#E00;
+			  background-color:#FFF;
+			  border-top-color:#666;
+			  border-left-color:#666;
+			  border-bottom-color:#EEE;
+			  border-right-color:#EEE;
+			  border-style:solid; border-width:1;
+			  text-decoration:none;
+			  text-align:center;
+			  font-weight:bold;
+			  height:1.4em; width:17px; cursor:hand;
+			  }
+
+			
+a:active.button	{ color:#E00; 
+			  background-color:#d4d0c8;
+			  border:1 solid #808080;
+			  text-decoration:none;
+			  text-align:center;
+			  font-weight:bold;
+			  height:1.4em; width:17px; cursor:hand;
+			  }
+
+/* The following span is used to display items that have no entries  - AMS */
+			  
+span.buttoninactive { color:#808080; display:inline-block;
+			background-color:#C0C0C0; 
+			border:1 solid #eee;
+			text-align:center;
+			font-weight:bold;
+			height:1.4em; width:17px; cursor:default;
+			}
+
+span.options		{border:0;
+			height:1.4em;
+			text-align:right;
+			font-weight:bold;
+			color:#252525;
+			cursor:default;
+			}
+
+/*********************************/				
+/*  these classes are for previous next navigation  */
+
+#text	 { left:0; top:0;
+	   margin:0;
+	   padding:10px;
+	   position:absolute;
+	   overflow:visible;	/* изначально было auto и появлялась горизонт.прокрутка в chm-версии*/
+	   height:100%;
+	   z-index:1}
+
+/*  these classes are for ERM code examples  */
+.erm-container	{margin:0;
+		 padding:0;
+		 border:0;
+		 background-color:#d4d0c8;
+		 }
+
+.erm-code	{line-height:1;
+ 		 font:10pt monospace, Courier New;
+		 color:black;
+		 white-space:pre-wrap;
+		 list-style:none;
+		 padding:0; margin:5 0 10;
+		 }
+
+.erm-line	{background-color:#c6b7a4}
+.erm-trigger	{color:red; font-weight: bold}
+.erm-cmd	{color:purple; font-weight: bold}
+.erm-posttrigger{color:teal; font-weight: bold}
+.erm-var,
+.erm-flag	{color:navy}
+.erm-comment	{color:green; letter-spacing:-0.5px}
+.erm-string	{color:maroon}
+.erm-instr	{color:olive; font-weight:bold}
+
+.key		{border:1 solid #888; border-top-color:#ccc; border-left-color:#ccc;	/* кнопки клавы в тексте */
+		background-color:#c5b5a5; font:12 Arial; white-space:pre; padding:1 3}
+
+input.obj_in	{color:maroon; background-color:#c6b7a4; border:1 solid #908070;	/* стиль поля ввода */
+		border-bottom-color:#d3c6b6; border-right-color:#d3c6b6; }
+
+input.obj_go	{color:purple; background-color:#d3c6b6; border:1 solid #666;		/* стиль кнопки Поиск */
+		border-top-color:#EEE; border-left-color:#EEE}
