@@ -1,0 +1,204 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Ресивер LE</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;LE:&nbsp;&nbsp;</SPAN>
+	<A HREF="#A" title="Настройка артефактов" CLASS="button">A</A>
+	<A HREF="#B" title="Контроль артефактов" CLASS="button">B</A>
+	<A HREF="#C" title="Монстры" CLASS="button">C</A>
+	<A HREF="#D" title="Разрешить/запретить для игроков-людей" CLASS="button">D</A>
+	<A HREF="#E" title="Опыт" CLASS="button">E</A>
+	<A HREF="#F" title="Первичных навыков" CLASS="button">F</A>
+	<A HREF="#G" title="Охрана" CLASS="button">G</A>
+ <SPAN CLASS="buttoninactive">H</SPAN>
+	<A HREF="#I" title="Разрешить/запретить для игроков-компьютеров" CLASS="button">I</A>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+	<A HREF="#L" title="Флаг отмены после первого посещения" CLASS="button">L</A>
+	<A HREF="#M" title="Текст" CLASS="button">M</A>
+	<A HREF="#N" title="Вторичные навыки" CLASS="button">N</A>
+	<A HREF="#O" title="Мораль" CLASS="button">O</A>
+	<A HREF="#P" title="Мана" CLASS="button">P</A>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+	<A HREF="#R" title="Ресурсы" CLASS="button">R</A>
+	<A HREF="#S" title="Заклинания" CLASS="button">S</A>
+ <SPAN CLASS="buttoninactive">T</SPAN>
+	<A HREF="#U" title="Удача" CLASS="button">U</A>
+ <SPAN CLASS="buttoninactive">V</SPAN>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+	<A HREF="#X" title="Флаг включения стражи" CLASS="button">X</A>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+</DIV>
+
+<DIV id="text"> 
+<p align="center"><font size="5">Ресивер <b>LE</b> (локальное событие)</font></p>
+<p><br>
+<b><font id="red">!!LE#1/#2/#3:XXXX;</font> - локальное событие в X Y L.</b> 
+Используется для изменений параметров события в определённых координатах карты.<br>
+<i>Расширение синтаксиса:</i><br>
+<font id="red"><b>!!LE$:XXXX;</b></font> - координаты в переменных v[$], v[$+1], v[$+2]<br>
+<u>
+<b onclick="HideIt(1)" class="h">Комментарий (<b id="show1">показать</b>)</b></u> <div id="1" class="b">
+<p>Если событие было установлено как <i>&laquo;Удалить после первого посещения»&raquo;</i>, после его посещения вы не сможете вернуть его к жизни. 
+Оно полностью исчезло.<br>
+Теперь существует проверка, есть ли привязанный на событие ERM код. Если он существует, флаг 999 устанавливается на 0 и выполняются все команды.<br>
+Если же его нет, флаг 999 устанавливается на 1 и все команды ресивера !!LE пропускаются.<br>
+<i>Примечание:</i> вы всё ещё не можете изменить кол-во вторичных навыков и заклинаний, установленных в событии, а только изменить существующие.</p>
+<p>Вы можете использовать этот ресивер для редактирования Ящика Пандоры (<a href="../Form/Objects.htm" target="form">тип 6</a>).</p></div></p>
+<p id="Q1">См. также: триггер <a href="../Tr/LE.htm">!?LE</a>, ресивер <a href="PA.htm">!!PA</a></p>
+<hr noshade>
+<p>
+<font id="red"><b><a name="A"></a>A#1/$2</b></font><br>
+Установить/проверить/получить <a target="form" href="../Form/A1.htm">артефакт</a> $2 в позиции #1 в таблице артефактов, получаемых в событии.<br>
+Вы можете только ИЗМЕНИТЬ артефакт на другой. Если на позиции нет артефактов, то ничего и не произойдет.<br>
+<i>Расширенный синтаксис:</i><br>
+<font id="red"><b>A$</b></font> 
+	- проверить/получить кол-во артефактов<br>
+Вы можете установить данный параметр, но это ни к чему не приведёт.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="B"></a>B</b></font><br>
+Бонус артефактов<br>
+<font id="red"><b>B1/$</b></font> 
+- проверить/получить кол-во артефактов в таблице артефактов бонусного листа (нельзя установить)<br>
+<font id="red"><b>B2/#/$</b></font> 
+- установить/проверить/получить <a target="form" href="../Form/A1.htm">артефакт</a> $ &nbsp;на позиции # (0&hellip;) в таблице бонусов.<br>
+<font id="red"><b>B3/$</b></font> 
+- добавить <a target="form" href="../Form/A1.htm">артефакт</a> $ в конец бонусной таблицы<br>
+<font id="red"><b>B4/$</b></font> 
+- удалить артефакт на позиции $ в таблице бонусов<br>
+<u><b onclick="HideIt(2)" class="h">Комментарий (<b id="show2">показать</b>)</b></u> <div id="2" class="b">
+Есть, конечно, команда <a href="#A">LE:A</a>, но с её помощью можно только ИЗМЕНЯТЬ артефакты в бонусной таблице. Эта новая команда позволяет вам устанавливать, 
+добавлять и удалять артефакт из локальных событий и Ящиков Пандоры.<br>
+Вы можете сделать практически неограниченную таблицу артефактов для любого локального события или Ящика Пандоры.<br>
+Вы не можете установить свиток как артефакт, игра &laquo;поймёт&raquo; это не правильно, и вылетит.</div></p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="C"></a>C#1/$2/$3</b></font><br>
+Установить/проверить/получить получаемых 
+	 монстров на позиции #1 (0..6) <a target="form" href="../Form/Creature.htm">типа $2</a> и кол-ва $3</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="D"></a>D#1/#2</b></font><br>
+Разрешить/запретить событие для игроков-людей.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 = 1 – запретить<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 = 0 – разрешить<br>
+Для игрока #1 (<a target="form" href="../Form/GamersColor.htm">0..7</a>)</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="E"></a>E$</b></font><br>
+Установить/проверить/получить кол-во опыта в $</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="F"></a>F$1/$2/$3/$4</b></font><br>
+Установить/проверить/получить четыре 
+<a target="form" href="../Form/PrimarySkill.htm">первичных навыка</a></p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="G"></a>G#1/$2/$3</b></font><br>
+Установить/проверить/получить
+	<a target="form" href="../Form/Creature.htm">охранников</a> в позиции #1 (0..6) типа $2 и кол-ва $3<br>
+Команда только устанавливает стражников, но не включает их.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="I"></a>I#</b></font><br>
+Запретить/разрешить событие для ИИ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # = 0 – запретить<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # = 1 – разрешить</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="L"></a>L#</b></font><br>
+Отменить (# = 1) или не отменять (# = 0) событие после первого 
+посещения</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="M"></a>M^текст^</b></font><br>
+Установить текст сообщения. Может содержать любые символы, кроме &quot;^&quot; и &quot;;&quot;</p>
+<hr noshade>
+<p><font id="red"><b>M#</b></font><br>
+Установить текст сообщения из глобального события номер #</p>
+<hr noshade><p>
+<font id="red"><b>M-1</b></font><br>
+Не показывать сообщение на экран</p>
+<hr noshade><p>
+<font id="red"><b>Mz#</b></font><br>
+Установить/получить текст сообщения из текстовой переменной</p>
+<hr noshade><p>
+<font id="red"><b>M1/$<br>
+M1/-1</b></font><br>
+Установить и получить текстовые параметры.<br>
+Вы можете использовать это, если команда M использовалась для установки послания.<br>
+M1/$ - номер текстовой переменной в $<br>
+M1/-1 – отменить сообщение (восстановить по умолчанию) </p> 
+<hr noshade> 
+<p>
+<font id="red"><b>
+<a name="N"></a>N#1/$2/$3</b></font><br>
+Установить/проверить/получить
+<a target="form" href="../Form/SecondarySkill.htm">вторичный навык</a> $2, уровень $3 (0 = баз., 1 = продв., 2 = эксп.) 
+на позиции #1 в таблице вторичных навыков, даваемых событием.<br>
+Вы можете только ИЗМЕНИТЬ навык на другой. Если нет навыка на позиции, ничего не изменится.<br>
+<i>Расширенный синтаксис:</i><br>
+<font id="red"><b>N$</b></font> 
+	- проверить/получить кол-во вторичных навыков<br>
+Вы можете установить данный параметр, но это ни к чему не приведёт.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="O"></a>O$</b></font><br>
+Установить/проверить/получить мораль (-3&hellip;3)</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="P"></a>P$</b></font><br>
+Установить/проверить/получить баллы заклинаний (м.б. отрицательным)</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="R"></a>R#1/$2</b></font><br>
+Установить/проверить/получить кол-во
+	<a target="form" href="../Form/Resource.htm">ресурсов</a> #1в $2 (м.б. отрицательным)</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="S"></a>S#1/$2</b></font><br>
+Установить/проверить/получить
+<a target="form" href="../Form/Spell.htm">заклинание</a> $2 на позиции #1 в таблице заклинаний, даваемых событием.<br>
+<u><b onclick="HideIt(3)" class="h">Комментарий (<b id="show3">показать</b>)</b></u><div id="3" class="b">
+Чтобы удалить заклинание с конкретной позиции, укажите -1 в качестве номера заклинания:
+<script type="erm">!!LE998:S0/-1; удалить заклинание с 1ой позиции в таблице заклинаний</script>
+<i id="bold">Замечание:</i> если в событии изначально на конкретной позиции в таблице ничего не было, то все попытки совершить операции с этой позицией вызовут ошибку.</div>
+<i>Расширенный синтаксис:</i><br>
+<font id="red"><b>S$</b></font> 
+	- проверить/получить кол-во заклинаний<br>
+Вы можете установить данный параметр, но это ни к чему не приведёт.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="U"></a>U$</b></font><br>
+Установить/проверить/получить удачу (-3&hellip;3)</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="X"></a>X#</b></font><br>
+Активировать стражников, если # не ноль, иначе - выключить их.</p>
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+
+<script src="../erm.js"></script></body></html></body></html>

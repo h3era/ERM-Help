@@ -1,0 +1,206 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Ресивер EX</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;EX:&nbsp;&nbsp;</SPAN>
+
+	<A HREF="#A" title="Информация об отряде" CLASS="button">A</A>
+ <SPAN CLASS="buttoninactive">B</SPAN>
+	<A HREF="#C" title="Соединение отрядов" CLASS="button">C</A>
+ <SPAN CLASS="buttoninactive">D</SPAN>
+	<A HREF="#E" title="Опыт существ" CLASS="button">E</A>
+ <SPAN CLASS="buttoninactive">F</SPAN>
+ <SPAN CLASS="buttoninactive">G</SPAN>
+ <SPAN CLASS="buttoninactive">H</SPAN>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+ <SPAN CLASS="buttoninactive">M</SPAN>
+	<A HREF="#N" title="Кол-во существ" CLASS="button">N</A>
+ <SPAN CLASS="buttoninactive">O</SPAN>
+ <SPAN CLASS="buttoninactive">P</SPAN>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+	<A HREF="#R" title="Артефакт и опция" CLASS="button">R</A>
+ <SPAN CLASS="buttoninactive">S</SPAN>
+	<A HREF="#T" title="Тип монстра" CLASS="button">T</A>
+ <SPAN CLASS="buttoninactive">U</SPAN>
+ <SPAN CLASS="buttoninactive">V</SPAN>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+
+</DIV>
+
+<DIV id="text">
+<p align="center"><font size="5">Ресивер <b>EX</b> (опыт стеков)</font></p>
+<p>
+<font id="red">
+<br>
+<b>!!EX$1/$2:XXXX;</font></b> 
+- <b>опыт стека существ.</b> 
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp; $1 – номер героя (<a target="form" href="../Form/NumberHeroes.htm">0..155</a>, 
+-1),&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; $2 – номер слота (0..6).<br>
+<i>Расширение синтаксиса 1:<br>
+</i><font id="red"><b>!!EX$1/$2/$3/$4:XXXX;</b></font>
+<br>
+&nbsp;&nbsp;&nbsp; $1 – X (0&hellip;)<br>
+&nbsp;&nbsp;&nbsp; $2 – Y (0&hellip;)<br>
+&nbsp;&nbsp;&nbsp; $3 – L (0 - поверхность, 1 - подземелье)<br>
+&nbsp;&nbsp;&nbsp; $4 – номер слота (в этой позиции может быть герой, город, 
+гарнизон или шахта)<br>
+<i>Расширение синтаксиса 2:<br>
+</i><font id="red"><b>!!EX$1/$2/$3/$4/$5:XXXX;</b></font><br>
+&nbsp;&nbsp;&nbsp; $1 – X<br>
+&nbsp;&nbsp;&nbsp; $2 – Y<br>
+&nbsp;&nbsp;&nbsp; $3 – L<br>
+&nbsp;&nbsp;&nbsp; $4 – номер слота (0..6)<br>
+&nbsp;&nbsp;&nbsp; $5 – тип объекта<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 = герой<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 = город<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 = шахта<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4 = гарнизон<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; другое число = любой выше 
+перечисленный<br>
+Если вы используете 4 параметра, пятый по умолчанию 
+находится в состоянии &quot;первый найденный&quot;. Поиск идёт в следующем порядке: герои, 
+города, шахты, гарнизоны.</p>
+<hr noshade>
+<p>
+<b><font id="red">
+<a name="A"></a>A$1/$2/$3</font></b><br>
+Установить/проверить/получить информацию по стеку:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 –
+<a target="form" href="../Form/Creature.htm">тип монстра</a> (255 – пустой слот)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – кол-во существ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $3 – кол-во опыта у существа</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="C"></a>C$1/$2/$3[/$4/$5/$6]</b></font><br>
+Соединить стеки<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<b>$1</b> – тип исходного стека<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 = 0 
+– у героя<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – 
+номер героя (-1 – текущий)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $3 – 
+слот героя (0..6)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [$4] – 
+показ предупреждения (см. ниже)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1=1 – герой в координатах <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1=2 – город в координатах <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1=3 – шахта в координатах <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1=4 – гарнизон в координатах <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$2 – X-позиция<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$3 – Y-позиция<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $4 – уровень (0 = поверхность, 1 = подземелье)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $5 – слот армии (0..6)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [$6] – показ предупреждения<br>
+<b>Результаты</b><br>
+Эта команда установит переменную v1&nbsp;на:<br>
+&nbsp;&nbsp;&nbsp; -1, если это разные существа (нельзя комбинировать)<br>
+&nbsp;&nbsp;&nbsp; 0, если произошла ошибка (нельзя комбинировать)<br>
+&nbsp;&nbsp;&nbsp; 1, если комбинирование прошло успешно.<br>
+<u><b onclick="HideIt(1)" class="h">Комментарий (<b id="show1">показать</b>)</b></u><div id="1" class="b">
+Эта команда добавит исходный стек к слоту армии, вместе с комбинированием 
+параметров. Весь опыт распространится поровну на всех солдат, артефакты 
+суммируются. Если вы установите <b>тип предупреждения</b> на 1 (по умолчанию 0), 
+вы не получите сообщение, что эти стеки различны.<br>
+<u>Пример 1</u>:<br>
+Герой посещает объект и его стек 3 добавляется к стеку 1 (они должны быть одного типа):
+<script type="erm">!?OB5/3/0;
+!!EX-1/1:C0/-1/3;</script>
+<br>
+<u>Пример 2</u>:<br>
+Вы посещаете объект и ваш текущий герой "добавляет" первый стек в город (вход 3/2/0) к стеку №3.
+<script type="erm">!?OB5/3/0;
+!!EX-1/3:C2/3/2/0/1;</script></div></p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="E"></a>E$</b></font><br>
+Установить/проверить/получить опыт существ:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – опыт существ</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="N"></a>N$</b></font><br>
+Установить/проверить/получить кол-во существ<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – кол-во
+</p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="R"></a>R$1/$2</b></font><br>
+Установить/проверить/получить артефакт и опцию<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – номер артефакта (доступен только <a target="form" href="../Form/A1.htm#Z" title="Знамя Полководца">артефакт #156</a>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – <a href="#" onclick="hidepic(2)" class="h">опция артефакта (0..8)</a><div id="2" class="b"><blockquote id="T0">
+	<table border="0" width="100%">
+		<tr>
+			<td align="center" width="40">0</td>
+			<td> +2 здоровья плюс удвоение текущего бонуса здоровья в бою</td>
+		</tr>
+		<tr>
+			<td align="center">1</td>
+			<td> +2 атаки плюс удвоение текущего бонуса атаки в бою</td>
+		</tr>
+		<tr>
+			<td align="center">2</td>
+			<td> +2 защиты плюс удвоение текущего бонуса защиты в бою</td>
+		</tr>
+		<tr>
+			<td align="center">3</td>
+			<td> +1 урона плюс удвоение текущего бонуса минимального и максимального урона в бою</td>
+		</tr>
+		<tr>
+			<td align="center">4</td>
+			<td> +1 скорости плюс удвоение текущего бонуса скорости в бою</td>
+		</tr>
+		<tr>
+			<td align="center">5</td>
+			<td> +50% опыта отряду за битву</td>
+		</tr>
+		<tr>
+			<td align="center">6</td>
+			<td> Уменьшение защиты цели на 25%</td>
+		</tr>
+		<tr>
+			<td align="center">7</td>
+			<td> 25% шанс блокирования 50% урона</td>
+		</tr>
+		<tr>
+			<td align="center">8</td>
+			<td> 2 дополнительных ответа</td>
+		</tr>
+	</table></blockquote></div>
+<p>
+<i>Расширение синтаксиса: </i> <br>
+<font id="red"><b>R$1/$2/$3/$4</b></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – есть артефакт или нет (0 = 
+нет, 1 = да)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – номер артефакта (сейчас 
+только 156)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $3 – подтип артефакта (опции 
+0..15 – ещё не все используются)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $4 – кол-во копий артефакта 
+(0..3)</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="T"></a>T$</b></font><br>
+Установить/проверить/получить тип монстра<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – 
+<a target="form" href="../Form/Creature.htm">тип монстра</a> (255 – пустой слот)</p>
+
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+<script src="../erm.js"></script></body></html>

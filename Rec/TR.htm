@@ -1,0 +1,318 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Ресивер TR</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;TR:&nbsp;&nbsp;</SPAN>
+
+ <SPAN CLASS="buttoninactive">A</SPAN>
+ <SPAN CLASS="buttoninactive">B</SPAN>
+ <SPAN CLASS="buttoninactive">C</SPAN>
+ <SPAN CLASS="buttoninactive">D</SPAN>
+	<A HREF="#E" title="Флаг входа" CLASS="button">E</A>
+ <SPAN CLASS="buttoninactive">F</SPAN>
+	<A HREF="#G" title="Тип поверхности" CLASS="button">G</A>
+ <SPAN CLASS="buttoninactive">H</SPAN>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+ <SPAN CLASS="buttoninactive">M</SPAN>
+ <SPAN CLASS="buttoninactive">N</SPAN>
+ <SPAN CLASS="buttoninactive">O</SPAN>
+	<A HREF="#P" title="Флаг проходимости" CLASS="button">P</A>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+ <SPAN CLASS="buttoninactive">R</SPAN>
+ <SPAN CLASS="buttoninactive">S</SPAN>
+	<A HREF="#T" title="Тип почвы" CLASS="button">T</A>
+ <SPAN CLASS="buttoninactive">U</SPAN>
+	<A HREF="#V" title="Видимость квадрата" CLASS="button">V</A>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+
+</DIV>
+
+<DIV id="text"> 
+<p align="center"><font size="5">Ресивер <b>TR</b> (настройка территорий)
+</font></p>
+<p>
+<b><br>
+<font id="red">!!TRx/y/l:XXXX;</font> 
+- установить тип земли (почвы) или изменить проходимость квадрата в позиции X Y L.</b> 
+Используется для установки типа земли на карте или изменения проходимости этого квадрата.</p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="E"></a>E$</b></font><br>
+Квадрат – как вход (жёлтый квадрат) или нет<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ = 0 – жёлтый квадрат<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ = 1 – нет жёлтого квадрата</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="G"></a>G?$</b></font><br>
+Тип накладного ландшафта поверх почвы.<br>
+Можно только ПОЛУЧИТЬ или ПРОВЕРИТЬ.<br>
+<u>
+<b onclick="HideIt(1)" class="h">Возможные ландшафты (<b id="show1">показать</b>)</b></u><br>
+<div id="1" class="b">
+46&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Магические равнины<br>
+21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Проклятая земля<br>
+227&nbsp;&nbsp;&nbsp; Святая земля<br>
+224&nbsp;&nbsp;&nbsp; Дьявольский туман<br>
+222&nbsp;&nbsp;&nbsp; Клеверное поле<br>
+225&nbsp;&nbsp;&nbsp; Попутный ветер<br>
+228&nbsp;&nbsp;&nbsp; Прозрачные пруды<br>
+226&nbsp;&nbsp;&nbsp; Огненные поля<br>
+231&nbsp;&nbsp;&nbsp; Скалистая земля<br>
+229&nbsp;&nbsp;&nbsp; Магические облака</div></p>
+<hr noshade><p><font id="red"><b><a name="P"></a>
+P$<br></b></font>Установить/проверить/получить проходимость квадрата (красный квадрат)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ = 1 – означает, что проходим<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ = 0 – не проходим</p>
+<hr noshade>
+<p><font id="red"><b><a name="T"></a>
+T$1/$2/$3/$4/$5/$6/$7/$8</b></font><br>
+Установить/проверить/получить тип почвы<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – <a href="../Form/Terrain.htm" target="form">тип почвы</a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – <a href="#" onclick="hidepic(3)" class="h">подтип почвы</a><div id="3" class="b"><blockquote>
+<p><img src="../Img/Tr/dirtsand.gif" width="422" height="299"></p>
+<p><img src="../Img/Tr/GRASS.gif" width="439" height="303"></p>
+<p><img src="../Img/Tr/SNOW.gif" width="448" height="310"></p>
+<p><img src="../Img/Tr/swamp.gif" width="435" height="303"></p>
+<p><img src="../Img/Tr/rock.gif" width="436" height="298"></p>
+<p><img src="../Img/Tr/subtr.gif" width="439" height="307"></p>
+<p><img src="../Img/Tr/lava.gif" width="432" height="300"></p>
+<p><img src="../Img/Tr/waterempt.gif"></p></blockquote></div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $3 – <a href="#" onclick="hidepic(4)" class="h">тип реки</a><div id="4" class="b"><blockquote id="T0">
+	<b>0</b> = нет<br>
+	<b>1</b> = чистая<br>
+	<b>2</b> = замёрзшая<br>
+	<b>3</b> = мутная<br>
+	<b>4</b> = лавовая</blockquote></div><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $4 – <a href="#" onclick="hidepic(5)" class="h">подтип реки</a><div id="5" class="b"><blockquote>
+<table width="50%" border=0>
+	<tr align="center" id="N2">
+		<td>Номер</td>
+		<td>Картинка</td>
+		<td>Номер</td>
+		<td>Картинка</td>
+	</tr>
+	<tr align="center">
+		<td>00</td>
+		<td><img src="../Img/Tr/1.gif"></td>
+		<td>07</td>
+		<td><img src="../Img/Tr/8.gif"></td>
+	</tr>
+	<tr align="center">
+		<td>01</td>
+		<td><img src="../Img/Tr/2.gif"></td>
+		<td>08</td>
+		<td><img src="../Img/Tr/9.gif"></td>
+	</tr>
+	<tr align="center">
+		<td>02</td>
+		<td><img src="../Img/Tr/3.gif"></td>
+		<td>09</td>
+		<td><img src="../Img/Tr/10.gif"></td>
+	</tr>
+	<tr align="center">
+		<td>03</td>
+		<td><img src="../Img/Tr/4.gif"></td>
+		<td>10</td>
+		<td><img src="../Img/Tr/11.gif"></td>
+	</tr>
+	<tr align="center">
+		<td>04</td>
+		<td><img src="../Img/Tr/5.gif"></td>
+		<td>11</td>
+		<td><img src="../Img/Tr/12.gif"></td>
+	</tr>
+	<tr align="center">
+		<td>05</td>
+		<td><img src="../Img/Tr/6.gif"></td>
+		<td>12</td>
+		<td><img src="../Img/Tr/13.gif"></td>
+	</tr>
+	<tr align="center">
+		<td>06</td>
+		<td><img src="../Img/Tr/7.gif"></td>
+	</tr>
+</table></blockquote></div><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $5 – <a href="#" onclick="hidepic(6)" class="h">тип дороги</a><div id="6" class="b"><blockquote id="T0">
+<b>0</b> = нет<br>
+<b>1</b> = грязевая<br>
+<b>2</b> = гравийная<br>
+<b>3</b> = каменная</blockquote></div><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $6 – <a href="#" onclick="hidepic(7)" class="h">подтип дороги</a><div id="7" class="b"><blockquote>
+<table border="0" width="30%">
+	<tr align="center" id="N2">
+		<td>Номер</td>
+		<td>Картинка</td>
+		<td>Номер</td>
+		<td>Картинка</td>
+	</tr>
+	<tr align="center">
+		<td>0</td>
+		<td><img src="../Img/Tr/r0.gif"></td>
+		<td>9</td>
+		<td><img src="../Img/Tr/r9.gif"></td>
+	</tr>
+	<tr align="center">
+		<td>1</td>
+		<td><img src="../Img/Tr/r1.gif"></td>
+		<td>10</td>
+		<td><img src="../Img/Tr/r10.gif"></td>
+	</tr>
+	<tr align="center">
+		<td>2</td>
+		<td><img src="../Img/Tr/r2.gif"></td>
+		<td>11</td>
+		<td><img src="../Img/Tr/r11.gif"></td>
+	</tr>
+	<tr align="center">
+		<td>3</td>
+		<td><img src="../Img/Tr/r3.gif"></td>
+		<td>12</td>
+		<td><img src="../Img/Tr/r12.gif"></td>
+	</tr>
+	<tr align="center">
+		<td>4</td>
+		<td><img src="../Img/Tr/r4.gif"></td>
+		<td>13</td>
+		<td><img src="../Img/Tr/r13.gif"></td>
+	</tr>
+	<tr align="center">
+		<td>5</td>
+		<td><img src="../Img/Tr/r5.gif"></td>
+		<td>14</td>
+		<td><img src="../Img/Tr/r14.gif"></td>
+	</tr>
+	<tr align="center">
+		<td>6</td>
+		<td><img src="../Img/Tr/r6.gif"></td>
+		<td>15</td>
+		<td><img src="../Img/Tr/r15.gif"></td>
+	</tr>
+	<tr align="center">
+		<td>7</td>
+		<td><img src="../Img/Tr/r7.gif"></td>
+		<td>16</td>
+		<td><img src="../Img/Tr/r16.gif"></td>
+	</tr>
+	<tr align="center">
+		<td>8</td>
+		<td><img src="../Img/Tr/r8.gif"></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+<p><u>Для версии 3.58f, <a href="../Cont/TE.htm">TE</a></u>: к сожалению, похоже, что здесь закралась ошибка кода, потому что для любого типа дороги (0..16) появляется один и тот же фрагмент:
+&nbsp;&nbsp;&nbsp;<img src="../Img/Tr/Road.gif" id="vc">.<br>
+Поэтому невозможно сделать дорогу через ERM, если только сильно 
+извилистую, диагональную, используя различные зеркала :).<br>
+Хотя есть несколько способов исправить это:
+<ul id="T0">
+<li>Вы можете изменять тип уже нарисованной дороги так: !!TR&hellip;:Td/d/d/d/тип_дороги/d/d/d; 
+- и указанный в координатах фрагмент дороги превратится в фрагмент указанного типа.</li>
+<li>Вы можете пост-инструкцией изменить тип нарисованной в редакторе дороги 
+на 0 (что означает &laquo;нет дороги&raquo;, но все биты квадрата сохраняются), а затем, при 
+выполнении чего-либо, восстановить дорогу.</li>
+<li>А можете использовать вот такой скрипт, устраняющий данный баг скриптового кода WoG:
+<script type="erm">!?PI;
+!!UN:C7570147/1/9;
+!?GM0;
+!!UN:C7570147/1/9;</script></li></ul>
+<u>Для поздних версий игры</u>: данный баг исправлен в <a href="../ERA/index.htm">ERA</a>.</p></blockquote></div><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $7 – <a href="#" onclick="hidepic(8)" class="h">тип зеркала</a><div id="8" class="b"><blockquote>
+<a target="form" href="../Form/HEX.htm">Биты</a>: 76543210<br>
+--CcBbAa (&quot;-&quot; означает &quot;не имеет значения&quot;)<br>
+a - горизонтальное зеркало для почвы<br>
+A - вертикальное зеркало для почвы<br>
+b - горизонтальное зеркало для реки<br>
+B - вертикальное зеркало для реки <br>
+c - горизонтальное зеркало для дороги <br>
+C - вертикальное зеркало для дороги<br>
+<br><u>Пример</u>:<br>
+<table border="0" width="100%" cellpadding="4">
+<tr>
+	<td wigth="140"><img src="../Img/blank.gif" width="140" height="0"></td><td width="95%"></td></tr>
+<tr>
+	<td><img id=vc src="../Img/Tr/bm2560.gif" width="32">&nbsp;&harr; Зеркало 0</td>
+	<td>Скажем, вот наш квадрат &hellip;<br>
+	Так он будет выглядеть, если используется зеркало 0</td></tr>
+<tr>
+	<td><img id=vc src="../Img/Tr/bm2580.gif" width="32">&nbsp;&harr; Зеркало 1</td>
+	<td>Затем установим первый бит (зеркало = 1)<br>
+	Это зеркало отражает квадрат горизонтально</td></tr>
+<tr>
+	<td><img id=vc src="../Img/Tr/bm2570.gif" width="32">&nbsp;&harr; Зеркало 2</td>
+	<td>Или установим второй бит (зеркало = 2)<br>	
+	Квадрат отразится вертикально</td></tr>
+<tr>
+	<td><img id=vc src="../Img/Tr/bm2590.gif" width="32">&nbsp;&harr; Зеркало 3</td>
+	<td>Или установим оба бита (зеркало = 3 [2+1] )<br>	
+	Квадрат отразится вертикально и горизонтально.</td></tr>
+</table><br>
+<u>
+<b onclick="HideIt(2)" class="h">Пример (<b id="show2">показать</b>)</b></u><div id="2" class="b">
+Давайте сделаем так, чтобы каждый щелчок ПКМ на карте горизонтально зеркалил клетку ландшафта под курсором..
+<script type="erm">!?CM; триггер обработки кликов мышки на карте
+!!CM:S?y1 P?v2/?v3/?v4; смотрим координаты клика на карте
+!!FU&y1<>14:E; только для ПКМ
+!!TR2:Td/d/d/d/d/d/?y2/d; получаем битовую маску зеркал клетки
+!!VRy2:X1; меняем состояние 1 бита (отвечает за горизонталь)
+!!TR2:Td/d/d/d/d/d/y2/d; возвращаем клетке изменённую битовую маску</script></div><br><br>
+То же самое и с зеркалами дорог и рек.<br>
+Горизонтальное зеркало для рек = 4<br>
+Вертикальное зеркало для рек = 8<br>
+Зеркало обоих типов для рек = 12 [8+4]<br>
+Горизонтальное зеркало для дорог = 16<br>
+Вертикальное зеркало для дорог = 32<br>
+Зеркало обоих типов для дорог = 48 [32+16]<br>
+Вы можете комбинировать все зеркала.<br>
+Скажем, горизонтальное зеркало для почвы, вертикальное зеркало для реки и 
+зеркало обоих типов для дороги = 57 [1+8+16+32]</blockquote></div><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $8 – <a href="#" onclick="hidepic(9)" class="h">битовая маска доступности</a><div id="9" class="b"><blockquote>
+<a target="form" href="../Form/HEX.htm">Биты</a>: 76543210<br>
+???E???P (&quot;?&quot; означает нет информации)<br>
+P - проходимый квадрат<br>
+E - вход<br>
+Эти биты могут быть установлены индивидуально через команды 
+<a href="#P">TR:P</a> и <a href="#E">TR:E</a></blockquote></div>
+</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="V"></a>V$</b></font><br>
+Установить/проверить/получить видимость квадрата (<a target="form" href="../Form/GamersColor_bit.htm">побитно</a>).<br>
+Похоже на <a href="UN.htm#S">UN:S</a> или <a href="UN.htm#H">UN:H</a>, но для 
+определённого квадрата. Например, если квадрат видят красный, синий и фиолетовый 
+игрок, то значение будет 1+2+32=35.<br>
+Монстры тоже имеют видимость вокруг себя; их бит - 256. К примеру, установив 
+всем квадратам вокруг монстра флаг 255 (видим всем, кроме 256 - монстров), напасть на 
+монстра можно будет лишь прямой атакой (обычно радиус атаки - одна клетка, но вы 
+&quot;ослепили&quot; монстров)</p>
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+<script src="../erm.js"></script></body></html>

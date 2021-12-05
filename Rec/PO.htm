@@ -1,0 +1,170 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Ресивер PO</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;PO:&nbsp;&nbsp;</SPAN>
+
+ <SPAN CLASS="buttoninactive">A</SPAN>
+	<A HREF="#B" title="Работа с большым целым значением" CLASS="button">B</A>
+	<A HREF="#C" title="Подсчёт объектов с общими данными" CLASS="button">C</A>
+ <SPAN CLASS="buttoninactive">D</SPAN>
+ <SPAN CLASS="buttoninactive">E</SPAN>
+ <SPAN CLASS="buttoninactive">F</SPAN>
+ <SPAN CLASS="buttoninactive">G</SPAN>
+	<A HREF="#H" title="Работа с числом не более 255" CLASS="button">H</A>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+ <SPAN CLASS="buttoninactive">M</SPAN>
+	<A HREF="#N" title="Работа с числом не более 15" CLASS="button">N</A>
+	<A HREF="#O" title="Работа с числом в диапазоне (-8..8)" CLASS="button">O</A>
+ <SPAN CLASS="buttoninactive">P</SPAN>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+ <SPAN CLASS="buttoninactive">R</SPAN>
+	<A HREF="#S" title="Работа с числом не более 255" CLASS="button">S</A>
+	<A HREF="#T" title="Работа с числом не более 255" CLASS="button">T</A>
+ <SPAN CLASS="buttoninactive">U</SPAN>
+	<A HREF="#V" title="Работа со средним целым значением" CLASS="button">V</A>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+
+</DIV>
+
+<DIV id="text">
+<p align="center"><font size="5">Ресивер <b>PO</b> (параметры квадратов) </font></p>
+<p>
+<br>
+<b><font id="red">!!PO#1/#2/#3:XXXX;</font> </b>–<b> установить/проверить 
+квадрат в X Y L.</b> Используется для установки или проверки информации любого 
+квадрата карты.<br>
+<i>Расширенный синтаксис:</i><br>
+<b><font id="red">!!PO$:XXXX;</font> – X Y L соответственно равны v[$], v[$+1], v[$+2].</b><br>
+Может быть полезен, если вы хотите контролировать кол-во героев или 
+игроков, которые могут посетить объект (за бонусом и т.п.).<br>
+Все команды, за исключением разве что подсчёта, нужны лишь для удобства; 
+они ВСЕ могут быть использованы для хранения любых числовых данных.<br>
+<u>
+<b onclick="HideIt(1)" class="h">Пример (<b id="show1">показать</b>)</b></u><div id="1" class="b">
+<script type="erm">!?OB63/3; – триггер для каждой "Разрушенной башни" на карте
+; X=v998, Y=v999, L=v1000
+!!FU100:P; – вызвать функцию 100
+
+!?FU100; тело функции 100 
+!!HE-1:O?y1 N?y2; 	y1=хозяин, y2=номер
+!!OB998:T?y3 U?y4; 	y3=тип объекта, y4=подтип объекта
+!!PO998:Hy2 Oy1 Ty3 Sy4; записать инфу о последнем посетителе, его "цвете", типе/подтипе объекта.</script>
+</div></p>
+<p id="Q1">См. также: триггер <a href="../Tr/OB.htm">!?OB</a></p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="B"></a>B#/$</b></font><br>
+Установить/проверить/получить большое целое значение 
+(-2147483648&hellip;2147483647). Вы можете установить 2 значения.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # – номер значения (0 и 1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – числовое значение<br>
+<u>
+<b onclick="HideIt(3)" class="h">Пример (<b id="show3">показать</b>)</b></u><div id="3" class="b">
+Чтобы запомнить два числа, Y1 и Y2, в PO:B0, вам надо сделать так:
+<script type="erm">!!VRv3:S46000*y1 +y2;
+!!PO...:B0/v3;</script>
+Здесь Y1 и Y2 каждое могут быть не более 45999.<br>
+Давайте теперь &quot;достанем&quot; назад эти числа:
+<script type="erm">!!PO...:B0/?v3;
+!!VRy1:Sv3 :46000;
+!!VRy1:Sv3 %46000;</script></div></p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="C"></a>C$1/$2/$3/$4/$5</b></font><br>
+Подсчитать все "объекты на карте" с общими данными (результат запишется в v1).<pre>
+        $1 – данные, сравниваемые со значением, записанным через PO:T
+        $2 – данные, сравниваемые со значением, записанным через PO:S
+        $3 – данные, сравниваемые со значением, записанным через PO:H
+        $4 – данные, сравниваемые со значением, записанным через PO:O
+        $5 – данные, сравниваемые со значением, записанным через PO:N</pre>
+Для игнорирования любого параметра используйте -1.<br>
+<u>
+<b onclick="HideIt(2)" class="h">Комментарий (<b id="show2">показать</b>)</b></u><div id="2" class="b">
+Команда "проходится" по всей карте и ищет объекты, соответствующие вашему запросу.<br>
+Эта команда может быть очень полезна, если вы хотите контролировать посетителей того или иного объекта.<br>
+В базовых скриптах WoG была принята следующая система использования данных для команд ресивера PO:<br>
+<font id="erm"><b class="re">!!PO</b>..:C<a target="form" href="../Form/Objects.htm">тип</a>/<a target="form" href="../Form/Objects.htm">подтип</a>/<a target="form" href="../Form/NumberHeroes.htm">герой</a>/<a target="form" href="../Form/GamersColor.htm">хозяин</a>/$5;</font><br>
+<u>Пример</u>:<br>
+Используя такую систему, вы можете оперативно подсчитать все объекты определённого типа:
+<script type="erm">!!PO0/0/0:C63/3/45/-1/-1;</script>
+Теперь v1 хранит кол-во объектов типа 63 и подтипа 3, посещённых Солмиром (45), независимо от его хозяина.</div>
+</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="H"></a>H$</b></font><br>
+Установить/проверить/получить пользовательское число (0..255)<br>
+В начале игры это значение равно 255 для всех квадратов.<br>
+<b><u>Комментарий</u>:</b> в базовых скриптах WoG этот параметр, в основном, используют для 
+<a target="form" href="../Form/NumberHeroes.htm">номера героя</a>.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="N"></a>N$</b></font><br>
+Установить/проверить/получить пользовательское число (0..15)</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="O"></a>O$</b></font><br>
+Установить/проверить/получить пользовательское число (-8..8)<br>
+В начале игры это значение равно -1 для всех квадратов.<br>
+<b><u>Комментарий</u>:</b> в базовых скриптах WoG этот параметр, в основном, используют для записи числа, соответствующего номеру 
+<a target="form" href="../Form/GamersColor.htm">игрока</a>.<br>
+<b id="N1">Слава</b>:<i>"Информацию по квадрату на карте можно использовать для цвета: положительное значения для какого-либо бонуса, 
+и отрицательное для обратного – штрафа</i>.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="S"></a>S$</b></font><br>
+Установить/проверить/получить пользовательское число (0..255)<br>
+<b><u>Комментарий</u>:</b> в базовых скриптах WoG этот параметр, в основном, используют для записи 
+<a target="form" href="../Form/Objects.htm">подтипа объекта</a>.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="T"></a>T$</b></font><br>
+Установить/проверить/получить пользовательское число (0..255)<br>
+<b><u>Комментарий</u>:</b> в базовых скриптах WoG этот параметр, в основном, используют для записи 
+<a target="form" href="../Form/Objects.htm">типа объекта</a>.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="V"></a>V#/$</b></font><br>
+Установить/проверить/получить целое значение (-32768&hellip;32767). Вы можете установить до 4 значений.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # – номер значения для установки (0..3)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – значение для установки/проверки/получения<br>
+<u>
+<b onclick="HideIt(4)" class="h">Пример (<b id="show4">показать</b>)</b></u><div id="4" class="b">
+Давайте, к примеру, запомним три числа меньших 100. Пусть это будут 19, 37 и 46
+<script type="erm">!!VRv1:S19;
+!!VRv2:S37;
+!!VRv3:S46;
+!!VRv100:Sv1*100+v2*100+v3; = 193746
+А теперь вернём их из v100...
+!!VRv1:Sv100:10000; = 19
+!!VRv2:Sv100%10000:100; = 37
+!!VRv3:Sv100%1000; = 46</script></div></p>
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</DIV>
+<script src="../erm.js"></script></body></html>

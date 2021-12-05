@@ -1,0 +1,143 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>Ресивер GE</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;GE:&nbsp;&nbsp;</SPAN>
+ <SPAN CLASS="buttoninactive">A</SPAN>
+	<A HREF="#B" title="Ресурсы" CLASS="button">B</A>
+ <SPAN CLASS="buttoninactive">C</SPAN>
+	<A HREF="#D" title="Запрет/разрешение для игрока" CLASS="button">D</A>
+	<A HREF="#E" title="Допустимые игроки" CLASS="button">E</A>
+	<A HREF="#F" title="День первого появления" CLASS="button">F</A>
+ <SPAN CLASS="buttoninactive">G</SPAN>
+	<A HREF="#H" title="Флаг разрешения для игроков-людей" CLASS="button">H</A>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+	<A HREF="#M" title="Текст" CLASS="button">M</A>
+	<A HREF="#N" title="Запрещенные игроки" CLASS="button">N</A>
+ <SPAN CLASS="buttoninactive">O</SPAN>
+ <SPAN CLASS="buttoninactive">P</SPAN>
+	<A HREF="#Q" title="Флаг разрешения для игроков-компьютеров" CLASS="button">Q</A>
+	<A HREF="#R" title="Интервал между появлениями" CLASS="button">R</A>
+ <SPAN CLASS="buttoninactive">S</SPAN>
+ <SPAN CLASS="buttoninactive">T</SPAN>
+ <SPAN CLASS="buttoninactive">U</SPAN>
+ <SPAN CLASS="buttoninactive">V</SPAN>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+</DIV>
+
+<DIV id="text">
+<p align="center"><font size="5">Ресивер <b>GE</b> (глобальные события)</font></p>
+<p>
+<br>
+<b><font id="red">!!GE#:XXXX;</font> 
+- ресивер для глобальных событий (# - номер события).</b> 
+Номер – первое число в тексте сообщения (например, &quot;100Привет!&quot; будет показываться как &quot;Привет!&quot;, 
+а событие будет иметь номер 100). Используется для изменения параметров глобальных (таймерных) событий.<br>
+<u>
+<b onclick="HideIt(1)" class="h">Пример (<b id="show1">показать</b>)</b></u><div id="1" class="b">
+Обнуление стартовых ресурсов игрока без каких-либо пояснений и картинок (инструкцию использовать нельзя):
+<script type="erm">!?GE1; - должно присутствовать глобальное событие, начинающееся на 1.
+!!OW:R0/0/0; - обнулить все ресурсы игрока 0 (красного)
+!!OW:R0/1/0;
+!!OW:R0/2/0;
+!!OW:R0/3/0;
+!!OW:R0/4/0;
+!!OW:R0/5/0;
+!!OW:R0/6/0;</script></div></p>
+<p id="Q1">См. также: триггер <a href="../Tr/ge.htm">!?GE</a></p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="B"></a>B#1/$2</b></font><br>
+Установить/проверить/получить кол-во ресурса #1 (<a target="form" href="../Form/Resource.htm">0..6</a>) 
+на $2 (может быть отрицательным)</p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="D"></a>D#1/#2</b></font><br>
+Запретить (#2 = 1) или разрешить (#2 = 0) событие для <a target="form" href="../Form/GamersColor.htm">игрока #1</a>.</p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="E"></a>E$</b></font><br>
+Установить <a target="form" href="../Form/GamersColor_bit.htm">игроков</a>, которым разрешено получать событие.<br>
+<u><b onclick="HideIt(2)" class="h">Комментарий (<b id="show2">показать</b>)</b></u> <div id="2" class="b">Если вы используете $, начинающееся с параметра d, это будет 
+означать как &quot;или&quot;, т.е. вы можете дать возможность игрокам получать событие, 
+без изменения остальных игроков.<br>
+Пример: E3 даёт возможность получить событие только красному и синему игроку, 
+в то время как Ed3 разрешает получение события красному и синему игроку, причём остальные цвета, 
+установленные в самом событии в редакторе, остаются без изменений.</div></p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="F"></a>F$</b></font><br>
+Установить/проверить/получить день первого появления на $</p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="H"></a>H#</b></font><br>
+Применить или проверить, разрешено ли события для игроков-людей (1 = разрешено, 0 = запрещено)</p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="M"></a>M^Текст^</b></font><br>
+Установить текстовое послание. Оно не может быть длиннее 
+оригинального. Может содержать любые символы, кроме &quot;^&quot; и &quot;;&quot;</p>
+<hr noshade>
+<p>
+<font id="red"><b>M#</b></font><br>
+Установить текст события такой же, что и в глобальном событии под номером #.</p>
+<hr noshade>
+<p>
+<font id="red"><b>M-1</b></font><br>
+Не показывать сообщение, записанное в самом событии</p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="N"></a>N$</b></font><br>
+Установить <a target="form" href="../Form/GamersColor_bit.htm">игроков</a>, которые НЕ могут активировать событие.<br>
+<u><b onclick="HideIt(3)" class="h">Комментарий (<b id="show3">показать</b>)</b></u><div id="3" class="b">
+Если вы используете $, начинающееся с параметра d, это будет означать как &quot;И&quot;, 
+т.е. вы можете запретить игрокам получать событие, без изменения остальных игроков.<br>
+Пример: N3 запрещает возможность получить событие только красному и синему игроку, 
+в то время как Nd3 запрещает получение события красному и синему игроку, причём остальные цвета, 
+установленные в самом событии в редакторе, остаются без изменений.</div></p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="Q"></a>Q#</b></font><br>
+Применить или проверить, разрешено ли событие для компьютерных игроков (1 = разрешено, 0 = запрещено)</p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="R"></a>R$</b></font><br>
+Установить/проверить/получить интервал между появлениями на $.</p>
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+<script src="../erm.js"></script></body></html>

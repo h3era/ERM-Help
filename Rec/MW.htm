@@ -1,0 +1,136 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Ресивер MW</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;MW:&nbsp;&nbsp;</SPAN>
+	<A HREF="#A" title="Настройка бродячих монстров - телепортация, точка назначения и т.п." CLASS="button">A</A>
+ <SPAN CLASS="buttoninactive">B</SPAN>
+	<A HREF="#C" title="Проверка на бродячего монстра в координатах" CLASS="button">C</A>
+ <SPAN CLASS="buttoninactive">D</SPAN>
+	<A HREF="#E" title="Проверка на существование бродячего монстра" CLASS="button">E</A>
+ <SPAN CLASS="buttoninactive">F</SPAN>
+ <SPAN CLASS="buttoninactive">G</SPAN>
+ <SPAN CLASS="buttoninactive">H</SPAN>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+	<A HREF="#M" title="Сделать монстра бродячим" CLASS="button">M</A>
+ <SPAN CLASS="buttoninactive">N</SPAN>
+ <SPAN CLASS="buttoninactive">O</SPAN>
+	<A HREF="#P" title="Сгенерировать монстра на позиции" CLASS="button">P</A>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+ <SPAN CLASS="buttoninactive">R</SPAN>
+ <SPAN CLASS="buttoninactive">S</SPAN>
+ <SPAN CLASS="buttoninactive">T</SPAN>
+ <SPAN CLASS="buttoninactive">U</SPAN>
+ <SPAN CLASS="buttoninactive">V</SPAN>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+</DIV>
+
+<DIV id="text">
+<p align="center"><font size="5">Ресивер <b>MW</b> (бродячие монстры)</font></p>
+<p>
+<br>
+<b><font id="red">!!MW#:XXXX;</font> – используется для активирования или деактивирования взаимодействий с бродячими монстрами.</b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # – номер бродячего монстра (1..1000)<br>
+Бродячие монстры имеют радиус поиска 20 (можно установить командой <a href="#A4">MW:A4</a>). В начале каждого хода бродячие монстры куда-то идут/атакуют.<br>
+<u>
+<b onclick="HideIt(1)" class="h">Пример (<b id="show1">показать</b>)</b></u><div id="1" class="b">
+<script type="erm">ZVSE
+!#TM1:S1/1/1/2;
+!?TM1;
+!!MW:P4/8/0/9/?v100;
+!!IF:M^v100:%V100^;
+!!MWv100:A2/0/0/0A3/1/1/0/1/1/0;
+!!MW:P1/8/0/10/?v110;
+!!IF:M^v110:%V110^;
+!!MWv110:A2/10/10/0A3/1/1/1/0/1/0;
+
+!?MW0;
+!!IF:M^MW0:%V997^;
+
+!?MW1;
+!!IF:M^MW1:%V997^;</script></div></p>
+<p id="Q1">См. также: триггер <a href="../Tr/MW.htm">!?MW</a></p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="A"></a>A1/x/y/l</b></font><br>
+Установить/проверить/получить (прыжок при установке) бродячего монстра в позицию X Y L</p>
+<hr noshade><p>
+<font id="red"><b><a name="A2"></a>A2/x/y/l</b></font><br>
+Установить/проверить/получить точку назначения для бродячего монстра<br>
+<b><u>Комментарий</u>:</b> для бродячего монстра, ищущего героя, здесь <b>x</b> – это <a target="form" href="../Form/NumberHeroes.htm">номер героя</a>.</p>
+<hr noshade><p>
+<font id="red"><b><a name="A3"></a>A3/$1/$2/$3/$4/$5/$6/$7</b></font><br>
+Менеджмент бродячих монстров<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – Установить/проверить/получить флаг: 
+вызвать триггер (1) <a href="../Tr/MW.htm">!?MW0</a> или нет (0), когда монстр достигнет точки назначения/перед атакой целевого героя.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – Установить/проверить/получить флаг: 
+вызвать триггер (1) <a href="../Tr/MW.htm">!?MW1</a> или нет (0), если монстр был убит (когда бродячий монстр убит, он больше не имеет номера, и этот номер может быть установлен другому монстру при создании)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $3 – Установить/проверить/получить флаг: идти к точке назначения <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $4 – Установить/проверить/получить флаг: ищет ли монстр какого-либо героя<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $5 – Установить/проверить/получить флаг: будет ли монстр стоять после прибытия на точку/к герою. 
+Сейчас монстры, достигшие, атаковавшие и победившие героя, становятся свободными. Если вы установите этот флаг, монстр останется стоять до следующей команды. 
+Для свободных существ включенный данный флаг означает стоять на месте.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $6 – Установить/проверить/получить флаг: поиск определённого <a target="form" href="../Form/GamersColor.htm">игрока</a> (-1 = любой)<br>
+Этот флаг используется только для свободных монстров. Если его установить, точка назначения должна содержать номер цвета игрока вместо <b>x</b>. 
+Если он не -1, свободные бродячие монстры будут искать героев и замки только этого определённого игрока.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $7 – Установить/проверить/получить флаг: может двигаться по земле и/или воде <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 = обычно (только по пустому пространству)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 = только по воде.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 = может двигаться и там, и там</p>
+<hr noshade><p>
+<font id="red"><b><a name="A4"></a>A4/#</b></font><br>
+Установить/проверить/получить радиус (#) для поиска (по умолчанию 20)</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="C"></a>Cx/y/l/?$</b></font><br>
+Проверить, есть ли бродячий монстр в позиции<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x/y/l – позиция для проверки<br>
+Переменная $ будет содержать номер бродячего монстра (1&hellip;) или 0, если его там нет.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="E"></a>E?$</b></font><br>
+Проверить на существование бродячего монстра #.<br>
+Если не существует, $=0; если существует, $ = номеру бродячего монстра.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="M"></a>Mx/y/l/?$</b></font><br>
+Сделать монстра бродячим<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x/y/l – локация с существующим монстром<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – переменная примет значение номера бродячего монстра. Если $ равна 0, значит, 
+бродячий монстр не был создан по какой-либо причине.<br>
+Вы также можете установить монстра через <a href="MO.htm">ресивер !!MO</a> (по позиции) после генерации бродячего монстра через !!MW:P.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="P"></a>Px/y/l/#/?$</b></font><br>
+Установить (сгенерировать) монстра на позиции<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # – <a target="form" href="../Form/Creature.htm">тип монстра</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – в переменную занесётся номер бродячего монстра (для дальнейших операций)<br>
+Для этой команды номер бродячего монстра (!!MW#) не нужен, т.к. он ещё не известен.</p>
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+<script src="../erm.js"></script></body></html>

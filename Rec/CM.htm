@@ -1,0 +1,152 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Ресивер CM</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;CM:&nbsp;&nbsp;</SPAN>
+
+	<A HREF="#A" title="Позиция курсора в пикселях" CLASS="button">A</A>
+ <SPAN CLASS="buttoninactive">B</SPAN>
+ <SPAN CLASS="buttoninactive">C</SPAN>
+	<A HREF="#D" title="Позиция на поле боя" CLASS="button">D</A>
+ <SPAN CLASS="buttoninactive">E</SPAN>
+	<A HREF="#F" title="Флаги кликов" CLASS="button">F</A>
+ <SPAN CLASS="buttoninactive">G</SPAN>
+	<A HREF="#H" title="Получить номер героя" CLASS="button">H</A>
+	<A HREF="#I" title="Получить место нажатия" CLASS="button">I</A>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+	<A HREF="#M" title="Текст-подсказка в городе" CLASS="button">M</A>
+ <SPAN CLASS="buttoninactive">N</SPAN>
+ <SPAN CLASS="buttoninactive">O</SPAN>
+	<A HREF="#P" title="Позиция на карте" CLASS="button">P</A>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+	<A HREF="#R" title="Стандартное действие" CLASS="button">R</A>
+	<A HREF="#S" title="Подтип действия" CLASS="button">S</A>
+	<A HREF="#T" title="Тип действия" CLASS="button">T</A>
+ <SPAN CLASS="buttoninactive">U</SPAN>
+ <SPAN CLASS="buttoninactive">V</SPAN>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+
+</DIV>
+
+<DIV id="text">
+<p align="center"><font size="5">Ресивер 
+<b>CM</b> (инфо по кликам мышки)</font></p>
+<p>
+<b><font id="red"><br>
+!!CM:XXXX;</font> 
+- установить/проверить/получить информацию по клику мышкой.</b> <br>
+Должен следовать после триггера <a href="../Tr/CM.htm">!?CM</a>.<br>
+<b><u onclick="HideIt(1)" class="h">Комментарий (<b id="show1">показать</b>)</u></b><div id="1" class="b">
+	Если вы желаете показать диалоговое окно, которое не 
+будет задерживаться на экране (как при обычном щелчке <img src="../Img/RBM.gif" id="vc">), 
+используйте команду <a href="IF.htm#Q">IF:Q</a> с опцией 4. Это создаст 
+текстовое окно без кнопок, которое исчезнет сразу после отпускания кнопки мыши. 
+Если вам не нужна картинка, используйте значения -1 для типа/подтипа картинки.</div></p>
+<hr noshade>
+<p>
+<a name="A"></a><b><font id="red">A$1/$2</font></b><br>
+Абсолютная позиция курсора в пикселях<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – X<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – Y</p>
+<hr noshade><p>
+<a name="D"></a><font id="red"><b>D$</b></font><br>
+Установить/проверить/получить позицию на поле боя<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ - 
+	<a target="form" href="../Form/BF.htm">номер позиции</a><br>
+<b><u onclick="HideIt(2)" class="h">Комментарий (<b id="show2">показать</b>)</u></b><div id="2" class="b">
+	Квадраты сетки поля имеют значения от 0 до 186, фон и 
+внешние квадраты имеют значение -1. У левого героя - номер квадрата 252, у 
+правого - 253.<br>
+Центральная и верхняя башни имеют значения позиций 254 и 255 соответственно.</div></p>
+<hr noshade><p>
+<a name="F"></a><font id="red"><b>F$</b></font><br>
+Флаги для кликов мышью<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 = <img src="../Img/LBM.gif" id="vc"> (левая кнопка мыши)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 = <span class="key">Shift</span> + <img src="../Img/LBM.gif" id="vc"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4 = <span class="key">Ctrl</span> + <img src="../Img/LBM.gif" id="vc"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 32 = <span class="key">Alt</span> + <img src="../Img/LBM.gif" id="vc"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 512 = <img src="../Img/RBM.gif" id="vc"> (правая кнопка мыши)<br>
+Номера можно комбинировать, например, 5 будет означать, 
+что должны быть нажаты <span class="key">Shift</span>+<span class="key">Ctrl</span>+<img src="../Img/LBM.gif" id="vc">.<br>
+Правая кнопка ни с чем не может быть cкомбинирована.</p>
+<hr noshade>
+<p>
+<font id="red"><b><a name="H"></a>H$1/$2</b></font><br>
+Получить номер героя<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – номер левого героя<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – номер правого героя<br>
+Вы можете лишь получить или проверить их.<br>
+Вы также можете использовать эту опцию в теле <a href="../Tr/CM.htm">
+!?CM2</a> для получения левого героя как активного, второй - фантом, его не 
+существует.</p>
+<hr noshade><p>
+<a name="I"></a><font id="red"><b>I$</b></font><br>
+Условно обозначенное 
+	<a target="form" href="../Form/CMI.htm">место</a>, куда наведён курсор при нажатии.<br>
+<u><b onclick="HideIt(3)" class="h">Комментарий (<b id="show3">показать</b>)</b></u> <div id="3" class="b">Некоторые области не будут регистрироваться при правом щелчке, а некоторые имеют значение 0.<br>
+Эта команда всегда получает правильное значение в экране города, даже если одна постройка накладывается на другую. 
+Также она устанавливается в -1, если не найдено никакого здания под курсором.<br>
+Описание области города с пометкой &quot;неактивно&quot; означает, что объект регистрируется при нажатии, но не имеет игровой функции. 
+Такие объекты различны для каждого города.
+<br>
+Номер области при нажатии на гильдии магов всегда принимает значение высшего уровня гильдии 
+(т.е. если у вас есть 3 уровень гильдии магов, при клике в любом месте гильдии значение области будет равно значению третьего уровня гильдии). 
+Также улучшенные жилища всегда принимают значения улучшенного. 
+Кроме того, здания орд существ при их постройке заменяют своим числом номер 
+жилища. Другие объекты точно также ведут себя: например, Таверна (5) Замка преобразуется в Братство меча (22) при её отстройке.</div></p>
+<hr noshade><p>
+<a name="M"></a><font id="red"><b>Mz#</b></font><br>
+Установить текст – описание в окне города, изменив обычное на своё. Вы можете 
+использовать общие (z1&hellip;z1000) или локальные (z-1&hellip;z-10) <i>z</i>-переменные.</p>
+<hr noshade><p>
+<a name="P"></a><font id="red"><b>P$1/$2/$3</b></font><br>
+Позиция на карте<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – X<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – Y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $3 – L (уровень)<br>
+Работает только для карты приключений и миникарты (<a target="form" href="../Form/CMI.htm">номера областей</a> которых 1 и 37, соответственно).</p>
+<hr noshade><p>
+<a name="R"></a><font id="red"><b>R$</b></font><br>
+Включить/отключить стандартное действие<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 – отключить<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 – включить<br>
+Если вы хотите правый клик на карте приключений для 
+чего-либо, вы можете использовать эту команду для отключения стандартного 
+диалога о оставлении существ.</p>
+<hr noshade><p>
+<a name="S"></a><font id="red"><b>S$</b></font><br>
+Подтип действия $:<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10 – Отпущена кнопка ОК в экране города<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12 – нажата <img src="../Img/LBM.gif" id="vc"><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;13 – отпущена <img src="../Img/LBM.gif" id="vc"><br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14 – нажата <img src="../Img/RBM.gif" id="vc"></p>
+<hr noshade><p>
+<a name="T"></a><font id="red"><b>T$</b></font><br>
+Тип действия (обычно 512)</p>
+
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+
+</body></html>

@@ -1,0 +1,159 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>Инструкция VC</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;VC:&nbsp;&nbsp;</SPAN>
+
+ <SPAN CLASS="buttoninactive">A</SPAN>
+	<A HREF="#B" title="Начать запись" CLASS="button">B</A>
+	<A HREF="#C" title="Очистить список" CLASS="button">C</A>
+ <SPAN CLASS="buttoninactive">D</SPAN>
+	<A HREF="#E" title="Закончить запись" CLASS="button">E</A>
+ <SPAN CLASS="buttoninactive">F</SPAN>
+ <SPAN CLASS="buttoninactive">G</SPAN>
+ <SPAN CLASS="buttoninactive">H</SPAN>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+ <SPAN CLASS="buttoninactive">M</SPAN>
+	<A HREF="#N" title="Остановить проверку секции" CLASS="button">N</A>
+ <SPAN CLASS="buttoninactive">O</SPAN>
+ <SPAN CLASS="buttoninactive">P</SPAN>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+ <SPAN CLASS="buttoninactive">R</SPAN>
+ <SPAN CLASS="buttoninactive">S</SPAN>
+ <SPAN CLASS="buttoninactive">T</SPAN>
+ <SPAN CLASS="buttoninactive">U</SPAN>
+ <SPAN CLASS="buttoninactive">V</SPAN>
+	<A HREF="#W" title="Записать переменные" CLASS="button">W</A>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+	<A HREF="#Y" title="Продолжить проверку секции" CLASS="button">Y</A>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+
+</DIV>
+
+<DIV id="text">
+<p align="center"><font size="5">Инструкция <b>VC</b> (контроль переменных)</font></p>
+<p>
+<br>Используется для регистрации <a href="../Cont/Flags.htm#fl">флагов</a>, <a href="../Cont/Flags.htm#Var">переменных</a>, 
+<a href="FU.htm">функций</a> и <a href="DO.htm">круговых функций</a>, используемых в скрипте.<br>
+Этим можно сохранить используемые значение во внешний файл <i class="file">ERMVarsUsed.LOG</i> для последующего использования.<br>
+<b>Внимание:</b> этот ресивер должен использоваться как инструкция - <b id="erm"><span class="in">!#VC</span></b> -, иначе этот синтаксис не будет иметь смысла.<br>
+<br>
+<u><b onclick="HideIt(1)" class="h">Комментарии и примечания (<b id="show1">показать</b>)</b></u> <div id="1" class="b">
+Заметьте, что операция записи и сохранения запускается только когда ERM компилятор выполняет эти команды, 
+т.е. в процессе WoG'ификации карты, перед первым днём. Так, вам нужно лишь начать игру для записи всех использованных переменных.<br>
+Вы можете использовать команды [<a href="#B">B</a>] и [<a href="#E">E</a>] парами более одного раза для анализа разных частей скрипта. Эффект будет тот же.<br>
+<p><u>Пример</u>: переменная v10 и v12 будут записаны, а v11 - пропущена:
+<script type="erm">!#VC:C B;	очистить список, начать запись
+!!VRv10:...;	используем переменную v10
+!#VC:E;		останавливаем запись
+!!VRv11:...;	используем переменную v11
+!#VC:B;		начинаем запись
+!!VRv12:...;	используем переменную v12
+!#VC:E W C;	останавливаем запись, записываем файл ERMVarsUsed.LOG, очищаем список</script>
+Как вы видите, очистка списка производится в начале и в конце операции.</p>
+
+<p>Вы также можете несколько раз использовать секции [<a href="#Y">Y</a>] и [<a href="#N">N</a>].
+<script type="erm">!#VC:C B;
+!!VRv10:...;
+!!VRv11:...;
+!#VC:Y;
+!!VRv11:...;
+!!VRv12:...;
+!#VC:N;
+!!VRv12:...;
+!!VRv14:...;
+!#VC:Y;
+!!VRv14:...;
+!#VC:N;
+!!VRv13:...;
+!#VC:E W C;</script>
+Эти переменные будут обозначены как повторяющиеся: v11 и v14; - и обычные переменные: v10,v12,v13<br>
+(v12 не обозначается как перекрёстная ссылка, т.к. не использовалась перед поверкой.)</p>
+<p>Инструкция VC позволяет вам регистрировать следущие типы элементов:
+<ol id="T0">
+<li>флаги: 1..1000</li>
+<li><i>v</i>-переменные: v1&hellip;v10000</li>
+<li><i>w</i>-переменные: w1&hellip;w100</li>
+<li><i>z</i>-переменные: z1&hellip;z1000<br>
+Помечается:<br>
+- &#39;p&#39; если использован(а) как параметр<br>
+- &#39;&amp;&#39; если использован(а) в секции <b>&amp;</b><br>
+- &#39;|&#39; если использован(а) в секции <b>|</b><br>
+- &#39;*&#39; если повторяющийся<br>
+<li>Таймеры: TM1&hellip;TM100 <br>
+- помечается &#39;t&#39;, если триггер был найден<br>
+- помечается &#39;r&#39;, если ресивер или инструкция были найдены</li>
+<li>Функции/циклы: FU1&hellip;FU30000, DO1&hellip;DO30000<br>
+- помечается &#39;t&#39;, если триггер (сама функция) была найдена<br>
+- помечается &#39;r&#39;, если ресивер или инструкция, вызывающие функцию, были найдены<br>
+- отмечается &#39;d&#39;, если ресивер или инструкция, вызывающие цикл, были найдены</li></ol></p>
+<p>VC не может записывать косвенные переменные вроде: <b id="erm"><font class="re">!!VR</font>vx10:&hellip;;</b><br>
+Номер переменной неизвестен в данное время потому, что x10 неопределена в данный момент.<br>
+Это значит, что если вы хотите проверить свой скрипт, и если в нём были использованы такие косвенные переменные, 
+то вам придётся проверять его вручную, линию за линией. Чтобы избежать такой работы в будущем, в начале можно инициализировать все нужные переменные, 
+например:<b id="erm"><font class="in">!#VR</font>&hellip;:S0;</b> в начале скрипта, чтобы записать эту переменную.</p>
+<p>Вы можете записывать переменные от нескольких файлов скрипта. Скажем, вы можете поместить <b id="erm"><font class="in">!#VR</font>:C B;</b> в файл <i class="file">script00.erm</i> и 
+<b id="erm"><font class="in">!#VR</font>:E W C;</b> в <i class="file">script40.erm</i>, и вы получите полный список переменных во всех скриптах от 0 до 40.<br>
+Log-файл создаётся при загрузке карты и называется <i class="file">ERMVarsUsed.LOG</i>. Если файл 
+с таким именем уже существует, он будет перезаписан.<br>
+<br>
+Мы рекомендуем использовать секции Y и N для записи переменных/таймеров/функций, использующихся в вашем скрипте и в других скриптах.<br>
+Для этого вы должны установить номер для вашего скрипта больший, чем у других скриптов, записать переменные во всех остальных скриптах, и использовать секции 
+Y и N в вашем скрипте.<br>
+<u>Пример</u>:<br>
+У вас есть скрипты 0,1,2,3,4,5&hellip;50 и нужно проверить ваш скрипт на совпадающие переменные.<br>
+<ol id="T0">
+<li>Установить номер вашего скрипта, например, <i class="file">script99.erm</i> (условие выполнено: 99 &gt; 50).</li>
+<li>Добавить &quot;начать запись&quot; в начало первого скрипта (<i class="file">script00.erm</i>):<br>
+<b id="erm"><font class="in">!#VR</font>:C B;</b></li>
+<li>Добавить &quot;начать проверку на повторяющиеся переменные&quot; в начало вашего скрипта (<i class="file">script99.erm</i>):<br>
+<b id="erm"><font class="in">!#VR</font>:Y;</b></li>
+<li>Добавить &quot;остановить проверку на повторяющиеся переменные&quot; в конце вашего скрипта (<i class="file">script99.erm</i>):<br>
+<b id="erm"><font class="in">!#VR</font>:N;</b></li>
+<li>Добавить &quot;остановить запись и записать&quot; в конец вашего скрипта (<i class="file">script99.erm</i>):<br>
+<b id="erm"><font class="in">!#VR</font>:E W C;</b></li>
+</ol>
+Так, если ваш скрипт использует переменные/таймеры/функции, которые уже использовались в предыдущих скриптах, они будут отмечены в log-файле.<br>
+Если вы хотите сделать ту же операцию для внутренних скриптов карты, установите номер скрипта как день события и проделайте всё вышесказанное.</div></p>
+<hr noshade>
+<p><font id="red"><b><a name="B"></a>B</b></font><br>
+Начать регистрацию использованных переменных</p>
+<hr noshade>
+<p><font id="red"><b><a name="C"></a>C</b></font><br>
+Очистить список используемых переменных ERM</p>
+<hr noshade>
+<p><font id="red"><b><a name="E"></a>E</b></font><br>
+Прекратить регистрацию переменных</p>
+<hr noshade>
+<p><font id="red"><b><a name="N"></a>N</b></font><br>
+Остановить проверку секции</p>
+<hr noshade>
+<p><font id="red"><b><a name="W"></a>W</b></font><br>
+Записать переменные в <i class="file">ERMVarsUsed.LOG</i></p>
+<hr noshade>
+<p><font id="red"><b><a name="Y"></a>Y</b></font><br>
+Начать проверку секции</p>
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+<script src="../erm.js"></script></body></html>

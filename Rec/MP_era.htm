@@ -1,0 +1,129 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Ресивер MP</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;MP:&nbsp;&nbsp;</SPAN>
+ <SPAN CLASS="buttoninactive">A</SPAN>
+ <SPAN CLASS="buttoninactive">B</SPAN>
+	<A HREF="#C" title="Получить имя текущего трэка" CLASS="button">C</A>
+ <SPAN CLASS="buttoninactive">D</SPAN>
+ <SPAN CLASS="buttoninactive">E</SPAN>
+ <SPAN CLASS="buttoninactive">F</SPAN>
+ <SPAN CLASS="buttoninactive">G</SPAN>
+ <SPAN CLASS="buttoninactive">H</SPAN>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+ <SPAN CLASS="buttoninactive">M</SPAN>
+ <SPAN CLASS="buttoninactive">N</SPAN>
+ <SPAN CLASS="buttoninactive">O</SPAN>
+	<A HREF="#P" title="Играть определённый трэк/ поставить его на паузу или возобновить" CLASS="button">P</A>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+	<A HREF="#R" title="Настройка режима смены трэков" CLASS="button">R</A>
+	<A HREF="#S" title="Настройки для триггера MP" CLASS="button">S</A>
+ <SPAN CLASS="buttoninactive">T</SPAN>
+ <SPAN CLASS="buttoninactive">U</SPAN>
+ <SPAN CLASS="buttoninactive">V</SPAN>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+</DIV>
+
+<DIV id="text">
+<blockquote id="Q2" class="erm">Ресивер <b>!!MP</b> (как и триггер !?MP), начиная с <a href="../ERA/index.htm">ERA</a> версии 2.8.7, был полностью переделан.<br>
+См. <a href="../Rec/MP.htm">описание старой реализации !!MP</a></blockquote>
+
+<p align="center"><font size="5">Ресивер <b>MP</b><a href="../ERA/index.htm" title="Работает только с ERA.."><img src="../Img/era.gif" class="TE"></a> (новая реализация mp3-контроля)</font></p>
+<p>
+<br>
+<b><font id="red">!!MP:XXXX;</font> 
+</b>–<b> mp3 - контроль.</b><br>
+Используется для управления воспроизведением mp3-файлов в игре.<br>
+<b><u onclick="HideIt(3)" class="h">Пример (<b id="show3">показать</b>)</u></b><div id="3" class="b">
+Вот как можно оформить авторские диалоги, используя звуковое сопровождение (пример от <b id="N1">Algor</b>'а):
+<script type="erm">!!MP:C?z1;
+!!SN:W^old_track^/z1;		[сохранение текущей музыкальный трэк]
+!!MP:P^my_mp3_track^/1/0;	[включение своего трэка (из папки MP3) с начала (1) и без повтора (0)]
+!!IF:M^Диалог со звуковым сопровождением^; [можно использовать также с вызовом расширенных диалогов DL:S]
+!!SN:W^old_track^/?z1;
+!!MP:Pz1/0/1;			[возвращаем пред.трэк с места остановки (0) и с повтором при окончании (1)]</script></div></p>
+<p id="Q1">См. также: триггер <a href="../Tr/MP.htm">!?MP</a><br></p>
+<hr noshade>
+<p>
+<a name="C"></a><font id="red"><b>C?z#<br>C?s^имя^</b></font><br>
+Получить имя текущей игровой <a target="form" href="../Form/Track.htm">темы</a> в z# (или в строковую именованную переменную)<br>
+<b><u onclick="HideIt(1)" class="h">Комментарий (<b id="show1">показать</b>)</u></b><div id="1" class="b">
+Название темы будет в нижнем регистре и без расширения mp3.<br>
+Команда может быть использована в любое время.<br>
+<u>Пример</u>:
+<script type="erm">; Пример получения трэка в именованную переменную
+!!MP:C?s^theme^;
+!!IF:M^Сейчас играет трэк %S(theme).mp3^;</script></div>
+</p>
+<hr noshade>
+<p><a name="P"></a><font id="red"><b>Pz#/#1/#2<br>P^имя^/#1/#2</b></font><br>
+Играть определённую игровую тему.
+<pre>        ^имя^ – имя <a target="form" href="../Form/Track.htm">mp3-трэка</a> (без расширения mp3)
+        #1 – отслеживание позиции воспроизведения (1 = нет, 0 = да)
+        #2 – повтор трэка (0 = нет, 1 = да)</pre>
+<b><u onclick="HideIt(2)" class="h">Комментарий (<b id="show2">показать</b>)</u></b><div id="2" class="b">
+Команда вызывает функцию <i class="event">ChangedMp3Theme</i> и генерирует событие <i class="event">OnMp3MusicChange</i> (т.е. <a href="../Tr/MP.htm">!?MP</a>).<br>
+Если #1=1, воспроизведение трека начинается с начала после возобновления с паузы.<br>
+Если #1=0 – текукщее положение проигрывания трэка запоминается, и после возобновления с паузы продолжит с места остановки.<br>
+Параметр #2 контролирует автоматическое воспроизведение темы после её окончания (только при #1=0).<br>
+Обратите внимание, что параметры #1 и #2 полностью игнорируются, если трэк с тем же именем воспроизводится в данный момент. Возможно, вам придётся приостановить текущий трэк перед запуском другого, чтобы начать воспроизведение с начала или без повтора.<br>
+<u>Пример</u>:
+<script type="erm">!!MP:P^cstletown^/0/1; воспроизводить по кругу игровую тему Замка</script></div>
+</p>
+<p><font id="red"><b>P0/#</b></font><br>
+Поставить на паузу (0) или возобновить (1) текущую игровую тему.<br>
+<u>Пример</u>:
+<script type="erm">!!MP:P0/0; Тишина - залог крепкого сна ;-)</script>
+</p>
+<hr noshade>
+<p><a name="R"></a>
+<font id="red"><b>R$</b></font><br>
+Установить/получить режим смены игровой темы (0 = запретить, 1 = разрешить)<br>
+Может использоваться для запрета смены музыки на некоторое время.<br>
+<u>Пример</u>:
+<script type="erm">!?MP;
+!!MP:R0; Текущий трэк никогда не сменится</script></p>
+<hr noshade>
+<p><a name="S"></a>
+<font id="red"><b>S?z#/#1/#2<br>S?^имя^/#1/#2</b></font><br>
+Установить/получить настройки для триггера <a href="../Tr/MP.htm">!?MP</a>
+<pre>        ^имя^ – имя <a target="form" href="../Form/Track.htm">mp3-трэка</a> (установить/получить)
+        #1 – отслеживание позиции воспроизведения (1 = нет, 0 = да)
+        #2 – повтор трэка (0 = нет, 1 = да)</pre>
+<u>Примеры</u>:
+<script type="erm">!?MP;
+!!MP:S?z2/d/0; Все игровые темы не будут повторяться
+
+!?MP;
+!!MP:S^mainmenu^/0/1; Играть тему из главного меню SoD на протяжении всей игры</script></p>
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+<script src="../erm.js"></script>
+
+</body></html>

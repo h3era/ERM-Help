@@ -1,0 +1,114 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>Ресивер MR</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;MR:&nbsp;&nbsp;</SPAN>
+ <SPAN CLASS="buttoninactive">A</SPAN>
+ <SPAN CLASS="buttoninactive">B</SPAN>
+ <SPAN CLASS="buttoninactive">C</SPAN>
+	<A HREF="#D" title="Изначальный урон" CLASS="button">D</A>
+ <SPAN CLASS="buttoninactive">E</SPAN>
+	<A HREF="#F" title="Конечный урон" CLASS="button">F</A>
+ <SPAN CLASS="buttoninactive">G</SPAN>
+ <SPAN CLASS="buttoninactive">H</SPAN>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+	<A HREF="#M" title="Тип монстра" CLASS="button">M</A>
+ 	<A HREF="#N" title="Номер стека" CLASS="button">N</A>
+ <SPAN CLASS="buttoninactive">O</SPAN>
+ <SPAN CLASS="buttoninactive">P</SPAN>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+ <SPAN CLASS="buttoninactive">R</SPAN>
+	<A HREF="#S" title="Номер заклинания" CLASS="button">S</A>
+ <SPAN CLASS="buttoninactive">T</SPAN>
+ <SPAN CLASS="buttoninactive">U</SPAN>
+ <SPAN CLASS="buttoninactive">V</SPAN>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+</DIV>
+
+<DIV id="text">
+<p align="center"><font size="5">Ресивер <b>MR</b> (сопротивление магии стеков)</font></p>
+<p>
+<br>
+<b><font id="red">!!MR:XXXX;</font> - ресивер для контроля сопротивления магии ERM.</b><br>
+Вы можете вызвать этот ресивер ТОЛЬКО из триггера <a href="../Tr/MR.htm">!?MR</a>.</p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="D"></a>D$</b></font><br>
+Базовый (без сопротивления) урон<br>
+Если вы измените его после триггера <a href="../Tr/MR.htm">!?MR0</a>, ваше значение будет использовано как базовый урон заклинания для подсчёта сопротивления существа.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="F"></a>F$</b></font><font id="red"><b></b></font><br>
+Конечный (откорректированный) урон<br>
+Если вы проверите его в <a href="../Tr/MR.htm">!?MR0</a>, он должен быть равен значению параметра D.<br>
+<b><u onclick="HideIt(2)" class="h">Комментарий (<b id="show2">показать</b>)</u></b><div id="2" class="b">
+Установка данного значения в триггере !?MR0 не повлияет на урон, так как урон подсчитывается после данного триггера. 
+Полезно использовать эту команду в триггере !?MR1. Этим путём вы можете игнорировать обычное WoG-сопротивление и установить своё значение.<br>
+<i id="bold">Замечание:</i> &quot;Волна смерти&quot; обрабатывается сначала в триггерах !?MR, а потом ещё и в <a href="../Tr/MF.htm">!?MF1</a>, 
+а потому изменения урона через MR:F не являются для этого заклинания окончательными - учитывайте это при написании скриптов.</div></p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="M"></a>M$</b></font><br>
+<a target="form" href="../Form/Creature.htm">Тип монстра</a><br>
+Обычно вы можете использовать это для получения номера существа, но также можете установить значение для &quot;симуляции&quot; сопротивления 
+(фактически, сопротивляемость есть только у Големов и Элементалей)</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="N"></a>N$</b></font><br>
+Номер стека на поле боя (0..41)<br>
+<b><u onclick="HideIt(1)" class="h">Комментарий (<b id="show1">показать</b>)</u></b><div id="1" class="b">
+Эта команда должна возвращать номер стека, которого подвергнут магии, но на деле возвращает &laquo;мусор&raquo;.<br>
+<i id="bold">Замечание:</i> данный баг исправлен в <a href="../ERA/index.htm">ERA</a>.<br>
+Вот рабочий скрипт, с помощью которого можно сэмитировать действие MR:N..
+<script type="erm">
+!?FU29999; ф-ция получения ID стека
+;vx1 - номер стека (по умолчанию равно -1)
+!!UN:C42147184/4/?y1; 
+!!VRy1:+56; 
+!!UN:Cy1/4/?y2; получить ячейку поля боя, куда колдуют заклинание.
+!!FU|y2<0/y2>186:E;
+!!BU:Ey2/?y3; получить ID стека в ячейке y2
+!!FU&y3=-1:E;
+!!VRvx1:Sy3;
+
+!?MR1;
+!!VRv2:S-1;
+!!FU29999:Pv2; получить ID стека в v2
+!!FU&v2=-1:E;
+...</script>
+</p></div>
+<hr noshade><p>
+<font id="red"><b>
+<a name="S"></a>S$</b></font><br>
+<a target="form" href="../Form/Spell.htm">Номер заклинания</a><br>
+Опять же, наиболее полезно получать номер заклинания, но если вы его установите, вы можете привлечь и сопротивление Элементалей. 
+Но базовый урон подсчитывается прежде работы триггера, так что изменение заклинания не изменит урона.</p>
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+<script src="../erm.js"></script></body></html>

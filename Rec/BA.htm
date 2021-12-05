@@ -1,0 +1,154 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Ресивер BA</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;BA:&nbsp;&nbsp;</SPAN>
+
+	<A HREF="#A" title="Проверка на реальную битву" CLASS="button">A</A>
+	<A HREF="#B" title="Фон поле боя" CLASS="button">B</A>
+ <SPAN CLASS="buttoninactive">C</SPAN>
+	<A HREF="#D" title="Отмена или разрешение боя" CLASS="button">D</A>
+	<A HREF="#E" title="Проверка на сетевую битву" CLASS="button">E</A>
+ <SPAN CLASS="buttoninactive">F</SPAN>
+ <SPAN CLASS="buttoninactive">G</SPAN>
+	<A HREF="#H" title="Настроить бьющихся героев" CLASS="button">H</A>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+	<A HREF="#M" title="Настроить монстров в бою" CLASS="button">M</A>
+ <SPAN CLASS="buttoninactive">N</SPAN>
+	<A HREF="#O" title="Настроить бьющихся игроков" CLASS="button">O</A>
+	<A HREF="#P" title="Позиция битвы" CLASS="button">P</A>
+	<A HREF="#Q" title="Быстрая битва?" CLASS="button">Q</A>
+ <SPAN CLASS="buttoninactive">R</SPAN>
+	<A HREF="#S" title="Тип осадной битвы" CLASS="button">S</A>
+ <SPAN CLASS="buttoninactive">T</SPAN>
+ <SPAN CLASS="buttoninactive">U</SPAN>
+ <SPAN CLASS="buttoninactive">V</SPAN>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+
+</DIV>
+
+<DIV id="text">
+<p align="center">
+<font size="5">Ресивер <b>BA</b> (атрибуты битвы)</font></p><br>
+<b><font id="red">!!BA:XXXX;</font></font> - используется для установки атрибутов битвы.</b>
+<p>Вы можете использовать внутренние ссылки на героев (копию информации):<br>
+<b id="erm"><span class="re">!!HE-10:</span>&hellip;</b> применяет изменения к копии информации атакующего героя.<br>
+<b id="erm"><span class="re">!!HE-20:</span>&hellip;</b> применяет изменения к копии информации защищающегося героя.</font></p>
+<p><i>Примечание:</i><br>
+Проверка координат после битвы не сработает, так как герой исчезает с координат после боя. То же с монстрами - они исчезают сразу после их уничтожения. 
+Простейший путь - проверять текущего хозяина героя - если он равен -1, значит, игрок проиграл битву.</p>
+<p id="Q1">См. также: триггер <a href="../Tr/BA.htm">!?BA</a></p>
+<hr noshade><p>
+<b><font id="red"><a name="A"></a>A$</font></font></b><br>
+Получить или проверить (НЕ установить), если битва – только ИИ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – 1 если это только теоретическая битва (полностью ИИ-битва)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – 0 если это настоящая или быстрая битва<br>
+<b><u onclick="HideIt(1)" class="h">Комментарий (<b id="show1">показать</b>)</u></b><div id="1" class="b">
+Вы можете установить данный параметр, но это ни к чему не приведёт. Если происходит битва на карте (герой на героя, герой на монстров, герой на защищающийся объект&hellip;), 
+всегда срабатывает триггер !?BA#; Также соответственный ресивер !!BA&hellip; работает прекрасно. НО. Если битва происходит БЕЗ игрока-человека 
+(полностью ИИ-битва, не быстрая битва!), реальной симуляции не происходит. ИИ просто подсчитывает возможные потери, используя ИИ-ценность существ, не более. 
+Это означает, что в таких битвах не могут быть использованы следующие ресиверы (соответственные триггеры также не будут работать в этом случае):<br>
+<a href="BG.htm">!!BG</a>, <a href="BM.htm">!!BM</a>, 
+<a href="BH.htm">!!BH</a>, <a href="BU.htm">!!BU</a>, <a href="BF.htm">!!BF</a><br>
+Это важно для всех, кто хочет изменить ход битвы некими параметрами. Игра скорее всего просто вылетит.<br>
+Даже в битве игроков-людей, менеджер битв не до конца определён в секции триггера !?BA; так, вы <b>не можете</b> использовать <br>
+<script type="erm">!?BA0;
+!!BH0:N?v426;</script>
+Ресивер BH должен использоваться в секции соответствующего триггера или позже.</div></p>
+<hr noshade><p>
+<font id="red"><b><a name="B"></a>B#</b></font><br>
+Установить <a target="form" href="../Form/BA_B.htm">фон #</a> поля битвы.<br>
+<b><u onclick="HideIt(2)" class="h">Комментарий (<b id="show2">показать</b>)</u><br><div id="2" class="b">
+</b>Фон 21 – это чистое поле; я предполагаю, что здесь должен быть фон для битвы на Попутном ветре, но он не был доделан.<br>
+Фон 24 (битва корабль на корабль) не изменяет клетки пространства между кораблями на непроходимое, если битва проводится не на воде и не против корабля. 
+Т.е. по водному&nbsp; пространству можно будет проходить монстрам, и стоять там же.<br></div></p>
+<p><font id="red"><b>B^файл.pcx^</b></font><br>
+Установить свою картинку для поля боя.<br>
+Файл фона ищется в папке <i class="file">DATA</i>. Как обычно, имя файла + расширение не должно превышать 12 символов.</p>
+<hr noshade><p>
+<b><font id="red"><a name="D"></a>D#</font></b><br>
+Отменить или разрешить битву<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # – 1&nbsp; для отмены (автоматическая победа)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # – 0 для разрешения битвы</p>
+<hr noshade><p>
+<b><font id="red"><a name="E"></a>E$</font></b><br>
+Проверить на МП-битву:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – это статус битвы:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 2 – битва ИИ против неактивного Человека (на удалённом компьютере)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1 – человек на человека (2 компьютера)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0 – если это любая другая битва (на данном компьютере)<br>
+<b><u onclick="HideIt(3)" class="h">Комментарий (<b id="show3">показать</b>)</u></b><br><div id="3" class="b">
+Используйте эту команду для отключения скриптов, не поддерживающих МП-битвы.<br>
+Если $ больше нуля, битву становится нелегко контролировать с помощью ERM.<br>
+В Хот-сите данное значение всегда равно 0, то же самое для одиночной игры.</div></p>
+<hr noshade><p>
+<b><font id="red"><a name="H"></a>H#/$</font></b><br>
+Установить бьющихся героев<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # – 0 для атакующего <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # – 1 для защитника <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – <a target="form" href="../Form/NumberHeroes.htm">номер героя</a>. 
+$ = -2, если нет героя (данное значения возможно только у защитника)<br>
+Не пытайтесь установить атакующего героя как -2 (т.е. заставить его исчезнуть с поля боя). Игра просто вылетит на такой битве.</p>
+<hr noshade><p>
+<font id="red"><b><a name="M"></a>M#1/#2/$1/$2</b></font><br>
+Установить/проверить/получить монстров в битве<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – атакующий монстр (0) или защищающийся (1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – слот (0..6)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – <a target="form" href="../Form/Creature.htm">тип монстра</a> ( -1, если слот пуст)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – кол-во монстров</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="O"></a>O$1/$2</b></font><br>
+Получить атакующего и защищающегося игрока<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – <a target="form" href="../Form/GamersColor.htm">хозяин</a> атакующего<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – <a target="form" href="../Form/GamersColor.htm">хозяин</a> защитника (хозяин героя или монстра)<br>
+<b><u>Комментарий</u>:</b> можно только проверить или получить, установка значения ничего не изменит.</p>
+<hr noshade><p>
+<font id="red"><b><a name="P"></a>P$1/$2/$3</b></font><br>
+Позиция на карте (влияет только на фон и бонусы родной земли)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – X; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – Y; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $3 – L (уровень)<br>
+<u>
+<b onclick="HideIt(4)" class="h">Пример (<b id="show4">показать</b>)</b></u><div id="4" class="b">
+<script type="erm">!!BA:P10/15/0; - установить, что битва проводится в квадрате 10/15/0 (не имеет значения, что расположено там)</script></div></p>
+<hr noshade><p>
+<font id="red"><b><a name="Q"></a>Q$</b></font><br>
+Установить/проверить/получить флаг быстрой битвы<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – 1 если быстрая битва активирована<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – 0 если отключена</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="S"></a>S$</b></font><br>
+Проверить/получить тип осадной битвы<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – тип битвы,
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0 – обычная битва<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1 – осада форта<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 2 – осада цитадели<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 3 – осада замка<br>
+Правильное значение вы получите в триггере <a href="../Tr/BR.htm">!?BR</a> или позже. В триггере <a href="../Tr/BA.htm">!?BA</a> значение не определено.<br>
+Вы можете установить параметр, но это ничего не изменит.</p>
+
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+<script src="../erm.js"></script></body></html>

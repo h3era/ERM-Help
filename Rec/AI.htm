@@ -1,0 +1,114 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Ресивер AI</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;AI:&nbsp;&nbsp;</SPAN>
+
+ <SPAN CLASS="buttoninactive">A</SPAN>
+ <SPAN CLASS="buttoninactive">B</SPAN>
+ <SPAN CLASS="buttoninactive">C</SPAN>
+	<A HREF="#D" title="Удаление точки назначения" CLASS="button">D</A>
+ <SPAN CLASS="buttoninactive">E</SPAN>
+ <SPAN CLASS="buttoninactive">F</SPAN>
+ <SPAN CLASS="buttoninactive">G</SPAN>
+ <SPAN CLASS="buttoninactive">H</SPAN>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+ <SPAN CLASS="buttoninactive">M</SPAN>
+ <SPAN CLASS="buttoninactive">N</SPAN>
+ <SPAN CLASS="buttoninactive">O</SPAN>
+ <SPAN CLASS="buttoninactive">P</SPAN>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+ <SPAN CLASS="buttoninactive">R</SPAN>
+	<A HREF="#S" title="Установка точки назначения" CLASS="button">S</A>
+ <SPAN CLASS="buttoninactive">T</SPAN>
+ <SPAN CLASS="buttoninactive">U</SPAN>
+ <SPAN CLASS="buttoninactive">V</SPAN>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+
+</DIV>
+
+<DIV id="text">
+<p align="center">
+<font size="5">
+<p align="center">Ресивер<b> AI </b>(ИИ - контроллер)</font>
+<p align="left">
+<b><font id="red"><br>
+!!AI:XXXX;</font></b> 
+- <b>позволяет установить компьютерному игроку точку назначения, указав её 
+значимость.<br></b>
+Этот ресивер даёт вам некоторый контроль над передвижением ИИ. Вы можете 
+использовать&nbsp;его, чтобы вынудить героев ИИ двигаться в определённое место карты. 
+В зависимости от установленной значимости точки, ИИ может отклонить от пути для 
+сбора сокровищ, атаки более слабых монстров или героев, захвата шахты или 
+городов. Даже используя максимальную значимость, ИИ не всегда можно заставить 
+идти к нужной точке, если обстоятельства сильнее (например, у него есть армия, 
+он потерял последний замок, но поблизости есть пустой замок), но это редкость. 
+Другая возможность использования этого ресивера - настроить точки пути как для 
+патрулирования местности. Также можете связать координаты героя противника и 
+координаты точки назначения, и герой ИИ будет неумолимо преследовать героя 
+игрока.<br>
+Данная команда довольно ощутимо затормаживает 
+действия компьютера, при том, ИИ остается непредсказуем - он может и 
+&quot;ослушаться&quot; приказа идти в эту точку. Т.е. использование данной команды 
+нерационально.<br><br>
+<hr noshade>
+<p>
+<a name="D"></a><b><font id="red">D#1/#2/#3</font></b><br>
+Удалить точку назначения<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – <a target="form" href="../Form/NumberHeroes.htm">номер героя</a> 
+(-1 = любой)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – <a target="form" href="../Form/GamersColor.htm">номер игрока</a> 
+(-1 = любой)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #3 – номер точки назначения (-1 = удалить все точки 
+назначения для этого героя или игрока)</p>
+<hr noshade>
+<p>
+<a name="S"></a><b><font id="red">S#1/#2/#3/$1/$2/$3/$4/$5</font></b><br>
+Установить новую точку назначения<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – <a target="form" href="../Form/NumberHeroes.htm">номер героя</a> (-1 = любой) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – <a target="form" href="../Form/GamersColor.htm">номер игрока</a> (-1 = любой)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #3 – последовательный номер точки<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – X<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – Y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $3 – L<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $4 – значимость точки (500000 – значима, 5000000 – очень 
+значима)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $5 – флаг. Значения:<pre>
+	0 = нет флага,
+	1 = начинать с этой точки,
+	2 = не удалять эту точку после посещения,
+	3 = начинать с этой точки и не удалять её после посещения.</pre> 
+<b><u onclick="HideIt(1)" class="h">Комментарий (<b id="show1">показать</b>)</u></b><br><div id="1" class="b">
+<ol><li> Порядок работает так. Если вы установите точки назначения с номерами 2, 4, 5, 6, 88, 99 и установите флаг 1 
+для номера 6, герой будет двигаться так: 6, 88, 99, 2, 4, 5 и потом, если вы 
+поставите флаг &laquo;Не удалять&raquo; (например, для 88, 4 и 5), герой будет бегать так: 
+88, 4, 5, 88, 4, 5, 88, 4, 5&hellip;</li>
+<li> Вы можете установить любого игрока (-1) и это будет означать, что герой будет идти к точке независимо от 
+хозяина.</li>
+<li> Вы можете установить любого героя (-1) и это будет означать, что все герои будут двигаться к этой точке.</li>
+<li> Если первая точка одновременно и последняя, и установлена на &laquo;неудаление&raquo; после посещения, на 
+карте появится фантомный клон героя.</li>
+<li> Если герой не определен, и есть многочисленные точки назначения, то первый герой ИИ будет двигаться к 
+первой точке. После достижения точки второй герой начнёт продвигаться к следующей точке назначения. 
+Поэтому лучше назначить определённого героя во избежание хаоса.</li></ol></div></p>
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+
+</body></html>

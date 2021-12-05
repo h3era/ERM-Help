@@ -1,0 +1,109 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Ресивер MF</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;MF:&nbsp;&nbsp;</SPAN>
+
+ <SPAN CLASS="buttoninactive">A</SPAN>
+ <SPAN CLASS="buttoninactive">B</SPAN>
+ <SPAN CLASS="buttoninactive">C</SPAN>
+	<A HREF="#D" title="Изначальный урон" CLASS="button">D</A>
+	<A HREF="#E" title="Флаг получения урона" CLASS="button">E</A>
+	<A HREF="#F" title="Конечный урон" CLASS="button">F</A>
+ <SPAN CLASS="buttoninactive">G</SPAN>
+ <SPAN CLASS="buttoninactive">H</SPAN>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+ <SPAN CLASS="buttoninactive">M</SPAN>
+	<A HREF="#N" title="Номер отряда-получателя" CLASS="button">N</A>
+ <SPAN CLASS="buttoninactive">O</SPAN>
+ <SPAN CLASS="buttoninactive">P</SPAN>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+ <SPAN CLASS="buttoninactive">R</SPAN>
+ <SPAN CLASS="buttoninactive">S</SPAN>
+ <SPAN CLASS="buttoninactive">T</SPAN>
+ <SPAN CLASS="buttoninactive">U</SPAN>
+ <SPAN CLASS="buttoninactive">V</SPAN>
+	<A HREF="#W" title="Тип атаки" CLASS="button">W</A>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+
+</DIV>
+
+<DIV id="text">
+<p align="center"><font size="5">Ресивер <b>MF</b> (физическое повреждение)</font></p>
+<p><br>
+<b><font id="red">!!MF:XXXX;</font> - ресивер для контроля получаемого стеком физического повреждения.</b><br>
+<b><u onclick="HideIt(1)" class="h">Комментарий (<b id="show1">показать</b>)</u></b><div id="1" class="b">
+Вы можете проверить номер стека для получения детальной информации об этом стеке. Вы можете установить урон командой F$. 
+Вы можете игнорировать урон полностью, используя команду E0.<br>
+<u>Пример</u>:<br>
+Для симуляции через ERM способности магического блока, вы можете использовать триггер <a href="../Tr/MF.htm">!?MF</a>, подсчитать шанс срабатывания блока, 
+отменить повреждение командой <a href="#E">MF:E0</a>, показать анимацию блока с помощью <a href="BM.htm#V">BM:V84</a> 
+(а также, <a href="BM.htm#F">установить флаг</a> &quot;отряд принял защитное положение&quot; для большей реалистичности) 
+и добавить соответствующее сообщение в лист ведения боя командой <a href="MM.htm#S">MM:S</a>.</div></p>
+<p id="Q1">См. также: триггер <a href="../Tr/mf.htm">!?MF</a></p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="D"></a>D$</b></font><br>
+Текущий урон, который получит отряд</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="E"></a>E$</b></font><br>
+Разрешить (1 – по умолчанию) или запретить (0) получение повреждения.<br>
+Отмена будет означать, что стек не получит урона.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="F"></a>F$</b></font><br>
+Откорректированный урон, который получит стек.<br>
+<b><u onclick="HideIt(2)" class="h">Комментарий (<b id="show2">показать</b>)</u></b><div id="2" class="b">
+Если у вас несколько скриптов, где изменяется урон для стека, то учитывайте, что стек получит урон, установленный через MF:F в последнем триггере.<br>
+<u>Пример</u> от <code id="N1">Algor</code>'а:
+<script type="erm">!?MF1; !!MF:Fd5;
+!?MF1; !!MF:Fd3;
+Будет суммарное изменение урона (+8)</script>
+Однако, если так выставлять урон:
+<script type="erm">!?MF1; !!MF:F5;
+!?MF1; !!MF:F3;
+Будет просто урон 3.</script>
+Если нужно сделать два независимых скрипта, один из которых будет увеличивать урон на 20%, а другой - уменьшать на 15%, то лучше привязаться к базовому урону и считать проценты от него. Так получится результат, не зависящий от порядка выполнения триггеров:
+<script type="erm">!?MF1; !!MF:D?y1; !!VRy1:*20 :100; !!MF:Fdy1; [увеличиваем получаемый урон на 20%]
+!?MF1; !!MF:D?y1; !!VRy1:*-15 :100; !!MF:Fdy1; [снижаем получаемый урон на 15%]</script></div><p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="N"></a>N$</b></font><br>
+Номер стека (0..41), получающего урон. Может использоваться для получения более детальной информации командой <a href="BM.htm">!!BM</a></p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="W"></a>W$</b></font><br>
+Проверить/получить тип атаки:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ = 2 – выстрел башни<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1 – ров<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0 – другой (для конкретизации типа см. доп.информацию по <a href="../Tr/MF.htm">!?MF</a>)</p>
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+<script src="../erm.js"></script>
+</body></html>

@@ -1,0 +1,132 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>Ресивер CB</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;CB:&nbsp;&nbsp;</SPAN>
+
+	<A HREF="#A" title="Артефакт-награда" CLASS="button">A</A>
+ <SPAN CLASS="buttoninactive">B</SPAN>
+ <SPAN CLASS="buttoninactive">C</SPAN>
+ <SPAN CLASS="buttoninactive">D</SPAN>
+ <SPAN CLASS="buttoninactive">E</SPAN>
+ <SPAN CLASS="buttoninactive">F</SPAN>
+	<A HREF="#G" title="Охранники" CLASS="button">G</A>
+ <SPAN CLASS="buttoninactive">H</SPAN>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+	<A HREF="#M" title="Существа-награда" CLASS="button">M</A>
+ <SPAN CLASS="buttoninactive">N</SPAN>
+ <SPAN CLASS="buttoninactive">O</SPAN>
+ <SPAN CLASS="buttoninactive">P</SPAN>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+	<A HREF="#R" title="Ресурсы-награда" CLASS="button">R</A>
+	<A HREF="#T" title="Флаг посещения" CLASS="button">T</A>
+ <SPAN CLASS="buttoninactive">T</SPAN>
+ <SPAN CLASS="buttoninactive">U</SPAN>
+	<A HREF="#V" title="Слово посещения" CLASS="button">V</A>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+
+</DIV>
+
+<DIV id="text">
+<p align="center"><font size="5">Ресивер <b>CB</b> (банки существ)</font></p>
+<p><br>
+<b><font id="red">!!CB#1/#2/#3:XXXX;</font> 
+- установка параметров банка (хранилища) существ в X Y L.</b> Банк существ – <a target="form" href="../Form/Objects.htm#cb">тип 16</a>.<br>
+Вы можете дать в награду неограниченное кол-во артефактов, кроме свитков с заклинаниями.
+Если вы поставите в награду свиток, игра вылетит.<br>
+Этот ресивер работает также для Ветхого корабля (тип 24), Драконьей утопии (тип 25), Склепа (тип 84), Кораблекрушения (тип 85) (см. <a target="form" href="../Form/Objects.htm">объекты</a>).</p>
+<p id="Q1">См. также: таблицу <a href="../Form/CB.htm" target="form">хранилищ существ</a></p>
+<hr noshade>
+<p>
+<a name="A"></a><b><font id="red">A</font></b><br>
+Бонус – <a target="form" href="../Form/A1.htm">артефакт</a><br>
+<font id="red"><b>A1/$</b></font> - проверить/получить кол-во артефактов в таблице бонусов (установить нельзя!)<br>
+<font id="red"><b>A2/#/$</b></font> - установить/проверить/получить <a target="form" href="../Form/A1.htm">артефакт $</a> в позиции # (0&hellip;) в таблице бонусов<br>
+<font id="red"><b>A3/$</b></font> - добавить <a target="form" href="../Form/A1.htm">артефакт $</a> в конец бонусной таблицы<br>
+<font id="red"><b>A4/$</b></font> - удалить артефакт в позиции $ (0&hellip;) в таблице бонусов.</p>
+<hr noshade><p>
+<a name="G"></a><font id="red"><b>G#1/$2/$3</b></font><br>
+Установить/проверить/получить <a target="form" href="../Form/Creature.htm">охранников</a> в слоте #1 (0..6), типа $2 и кол-вом $3.<br>
+<u><b onclick="HideIt(1)" class="h">Дополнительно (<b id="show1">показать</b>)</b></u><br><div id="1" class="b">
+<p>Монстры располагаются так:<br>
+<table class="o" border=0>
+<tr><td>3</td><td>6</td><td>0</td></tr>
+<tr><td>5</td><td title="[X] - схематичное расположение армии героя">[X]</td><td>4</td></tr>
+<tr><td>2</td><td>&nbsp;</td><td>1</td></tr>
+</table>
+Причём, даже если вы настроили каких-либо монстров в слотах 0..4 включительно, то слоты 5 и 6 будут заняты копейщиками. 
+Во избежание этого используйте для слотов 5 и 6 значение монстра-охранника -1 кол-вом 0.</p>
+<p>Стоит отметить, что существует возможность изменения типа охраны сокровещниц напрямую, внося изменения в игровую память.<br>
+Вот перечень адресов памяти и их значений по умолчанию (предоставил <b id="N1">Igor</b>): <u onclick="HideIt(4)" class="h">(<b id="show4">показать</b>)</u><div id="4" class="b">
+<script type="erm">!!UN:C6750880/1/94;  Хранилище Циклопов
+!!UN:C6750900/1/16;  Сокровищница Гномов
+!!UN:C6750920/1/4;   Консерватория Грифонов
+!!UN:C6751108/1/12;  Консерватория Грифонов награда - Ангелы
+!!UN:C6750940/1/42;  Убежище Бесов
+!!UN:C6750960/1/76;  Склады Медуз
+!!UN:C6750980/1/38;  Банк Наг
+!!UN:C6751000/1/104; Улей Змиев
+!!UN:C6751124/1/108; Улей Змиев Награда - Виверны
+!!UN:C6751020/1/115; Ветхий корабль (Элементаль воды)
+!!UN:C6751040/1/60;  Кораблекрушение (Стражи)
+
+** Склеп
+!!UN:C6751060/1/56;  Скелет
+!!UN:C6751064/1/58;  Зомби
+!!UN:C6751068/1/60;  Страж
+!!UN:C6751072/1/62;  Вампир
+
+** Утопия драконов
+!!UN:C6751080/1/26;  Зелёный дракон
+!!UN:C6751084/1/82;  Красный дракон
+!!UN:C6751088/1/27;  Золотой дракон
+!!UN:C6751092/1/83;  Чёрный дракон</script></div>
+</p></div>
+</p>
+<hr noshade><p>
+<a name="M"></a><font id="red"><b>M$1/$2</b></font><br>
+Установить/проверить/получить бонусных существ <a target="form" href="../Form/Creature.htm">типа $1</a> и кол-вом $2 (1..127).<br>
+Чтобы удалить бонусное существо, установите тип -1 и кол-во 0.</p>
+<hr noshade><p>
+<a name="R"></a><font id="red"><b>R#1/$2</b></font><br>
+Установить/проверить/получить бонус ресурсов <a target="form" href="../Form/Resource.htm">типа #1</a> и кол-вом $2. Вы 
+можете установить все 7 ресурсов.</p>
+<hr noshade><p>
+<a name="T"></a><font id="red"><b>T$</b></font><br>
+Установить/проверить/получить, посещён ли банк (1) или нет (0).<br>
+<b><u onclick="HideIt(2)" class="h">Комментарий (<b id="show2">показать</b>)</u></b><div id="2" class="b">
+Если вы включаете хранилище снова (устанавливаете данную команду на 0), вам нужно установить как минимум одного охранника, 
+иначе следующий герой, посетивший данное хранилище, получит всю награду без битвы.</div></p>
+<hr noshade><p>
+<a name="V"></a><font id="red"><b>V$</b></font><br>
+Установить/проверить/получить слово &laquo;Посещено&raquo; для
+<a target="form" href="../Form/GamersColor_bit.htm">игрока $</a>.<br>
+<b><u onclick="HideIt(3)" class="h">Комментарий (<b id="show3">показать</b>)</u></b><div id="3" class="b">
+Это побитная маска, например, если хранилище посещал синий, красный и зелёный, и оно было ограблено синим сразу, 
+$ будет равно 2(синий)+1(красный)+8(зелёный)=11. Этим игрокам на жилище будет надпись, что оно посещено. Также, если игрок посетил хранилище, 
+но не атаковал, его биты всё равно занесутся в значение, редактируемое этой опцией, и игроку будет в подсказке указано кол-во охранников.</div></p>
+
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+<script src="../erm.js"></script></body></html>

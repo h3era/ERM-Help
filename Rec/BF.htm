@@ -1,0 +1,107 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Ресивер BF</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no"><DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;BF:&nbsp;&nbsp;</SPAN>
+
+ <SPAN CLASS="buttoninactive">A</SPAN>
+ <SPAN CLASS="buttoninactive">B</SPAN>
+	<A HREF="#C" title="Очистить поле боя от препятствий" CLASS="button">C</A>
+ <SPAN CLASS="buttoninactive">D</SPAN>
+ <SPAN CLASS="buttoninactive">E</SPAN>
+ <SPAN CLASS="buttoninactive">F</SPAN>
+ <SPAN CLASS="buttoninactive">G</SPAN>
+ <SPAN CLASS="buttoninactive">H</SPAN>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+	<A HREF="#M" title="Поместить скалу" CLASS="button">M</A>
+ <SPAN CLASS="buttoninactive">N</SPAN>
+	<A HREF="#O" title="Поместить определённое препятствие" CLASS="button">O</A>
+ <SPAN CLASS="buttoninactive">P</SPAN>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+ <SPAN CLASS="buttoninactive">R</SPAN>
+ <SPAN CLASS="buttoninactive">S</SPAN>
+ <SPAN CLASS="buttoninactive">T</SPAN>
+ <SPAN CLASS="buttoninactive">U</SPAN>
+ <SPAN CLASS="buttoninactive">V</SPAN>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+
+</DIV>
+
+<DIV id="text">
+
+<p align="center"><font size="5">Ресивер <b>BF</b> (поле битвы)</font></p>
+<p><br>
+<font id="red"><b>!!BF:XXXX;</b></font> <b>- установки <a target="form" href="../Form/BF.htm">поля боя</a>.</b><br>
+Эта команда позволяет вам настраивать поле битвы и может быть использована только после триггер <a href="../Tr/BF.htm">!?BF</a>, 
+т.к. подготовка поля битвы начинается до битвы, хотя и размещение препятствий ВОЗМОЖНО непосредственно в течение боя.<br>
+<b><u onclick="HideIt(1)" class="h">Комментарий (<b id="show1">показать</b>)</u></b><br><div id="1" class="b">
+Также мы заметили, что <a href="VR.htm#R">VR:R</a> не работает внутри триггера BF, или, скорее, воспроизводит один и тот же ряд чисел для каждого сражения. 
+Первое число, сгенерированное в сражении, всегда то же самое, сгенерированное в любом другом сражении. 
+Хотя, команда <a href="VR.htm#T">VR:T</a> работает прекрасно, но, понятно, может использоваться только один раз в триггере !?BF.<br>
+<b>Ответ от <b id="N1">Славы Сальникова</b> aka <b id="N1">ZVS</b>:</b><br>
+Я думаю, это сделано нарочно, таким образом вы сможете использовать тот же самый образец сражения всякий раз при загрузке карты. 
+Но есть способ обойти это:<br>
+1. Генерируем число командой VR:T &rarr; n<br>
+2. Теперь генерируем n-случайных чисел командой VR:R и пропускаем их<br>
+3. Теперь всё готово для использования VR:R в вашем скрипте.</div></p>
+<p id="Q1">См. также: триггер <a href="../Tr/BF.htm">!?BF</a></p>
+<hr noshade>
+<p>
+<a name="C"></a><font id="red"><b>C</b></font><br>
+Очистить поле боя (каждый квадрат доступен)
+<br>
+<b><u>Комментарий</u>:</b> если вам нужно удалить какое-либо определённое препятствие, при том не стирая остальное поле боя, попробуйте наложить на него заклинание &quot;Убрать препятствие&quot;.<br>
+<i id="bold">Замечание:</i> если использовать команду при осаде замка, замок потеряет все стены и башни (будут считаться разбитыми).</p>
+<hr noshade>
+<p>
+<a name="M"></a><b><font id="red">
+M#1/#2/#3/#4/#5/#6/#7/#8/#9/#10/#11(/#12)</font></b><br>
+Поместить скалу в определённую позицию на поле боя<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – побитная позиция от 0 до 16<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – побитная позиция от 17 до 33<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #3 – побитная позиция от 34 до 50&hellip;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&hellip;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #11 – побитная позиция от 170 до 186<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #12 – <a target="form" href="../Form/Obstacles.htm">тип препятствия</a> (0..90)<br>
+<b><u onclick="HideIt(2)" class="h">Комментарий (<b id="show2">показать</b>)</u></b><div id="2" class="b">
+Данная команда включает в себя функционал <a href="#C">BF:С</a>.<br>
+Если 12ый параметр опущен, используется препятствие 84.<br>
+Вы также можете поставить &quot;невидимое&quot; препятствие, используя для #12 значение -1. Оно невидимо и занимает 1 клетку. 
+Так, можно создать особый фон для поля боя с расчётом на непроходимость некоторых мест, которые через скрипт сделать непроходимыми с помощью невидимых препятствий. 
+Такие препятствия невозможно удалить заклинаниями &quot;Убрать препятствие&quot; и &quot;Снять заклинания&quot;.<br>
+<u>Пример</u>: (<a target="form" href="../Form/bf_s1.htm">см. скриншот</a>)<br>
+Побитная позиция: пусть в верхнем ряду поля битвы должны будут быть скалы: 11111111111111111 = 131071 (1+2+4+8+&hellip;+65536)<br>
+В остальных – пусть скала только одна в начале и одна в конце: 10000000000000001 = 65537 (65536+1)
+<script type="erm">ZVSE
+!?BF;
+!!BF:M131071/65537/65537/65537/65537/65537/65537/65537/65537/65537/131071;</script></div></p>
+<hr noshade>
+<p>
+<font id="red">
+<a name="O"></a><b>O#1/#2</b></font><br>
+Поместить отдельный объект<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – <a target="form" href="../Form/Obstacles.htm">тип препятствия</a> (0..90)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – <a target="form" href="../Form/BF.htm">позиция</a> (0..186)<br>
+<b><u>Комментарий</u>:</b> некоторые препятствия выглядят должным образом лишь на &quot;родной&quot; земле</p>
+
+<hr noshade>
+<p><b>Поле боя:</b><br><img src="../Img/BF.png"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+<script src="../erm.js"></script></body></html>

@@ -1,0 +1,131 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>Ресивер AR</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;AR:&nbsp;&nbsp;</SPAN>
+
+ <SPAN CLASS="buttoninactive">A</SPAN>
+ <SPAN CLASS="buttoninactive">B</SPAN>
+ <SPAN CLASS="buttoninactive">C</SPAN>
+ <SPAN CLASS="buttoninactive">D</SPAN>
+ <SPAN CLASS="buttoninactive">E</SPAN>
+ <SPAN CLASS="buttoninactive">F</SPAN>
+	<A HREF="#G" title="Настроить охранников" CLASS="button">G</A>
+ <SPAN CLASS="buttoninactive">H</SPAN>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+	<A HREF="#M" title="Настроить сообщение при посещении" CLASS="button">M</A>
+ <SPAN CLASS="buttoninactive">N</SPAN>
+ <SPAN CLASS="buttoninactive">O</SPAN>
+ <SPAN CLASS="buttoninactive">P</SPAN>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+ <SPAN CLASS="buttoninactive">R</SPAN>
+ <SPAN CLASS="buttoninactive">S</SPAN>
+ <SPAN CLASS="buttoninactive">T</SPAN>
+ <SPAN CLASS="buttoninactive">U</SPAN>
+	<A HREF="#V" title="Заклинание для свитка, кол-во для ресурса, тип подбора для артефакта" CLASS="button">V</A>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+	<A HREF="#X" title="Включение охранников" CLASS="button">X</A>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+
+</DIV>
+
+<DIV id="text">
+<p align="center"><font size="5">Ресивер <b>AR</b> (артефакты или ресурсы)</font></p>
+<p><br>
+<b><font id="red">!!AR#1/#2/#3:XXXX;</font> - артефакт или ресурс в координатах X Y L (#1/#2/#3).</b><br>
+<i>Расширение синтаксиса:</i><br>
+<b><font id="red">!!AR$:XXXX;</font> - </b>артефакт ИЛИ ресурс в координатах v[$], v[$+1], v[$+2] соответственно.<br>
+<b>Используется для модификации атрибутов артефактов или ресурсов в определённой позиции.</b><br>
+<a target="form" href="../Form/A1.htm">Артефакты</a> – <a target="form" href="../Form/Objects.htm">тип 5</a>, 
+свитки с <a target="form" href="../Form/Spell.htm">заклинаниями</a> – <a target="form" href="../Form/Objects.htm">тип 93</a>; 
+<a target="form" href="../Form/Resource.htm">ресурсы</a> – <a target="form" href="../Form/Objects.htm">тип 79</a>.</p>
+<p>
+Артефакты и ресурсы имеют раздельную нумерацию.</p>
+<p>
+<b><u onclick="HideIt(1)" class="h">Важное замечание (<b id="show1">показать</b>)</u></b><div id="1" class="b">
+Большинство этих команд не будут воздействовать на артефакт или кучку 
+ресурсов, если он не имеет некие установки, сделанные в Редакторе карт. Это 
+может быть простым настраиванием охраны у ресурса или артефакта. Если артефакт 
+или ресурс не имеет никакой специальной установки, то появится сообщение о 
+ошибке ERM. Вы можете использовать статусы опций вывода ошибок командами 
+<a href="UN.htm#p904">UN:P904 P905</a>, во избежание проблем; также можете использовать команду <a href="OB.htm#C">
+OB:C</a> для получения контрольного числа, и обработки его значения (но команда 
+V$ будет работать корректно, даже если свиток или ресурс не будут иметь 
+какой-либо установки).</div></p>
+<hr noshade>
+<p>
+<b><font id="red">
+<a name="G"></a>G#1/$2/$3</font></b><br>
+Установить/проверить/получить монстров - охранников <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – позиция (0..6)&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – <a target="form" href="../Form/Creature.htm">тип монстра</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $3 – кол-во монстров<br>
+Команда не может включить охранников, она может лишь поставить их. Используйте 
+опцию <a href="#X">X</a> для включения.</p>
+<hr noshade>
+<p>
+<b><a name="M"></a><font id="red">M^ТЕКСТ^</font></b><br>
+Установить текстовое послание ТЕКСТ. Длина текста может превышать 
+оригинальный. Послание может содержать любые символы, кроме &quot;^&quot; и &quot;;&quot;</p>
+<hr noshade>
+<p><font id="red"><b>M#</b></font><br>
+Установить текст сообщения такой же, что и в <a href="GE.htm">
+глобальном событии</a> под номером #.</p>
+<hr noshade><p>
+<b><font id="red">M-1</font></b><br>
+Восстановить оригинальное сообщение для артефакта</p>
+<hr noshade>
+<p>
+<font id="red"><b>Mz#</b></font><br>
+Установить текст из текстовой переменной z#</p>
+<hr noshade>
+<p><font id="red"><b>M1/$</b></font><br>
+Установить и получить текстовый параметр. Вы можете использовать 
+данную опцию, когда команда M используется для установки имени или сообщения.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – номер текстовой переменно<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = -1 – отключить сообщение (восстановить по умолчанию)</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="V"></a>V$</b></font><br>
+Установить/проверить/получить номер 
+<a target="form" href="../Form/Spell.htm">заклинания</a> в свитке (если ресурс, то кол-во 
+ресурса)<br>
+<b><u onclick="HideIt(2)" class="h">Комментарий (<b id="show2">показать</b>)</u></b><div id="2" class="b">Для артефактов это значение задаёт тип поднимания:<br>
+0 – Артефакт просто поднимается<br>
+1 – Предложение купить артефакт за 2000 монет<br>
+2 – Для поднятия артефакта требуется мудрость<br>
+3 – Для поднятия артефакта требуется лидерство<br>
+4 – Предложение купить артефакт за 2500 монет и 3 дерева<br>
+5 – Предложение купить артефакт за 3000 монет и 5 дерева<br>
+6 – У артефакта есть охрана (ещё один способ её включить)<br>
+Все значения большие 6 делают артефакт неподнимаемым.</div></p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="X"></a>X#</b></font><br>
+Включить охранников, если # не равно нулю, иначе - отключить. Проверки на 
+существование охранников нет.</p>
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+
+</body></html>

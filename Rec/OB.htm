@@ -1,0 +1,165 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Ресивер OB</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no"><DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;OB:&nbsp;&nbsp;</SPAN>
+ <SPAN CLASS="buttoninactive">A</SPAN>
+	<A HREF="#B" title="Удалить подсказку" CLASS="button">B</A>
+	<A HREF="#C" title="Контрольное число" CLASS="button">C</A>
+	<A HREF="#D" title="Запрет для игрока" CLASS="button">D</A>
+	<A HREF="#E" title="Разрешение для игрока" CLASS="button">E</A>
+ <SPAN CLASS="buttoninactive">F</SPAN>
+ <SPAN CLASS="buttoninactive">G</SPAN>
+	<A HREF="#H" title="Настроить подсказку" CLASS="button">H</A>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+	<A HREF="#M" title="Отключение сообщений" CLASS="button">M</A>
+ <SPAN CLASS="buttoninactive">N</SPAN>
+ <SPAN CLASS="buttoninactive">O</SPAN>
+ <SPAN CLASS="buttoninactive">P</SPAN>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+	<A HREF="#R" title="Включение" CLASS="button">R</A>
+	<A HREF="#S" title="Отключение" CLASS="button">S</A>
+	<A HREF="#T" title="Тип" CLASS="button">T</A>
+	<A HREF="#U" title="Подтип" CLASS="button">U</A>
+ <SPAN CLASS="buttoninactive">V</SPAN>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+</DIV>
+
+<DIV id="text">
+<p align="center"><font size="5">Ресивер <b>OB</b> (объекты)</font></p>
+<p>
+<br>
+<b><font id="red">!!OB#1/#2/#3:XXXX;</font> - ресивер объекта в X Y L, используется для активирования, деактивирования, 
+установки типа и других общих характеристик объекта в определённой позиции.</b><br>
+<b>
+<u onclick="HideIt(1)" class="h">Комментарий (<b id="show1">показать</b>)</u></b><div id="1" class="b">
+<p>Этим ресивером вы можете установить/проверить/получить тип объекта, его подтип и контрольное слово. 
+Этого достаточно, чтобы создать копию любого объекта, хоть и разного на вид, но одинаковых по свойствам.</p>
+<p><div id="Q1"><i id="bold">Как я могу проверить, человек или ИИ посещает объект?</i></div>
+Когда любой герой игрока посещает объект, флаг 1000 устанавливается на 1 (истина), а если это герой ИИ - на 0 (ложь).<br>
+<u>Пример</u>:
+<script type="erm">!?OB...;
+!!IF&1000:M^Игрок^;
+!!IF&-1000:M^ИИ^;</script></p></div></p>
+<p id="Q1">См. также: триггер <a href="../Tr/OB.htm">!?OB</a></p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="B"></a>B</b></font><br>
+Удалить подсказку по правому клику об объекте.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="C"></a>C$</b></font><br>
+Установить/проверить/получить <a href="../Cont/ConWords.htm">контрольное слово</a> объекта.<br>
+<b><u onclick="HideIt(2)" class="h">Комментарий (<b id="show2">показать</b>)</u></b><div id="2" class="b">
+<i><b>Контрольное слово</b></i> - код объекта в игре, означающий некий внутренний параметр объекта.<br>
+Например, &laquo;Плавучий Сундук&raquo; может хранить такие значения данной команды:<br>
+0 = пустой<br>
+1 = 1500 золота<br>
+2 = 1000 золота и артефакт
+<ul><li>Пример <i>определения</i> артефакта в сундуке:
+<script type="erm">!!OB998:C?y1;
+!!VRy2:Sy1 &7;
+!!VRv1&y2=2:Sy1 :8 &255 -1;</script>
+Теперь v1 хранит <a target="form" href="../Form/A1.htm">номер артефакта</a>, если он там есть.<br></li>
+<li>Пример <i>установки</i> артефакта в сундук:
+<script type="erm">!!OB998:Cx; где 'x' - число артефакта.</script>
+Расчёт числа проводится по этой формуле:<br>
+<font color=purple>8&times;<i><b>z</b></i> – 8190</font>, где <i><b>z</b></i> - <a target="form" href="../Form/A1.htm">номер артефакта</a>.<br>
+Полученное число вписываем вместо <i><b>x</b></i>, и теперь в сундуке 1000 золота и ваш артефакт.</li></ul></div></p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="D"></a>D#</b></font><br>
+Запретить игроку 
+	<a target="form" href="../Form/GamersColor.htm">цвета #</a> использовать этот объект</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="E"></a>E#</b></font><br>
+Разрешить игроку 
+	<a target="form" href="../Form/GamersColor.htm">цвета #</a> использовать этот объект</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="H"></a>H$</b></font><br>
+Задать подсказку для любого <a target="form" href="../Form/Objects.htm">объекта</a> (по клику <img src="../Img/RBM.gif" id="vc">).<br>
+Установить сообщение в переменную z ($ - номер <i>z</i>-переменной)<br>
+<b><u>Комментарий</u>:</b> подсказка может выводиться на экран даже, если объект скрыт туманом.</p>
+<p id="Q1">См. также: ресивер <a href="HT.htm">!!HT</a></p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="M"></a>M$1/$2/$3</b></font><br>
+Эта команда может отключить множество стандартных игровых сообщений и вопросов для объекта в любое время:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 –
+<a target="form" href="../Form/GamersColor.htm">какому игроку</a> (-1 – для всех)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – отменить (1) следующее сообщение при посещении<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $3 – следующий статус $2 после виртуального или реального появления сообщения<br>
+<b><u onclick="HideIt(3)" class="h">Комментарий (<b id="show3">показать</b>)</u></b><div id="3" class="b">
+Это не настоящая отмена, это АВТОответ (по умолчанию – &laquo;нет&raquo;). Все сообщения через <a href="IF.htm">ресивер IF</a> будут показаны как обычно.<br>
+<u>Пример</u>:
+<script type="erm">!!OB1/2/0:M-1/1/0;</script>
+Последующий посетитель объекта в координатах (1/2/0), невзирая какого он цвета, не получит сообщения/вопроса или других слов, 
+будет выглядеть так, будто игрок нажал &laquo;нет&raquo;.</div></p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="R"></a>R</b></font><br>
+Разрешить ВСЕМ игрокам использовать этот объект</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="S"></a>S</b></font><br>
+Запретить ВСЕМ игрокам использовать этот объект<br>
+<b><u onclick="HideIt(4)" class="h">Комментарий (<b id="show4">показать</b>)</u></b><div id="4" class="b">
+Когда объект отключается на карте, при его посещении ERM ресиверы для соответствующего объекта БУДУТ выполняться. 
+Эта команда отключает только стандартные свойства объекта.<br>
+<b>ВАЖНО:</b> будьте осторожны – не используйте команду OB:S для объектов с двумя входами (2 жёлтые клетки).</div></p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="T"></a>T$</b></font><br>
+Установить/проверить/получить <a target="form" href="../Form/Objects.htm">тип объекта</a></p>
+<u onclick="HideIt(5)" class="h"><b>Комментарий</b><a href="../ERA/index.htm" title="Работает только с ERA.."><img src="../Img/era.gif" class="TE"></a>(<u id="show5">показать</u>)</u><div id="5" class="b">Иногда нет возможности через команды [<a href="#T">T</a>] и [<a href="#U">U</a>] определить тип/подтип объекта,
+если на нём стоит герой. Для этого можно воспользоваться такой функцией:
+<script type="erm">!?FU(GetRealObjectOnMap);
+; Получение реального типа объекта на карте (например, под героем)
+; x1/x2/x3 - координаты объекта на карте
+; ?x4/?x5 - возврат значений: тип/подтип объекта
+!!VRx4:S-1;
+!!VRx5:S-1;
+!!UN:C6918840/4/?y1;
+!!VRy1:+92;
+!!UN:Cy1/4/?y2;
+!!SN:E4228816/2/y2/x1/x2/x3;
+!!VRy1:Sv1 +30;
+!!UN:Cy1/2/?x4;
+!!VRy1:+4;
+!!UN:Cy1/2/?x5;</script></div>
+
+<hr noshade><p>
+<font id="red"><b>
+<a name="U"></a>U$</b></font><br>
+Установить/проверить/получить <a target="form" href="../Form/Objects.htm">подтип объекта</a></p>
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+<script src="../erm.js"></script></body></html>

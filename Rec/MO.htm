@@ -1,0 +1,154 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Ресивер MO</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;MO:&nbsp;&nbsp;</SPAN>
+
+	<A HREF="#A" title="Артефакт" CLASS="button">A</A>
+	<A HREF="#B" title="Ресурсы" CLASS="button">B</A>
+ <SPAN CLASS="buttoninactive">C</SPAN>
+ <SPAN CLASS="buttoninactive">D</SPAN>
+ <SPAN CLASS="buttoninactive">E</SPAN>
+ <SPAN CLASS="buttoninactive">F</SPAN>
+	<A HREF="#G" title="Кол-во монстров" CLASS="button">G</A>
+ <SPAN CLASS="buttoninactive">H</SPAN>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+	<A HREF="#M" title="Сообщение" CLASS="button">M</A>
+ <SPAN CLASS="buttoninactive">N</SPAN>
+	<A HREF="#O" title="Флаг увеличения кол-ва" CLASS="button">O</A>
+ <SPAN CLASS="buttoninactive">P</SPAN>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+	<A HREF="#R" title="Агрессивность" CLASS="button">R</A>
+ <SPAN CLASS="buttoninactive">S</SPAN>
+ <SPAN CLASS="buttoninactive">T</SPAN>
+	<A HREF="#U" title="Флаг возможности сбежать" CLASS="button">U</A>
+ <SPAN CLASS="buttoninactive">V</SPAN>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+</DIV>
+<DIV id="text">
+<p align="center"><font size="5">Ресивер <b>MO</b> 
+(монстр на позиции)</font></p>
+<p>
+<br>
+<b><font id="red">!!MO#1/#2/#3:XXXX;</font> 
+</b>–<b> параметры монстра в X Y L.</b><br>
+<i>Расширение синтаксиса 1:</i><br>
+<font id="red"><b>!!MO#1/#2/#3/#4:XXXX;</b></font> – монстр в координатах X Y L, четвёртый параметр используется для отмены проверки существования монстра в начале карты.<br>
+<i>Расширение синтаксиса 2:</i><br>
+<font id="red"><b>!!MO$:XXXX;</b></font> – монстр в координатах: v[$], v[$+1], v[$+2]<br>
+<b>Используется для изменения параметров монстров в определённой позиции.<br>
+<u onclick="HideIt(1)" class="h">Комментарий (<b id="show1">показать</b>)</u></b><div id="1" class="b">Теперь команды MO#1/#2/#3 и MO#1/#2/#3/1 одинаковы по смыслу. 
+В обоих случаях присутствие монстра на карте не обязательно, но формат остался для совместимости.<u><b></b><br>
+</u>Команды M, B и A могут быть использованы лишь для изменённых в редакторе монстров (сообщение, ресурс или артефакт). 
+Вы не можете установить сообщение монстру, но вы можете изменить агрессивность, кол-во и т.п. Если вы попытаетесь это сделать, 
+то получите сообщение об ошибке, для избегания этого используете статусы опций <a href="UN.htm#p904">UN:P904</a>, либо значения 
+<a href="OB.htm#C">OB:C</a> для получения контрольного числа, и обработки его значения. Помните, что вы можете настроить все параметры монстра, если он уже помещён на карту. 
+Для всех монстров, помещаемых командой <a href="UN.htm#I">UN:I</a>, вы можете применить любую команду.</div></p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="A"></a>A$</b></font><br>
+Установить/проверить/получить <a target="form" href="../Form/A1.htm">артефакт</a> монстров в $</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="B"></a>B#1/$2</b></font><br>
+Установить/проверить/получить кол-во <a target="form" href="../Form/Resource.htm">ресурса #1</a> в $2 (м.б. отрицательным)</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="G"></a>G$</b></font><br>
+Установить/проверить/получить кол-во монстров в $.<br>
+<i id="bold">Замечание:</i> максимальное число монстров в виде отряда на карте – 4095 (или 12 бит). При бо&#x301;льших значениях есть вероятность порчи данных касаемо агрессии отряда.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="M"></a>M^Текст^</b></font><br>
+Установить послание. Длина текста не может быть длинней оригинального. Может содержать любые символы, кроме ^ и ;</p>
+<hr noshade>
+<p><font id="red"><b>M#</b></font><br>
+Установить текст из глобального события номер #</p>
+<hr noshade><p>
+<font id="red"><b>M-1</b></font><br>
+Не показывать сообщение, указанное в редакторе</p>
+<hr noshade><p>
+<font id="red"><b>Mz#</b></font><br>
+Установить/получить текст сообщения в текстовую переменную</p>
+<hr noshade><p>
+<font id="red"><b>M1/$<br>
+M1/-1</b></font><br>
+Установить и получить текстовые параметры.<br>
+Вы можете использовать эту команду, если команда M использовалась для установки послания.<br>
+M1/$ – номер текстовой переменной в $<br>
+M1/-1 – отменить (восстановить по умолчанию) сообщение</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="O"></a>O#</b></font><br>
+Установить/проверить/получить, может ли увеличиваться отряд<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # = 1 – кол-во не увеличивается<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # &lt; &gt; 1 – кол-во увеличивается</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="R"></a>R$/#</b></font><br>
+Установить/проверить/получить агрессивность<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – <a href="#" onclick="hidepic(3)" class="h">уровень агрессии</a><div id="3" class="b">
+	<blockquote style="position:relative;top:-15">
+	0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; – податливые (всегда присоединятся)<br>
+	1..7&nbsp;&nbsp; – дружелюбные<br>
+	1..10 – агрессивные <br>
+	4..10 – враждебные<br>
+	10&nbsp;&nbsp;&nbsp;&nbsp; – кровожадные (никогда не присоединятся)</blockquote></div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # – фантомный параметр (не используется, но нужен для различия от старого синтаксиса), может принимать любые значения<br>
+<u>
+<b onclick="HideIt(2)" class="h">Пример (<b id="show2">показать</b>)</b></u><br><div id="2" class="b">
+Допустим, нам надо сделать герою Гелар способность снижать агрессию нейтралов на 1 уровень&hellip;<br>
+Вот вариант такой реализации:
+<script type="erm">!?OB54;
+!!OW:A-1/?y1;	текущий герой
+!!FU&y1<>142:E;	стоп, если не Гелар
+!!MO998:R?y2/1;	узнать злобность монстров
+!!FU&y2=0:E;	стоп, монстры и так податливы
+!!VRv5249:Sy2;	сохраняем исходную злобность
+!!VRy3:S0;
+; настраиваем новую враждебность..
+ !!VRy3&y2>0/y2<4:S0;	Податливы
+ !!VRy3&y2>3/y2<8:S1;	Дружелюбны
+ !!VRy3&y2>7/y2<10:S4;	Агрессивы
+ !!VRy3&y2>9:S7;	Враждебны
+;
+!!MO998:Ry3/1;		сменить злобность
+!!IF:V540/1;	выставляем флаг "активации способности"
+
+!$OB54&540; 	Гелар "задействовал" спрособность
+!!IF:V540/0;	сброс флага
+!!OB998:T?y1;
+!!FU&y1<>54:E;    стоп, если уже нету монстра
+!!MO998:Rv5249/1; вернуть прежнюю злобность</script></div></p>
+<p><i>Старый синтаксис:</i> <font id="red"><b>MO:R0</b></font> (присоединятся) или <font id="red"><b>MO:R1</b></font> (не присоединятся).</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="U"></a>U#</b></font><br>
+Установить/проверить/получить, может ли монстр сбежать.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # = 1 – не может<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # &lt; &gt; 1 – может</p>
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+<script src="../erm.js"></script></body></html>

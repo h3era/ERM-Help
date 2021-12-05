@@ -1,0 +1,403 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Ресивер VR</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script>
+</head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+
+ <SPAN CLASS="options">Операции:</SPAN>
+	<A HREF="#AND" style="display:inline" title="Битовая операция И" CLASS="button">AND</A>
+	<A HREF="#OR" style="display:inline" title="Битовая операция ИЛИ" CLASS="button">OR</A>
+	<A HREF="#XOR" style="display:inline" title="Битовая операция ИСКЛЮЧАЮЩЕЕ ИЛИ" CLASS="button">XOR</A>
+	<A HREF="#Mat" style="display:inline" title="Арифметические операции с переменными.." CLASS="button">Арифметические</A>
+<br><i style="font:0.1%"></i><br>
+<SPAN CLASS="options">Опции&nbsp;VR:&nbsp;&nbsp;</SPAN>
+
+ <SPAN CLASS="buttoninactive">A</SPAN>
+ <SPAN CLASS="buttoninactive" title="Преобразование любого числа в логическое значение (1 или 0).&#10;Команда доступна на ERA3+"><font color="red">B</font></SPAN>
+	<A HREF="#C" title="Настройка нескольких v-переменных" CLASS="button">C</A>
+ <SPAN CLASS="buttoninactive">D</SPAN>
+ <SPAN CLASS="buttoninactive">E</SPAN>
+ <SPAN CLASS="buttoninactive" title="Принудительное определение значения в определённом диапазоне.&#10;Команда доступна на ERA3+"><font color="red">F</font></SPAN>
+ <SPAN CLASS="buttoninactive">G</SPAN>
+	<A HREF="#H" title="Проверка на пустой текст" CLASS="button">H</A>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+	<A HREF="#M" title="Операции с подстроками" CLASS="button">M</A>
+ <SPAN CLASS="buttoninactive">N</SPAN>
+ <SPAN CLASS="buttoninactive">O</SPAN>
+ <SPAN CLASS="buttoninactive">P</SPAN>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+	<A HREF="#R" title="Генерация значения" CLASS="button">R</A>
+	<A HREF="#S" title="Установка значения" CLASS="button">S</A>
+	<A HREF="#T" title="Генерация значения (по времени)" CLASS="button">T</A>
+	<A HREF="#U" title="Поиск текста" CLASS="button">U</A>
+	<A HREF="#V" title="Конвертация текста в число" CLASS="button">V</A>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive" title=" Создать локальную временную z-переменную триггера с заданным содержимым.&#10;Команда доступна на ERA3+"><font color=red>Z</font></SPAN>
+	<A style="position:absolute; right:4" href="#UP" CLASS="button" title="Вернуться к началу">&uarr;</a>
+
+</DIV>
+
+<DIV id="text">
+<a name="up"></a>
+<p align="center"><font size="5">Ресивер <b>VR</b> 
+	(переменные) </font></p>
+<p><br>
+<b><font id="red">!!VR@:XXXX;</font> 
+	- менеджмент переменных.</b> Используется для действий с переменными 
+(установка, сравнение, математические действия).</p>
+<p id="Q1">См. также: <a href="#String">команды над <i>z</i>-переменными</a>, <a href="#AddString">соединение <i>z</i>-переменных</a>, 
+<a href="../Cont/Flags.htm#var_show">переменные в сообщениях</a>, <a href="../Cont/Flags.htm">флаги и переменные</a></p>
+
+<hr noshade>
+<p><font id="red"><b><a name="C"></a>
+C$1/$2/$3/$4/$5/$6/$7/$8/$9/$10/$11/$12/$13/$14/$15/$16</b></font><br>
+Установить/проверить <i>v</i>-переменные<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – значение для <i>v</i>-переменной @<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – установить/проверить <i>v</i>-переменную (@)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – установить/проверить <i>v</i>-переменную (@+1)<br>
+&nbsp;&nbsp;<i id="step">&hellip;</i><br>
+&nbsp;&nbsp;<i id="step">&hellip;</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $16 – установить/проверить <i>v</i>-переменную (@+15)<br>
+Команда поддерживает до 16 параметров.<br>
+<i id="bold">Замечание:</i> в <a href="../ERA/index.htm">ERA</a> добавлена поддержка <i>v</i>, <i>y</i>, <i>x</i> и <i>w</i>-переменных.<br>
+<u><b onclick="HideIt(1)" class="h">Пример (<b id="show1">показать</b>)</b></u><div id="1" class="b">
+<script type="erm">!!VRv123:C23/v15/?i/y4;
+Результат:
+v123 = 23, v124 = v15, i = v125, v126 = y4</script>
+<u>Пример</u> от <code id="N1">Donald</code>'а:<br>
+Можно использовать эту команду для составления таблицы; это простой метод 
+получения случайного заклинания. К примеру:
+<script type="erm">!!VRv600:C0/3/5/15/27/31/32/35/37/41/42/43/46/53/54; - таблица номеров заклинания первого уровня
+!!VRy1:S600 R14; - случайное число в интервале 600..614
+!!VRv1:Svy1; - теперь v1 хранит случайное заклинание первого уровня</script></div></p>
+<hr noshade><p>
+<font id="red"><b><a name="R"></a>Rx</b></font><br>
+Генерировать случайное значение от 0 до x (включительно) и ДОБАВИТЬ его к текущему значению.<br>
+<u>Пример</u>:
+<script type="erm">!!VRi:R25; - будет сгенерированно случайное число в диапазоне [0..25] и добавлено к текущему значению переменной</script>
+<hr noshade>
+<p><font id="red"><b>R#/$</b></font><br>
+Установить генератор случайных чисел на одно значение.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$ – номер случайного числа в генераторе для синхронизации.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+# – фантомный параметр (не используется)<br>
+Если вы не уверены, что генератор случайных чисел в одинаковой 
+позиции на обоих компьютерах, вы можете просто перезапустить их на один ритм.</p>
+<hr noshade><p>
+<font id="red"><b><a name="S"></a>S#</b></font><br>
+Установить переменную @ на # (здесь и ниже # может означать имя другой переменной).<br>
+<u>Пример</u>:
+<script type="erm">!!VRv5:C0/0/0; записать нули в v5..v7
+!!VRv5:S12; v5=12
+!!VRv6:Sv5; v6=v5
+!!VRv6:S?v7; v7=v6
+Имеем: v5 = v6 = v7 = 12</script></p>
+<hr noshade><p><font id="red"><b>
+<a name="T"></a>T$</b></font><br>
+Генерировать случайное значение от 0 до $ и добавить его к текущему 
+значению переменной. Значение базируется на значении времени.<br>
+<u><b onclick="HideIt(14)" class="h">Комментарий (<b id="show14">показать</b>)</b></u><div id="14" class="b">
+При использовании этой команды, если вы сгенерируете два или более значения за один ресивер, они могут быть равными, поэтому в таких ситуациях используйте VR:R.<br>
+Состояние генератора НЕ синхронизируется автоматически между удалёнными ПК. Не используйте команду в режиме битвы для повышения совместимости вашего кода с мультиплеером.</div></p>
+
+<hr noshade><h3><a name="Log"></a>Логические битовые операции</h3>
+<p>См. также: <a href="../Cont/ConWords.htm#Logic">Логические битовые операции в WoG</a></p>
+<p><b id="red"><a name="AND"></a>&amp;$</b>
+<p>
+<table cellpadding=3 border=1 id="le"><tr class="erm-line">
+<td id="dl2">AND</td>
+<td>0&nbsp;и&nbsp;0&nbsp;&rarr;&nbsp;<b>0</b></td>
+<td>0&nbsp;и&nbsp;1&nbsp;&rarr;&nbsp;<b>0</b></td>
+<td>1&nbsp;и&nbsp;0&nbsp;&rarr;&nbsp;<b>0</b></td>
+<td>1&nbsp;и&nbsp;1&nbsp;&rarr;&nbsp;<b>1</b></td>
+</tr></table>
+</p>
+&laquo;<b>&amp;</b>&raquo; - битовая операция И над битами переменной, может быть использована для 
+проверки, был ли установлен определённый <a href="../Form/HEX.htm" target="form">бит</a>.<br>
+Например, проверим, есть ли в v1-переменной 4ый бит (16):<br>
+<script type="erm">!!VRv1:&16;
+v1 будет установлена на 16, если 4ый бит существует, и на 0, если не существует.</script> 
+Так, эта команда может быть очень полезна, к примеру, при проверке на <a href="../Form/FlaggedAbilities.htm" target="form">флаги существ</a>.<br>
+<u><b onclick="HideIt(2)" class="h">Пример (<b id="show2">показать</b>)</b></u><div id="2" class="b">
+<script type="erm">!!BMx16:F?i; - записать флаги стека в переменную i
+!!VRi:&134217728; - посмотреть, существует ли бит "Защита"
+!!IF&i>0:M^Этот отряд принял защитную стойку^;</script></div><br>
+Вы также можете удалить определённый бит без удаления остальных бит в переменной.<br>
+Для этого используйте: &-(N+1), где N - значение удаляемого бита.<br>
+<u><b onclick="HideIt(12)" class="h">Пример (<b id="show12">показать</b>)</b></u><div id="12" class="b">
+Для удаления у монстра флага &laquo;живой&raquo; (бит 16), используйте: -(16+1) = -17.
+<script type="erm">...
+!!VRv1:&-17;</script>
+Вместе с тем, часто многими скриптерами используется такой способ удаления флага, когда перед самим удалением этот же флаг прибавляется. 
+Такой способ исключает ситуацию, когда вы будете удалять флаг, которого у монстра изначально не было (эдакая защита &quot;от дурака&quot;).
+<script type="erm">...
+!!VRv1:|16 -16;</script></div></p>
+
+<hr noshade>
+<p><b id="red"><a name="OR"></a>|$</b>
+<p><table cellpadding=3 border=1 id="le"><tr class="erm-line">
+<td id="dl2">OR</td>
+<td>0&nbsp;и&nbsp;0&nbsp;&rarr;&nbsp;<b>0</b></td>
+<td>0&nbsp;и&nbsp;1&nbsp;&rarr;&nbsp;<b>1</b></td>
+<td>1&nbsp;и&nbsp;0&nbsp;&rarr;&nbsp;<b>1</b></td>
+<td>1&nbsp;и&nbsp;1&nbsp;&rarr;&nbsp;<b>1</b></td>
+</tr></table>
+</p>
+&laquo;<b>|</b>&raquo; - битовая операция ИЛИ над битами переменных, может быть использована 
+для установки определённого бита без изменения других бит. Например, установим 5й бит (32) в v1:
+<script type="erm">!!VRv1:|32;</script>
+Если v1 уже имеет этот бит, ничего не изменится. Если нет, бит будет установлен.<br>
+Это может быть полезно для добавления новых <a href="../Form/FlaggedAbilities.htm" target="form">флагов монстрам</a>, если вы не знаете, 
+какие флаги они уже имеют, и фактически, это единственный полностью безопасный синтаксис для этого действия.</p>
+
+<hr noshade>
+<p><b id="red"><a name="XOR"></a>X$</b>
+<p>
+<table cellpadding=3 border=1 id="le"><tr class="erm-line">
+<td id="dl2">XOR</td>
+<td>0&nbsp;и&nbsp;0&nbsp;&rarr;&nbsp;<b>0</b></td>
+<td>0&nbsp;и&nbsp;1&nbsp;&rarr;&nbsp;<b>1</b></td>
+<td>1&nbsp;и&nbsp;0&nbsp;&rarr;&nbsp;<b>1</b></td>
+<td>1&nbsp;и&nbsp;1&nbsp;&rarr;&nbsp;<b>0</b></td>
+</tr></table>
+</p>
+Выполняет битовое исключающее ИЛИ над битами переменной.<br>
+Например, X-1 инвертирует биты переменной.<br>
+Для проверки разницы между двумя переменными используйте синтаксис: <b><font class="re">!!VR</font></b>@:X$,
+где @ - переменная, являющаяся одной из переменных для сравнения и также получающая результат сравнения; 
+$ - вторая переменная для сравнения.<br>
+<u><b onclick="HideIt(3)" class="h">Пример (<b id="show3">показать</b>)</b></u><div id="3" class="b">
+Скажем, v1=163 (10100011) и v2=106 (01101010). 
+Тогда..
+<script type="erm">!!VRv1:Xv2; в v2 всё ещё 106
+
+ 10100011
+ 01101010
+;-------- XOR
+ 11001001</script>
+Итак, v1=201 (11001001).<br>
+Давайте теперь инвертируем статус бита переменной:
+<script type="erm">!!VRi:X256;
+Если переменная i имеет включенный 8ой бит (256), он отключится, иначе - включится.</script></div></p>
+
+<hr noshade><h3><a name="Mat"></a>Арифметические операции с переменными.</h3>
+<p><table class="one" cellpadding=2 style="margin:0 0 5 5">
+	<tr><td width="30"><b id="red">+#</b></td><td>Добавить # к переменной</td></tr>
+	<tr><td><b id="red">-#</b></td><td>Отнять # от переменной</td></tr>
+	<tr><td><b id="red">*#</b></td><td>Умножить переменную на #</td></tr>
+	<tr><td><b id="red">:#</b></td><td>Разделить переменную на # (не пытайтесь разделить на 0)</td></tr>
+	<tr><td><b id="red">%#</b></td><td>Установить переменную на значение остатка от деления на #</td></tr>
+</table>
+<u>Пример</u>:
+<script type="erm">!!VRi:-1 +v15; - отнять единицу и прибавить v15</script>
+<u><b onclick="HideIt(13)" class="h">Комментарии (<b id="show13">показать</b>)</b></u><div id="13" class="b">
+<ul>
+	<li>Делить на ноль по-прежнему нельзя :) Если такое всё же произойдёт, появится ошибка&nbsp;ERM:&nbsp;<span id="dl3">Sorry.&nbsp;Division&nbsp;by&nbsp;zero&nbsp;:-)</span>.</li>
+	<li>Нахождение остатка от деления, когда у вас отрицательное делимое, происходит так же, как и для положительного числа, но остаток получается отрицательным:
+<script type="erm">!!VRv1:S-5;	Пусть v1=-5
+!!VRv1:%2;	тогда остаток от деления на 2 будет = -1</script>
+Т.е. для таких операций знак берётся по делимому. Остальное подчиняется формуле: [Частное] &times; [Делитель] + [Остаток] = [Делимое].</li>
+	<li>Существует баг – после операций с переменной <i>i</i> для того же ресивера арифмет.операции <b>+</b>/<b>-</b> не срабатывают, когда идут следом через пробел (исправлено в <a href="../ERA/index.htm">ERA</a>).
+<script type="erm">!!VRi:S10;
+!!VRy1:Si -1; [y1=10, что не верно]
+!!VRy2:Si +1; [y2=10, что не верно]
+!!VRy3:Si -j; [будет ошибка ЕРМ]
+!!VRy4:Si +y1; [будет ошибка ЕРМ]</script>
+</li>
+</ul></div>
+</p>
+
+<hr noshade><h3><a name="String"></a>Команды над текстовыми переменными</h3>
+<p><font id="red"><b>!!VRz#</b></font><br>
+Есть следующие текстовые переменные:<br>
+z1&hellip;z1000. Они могут быть изменены (любая переменная) для использования.</p>
+<hr noshade><p>
+<font id="red"><b><a name="H"></a>H#</b></font><br>
+Установить, содержит ли <i>z</i>-переменная пустое значение или нет.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # – номер флага для сохранения 
+результата&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;= 1 – если там текст<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;= 0 – если переменная пуста<br>
+Все знаки вроде пробела, новых строк будут игнорированы и расценены как пустые.<br>
+<u><b onclick="HideIt(4)" class="h">Пример (<b id="show4">показать</b>)</b></u><div id="4" class="b">
+<script type="erm">!!VRz100:S^Здорово!^;
+!!VRz101:S^^;
+!!VRz102:S^ ^;
+!!VRz100:H300; - флаг 300 = 1
+!!VRz101:H301; - флаг 301 = 0
+!!VRz102:H302; - флаг 302 = 0</script></div></p>
+<hr noshade>
+<p><a name="M"></a>
+<font id="red"><b>M#<br>!!VRz#:M1/z#1/#2/#3</b></font><br>
+Получить подтекст из переменной z#1 и установить его в z#<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; z# – переменная, куда сохранять 
+результат<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; z#1 – переменная-исходник<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – позиция, откуда начинать 
+копирование (0 – по умолчанию) (в символах)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #3 – длина подтекста для 
+копирования (в символах)<br>
+<u><b onclick="HideIt(5)" class="h">Пример (<b id="show5">показать</b>)</b></u><div id="5" class="b">
+<script type="erm">!!VRz1:S^Давайте попытаемся скопировать этот текст^;
+!!VRz2:M1/z1/8/10;</script>
+Получим: z2 = «попытаемся»</div></p>
+<hr noshade>
+<p><a name="M2"></a>
+<font id="red"><b>!!VRz#:M2/z#1/#2</b></font><br>
+Получить слово с порядковым номером #2 из переменной z#1 и установить его в z#<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; z# – переменная, куда сохранится слово<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; z#1 – переменная-исходник<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – номер слова (по умолчанию – 0)<br>
+<u><b onclick="HideIt(6)" class="h">Комментарий (<b id="show6">показать</b>)</u></b><div id="6" class="b">
+Разделители: пробелы, точки, запятые, знаки табуляции, новые строки, – не нумеруются.<br>
+<u>Пример</u>:<br>
+&laquo;Переменная, которая содержит.. И ещё много&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; слов&raquo;<br>
+Мы получим следующие слова:
+<script type="erm">0 -> «Переменная»
+1 -> «которая»
+2 -> «содержит»
+3 -> «И»
+4 -> «ещё»
+5 -> «много»
+6 -> «слов»</script></div></p>
+<hr noshade>
+<p><a name="M3"></a>
+<font id="red"><b>!!VRz#:M3/#1/#2<br>!!VRz#:M3/#1</b></font><br>
+Конвертирует число в текст.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; z# – переменная, которая будет 
+содержать результат<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – любое число (переменная) 
+для конвертирования<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – система исчисления (по 
+умолчанию – 10)<br>
+<u><b onclick="HideIt(7)" class="h">Пример (<b id="show7">показать</b>)</b></u><div id="7" class="b">
+<script type="erm">!!VRz1:M3/123; - z1 = «123»
+!!VRz1:M3/123/10; - z1 = «123» (как и выше)
+!!VRz1:M3/-123; - z1 = «-123»
+!!VRz1:M3/127/16; - z1 = «0x7F» (шестнадцатеричная система счисления)</script></div></p>
+<hr noshade>
+<p><a name="M4"></a>
+<font id="red"><b>!!VR#:M4/?$</b></font><br>
+Получить длину текста<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # – <i>z</i>-переменная<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – любая числовая переменная 
+(для записи длины)<br>
+В длину включаются пробелы.</p>
+<hr noshade>
+<p><a name="M5"></a>
+<font id="red"><b>!!VR#:M5/?$</b></font><br>
+Получить кол-во пробелов в начале текстовой переменной<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # – <i>z</i>-переменная<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – любая числовая переменная 
+(для записи номера позиции)<br>
+Счёт начинается с 0 (нет пробелов). Если 
+переменная (текстовая) пуста, позиция равна -1.</p>
+<hr noshade>
+<p><a name="M6"></a>
+<font id="red"><b>!!VR#:M6/?$</b></font><br>
+Получить номер последнего символа (не пробела)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # – <i>z</i>-переменная<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – любая числовая переменная 
+(для записи номера позиции)<br>
+Счёт начинается с 0. Если переменная пуста, позиция равна 0.<br>
+<u><b onclick="HideIt(8)" class="h">Пример (<b id="show8">показать</b>)</b></u><div id="8" class="b">
+<script type="erm">!!VRz10:S^  Абв Где   ^; - текст
+!!VRz10:M4/?y5; - получить длину в y5
+!!VRz10:M5/?y6;	- получить порядковый номер первого символа (не пробел)
+!!VRz10:M6/?y7;	- получить порядковый номер последнего символа (не пробел)
+Итого: y5 = 12, y6 = 2, y7 = 8.</script></div></p>
+<hr noshade>
+<p><a name="V"></a>
+<font id="red"><b>!!VR$:Vz#</b></font><br>
+Конвертировать текст в целое значение или значение с плавающей запятой.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – любая переменная для 
+интегрирования (f&hellip;t, v#, w#, x#, y#) или с плавающей запятой (e)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; z# – переменная-исходник (z)<br>
+Вы можете использовать синтаксис &hellip;е&hellip; (инженерский 
+стандарт чисел с плавающей запятой). Если значение не может быть конвертировано, 
+то устанавливается на 0. Знаки пробела игнорируются.<br>
+<u>
+<b onclick="HideIt(9)" class="h">Пример (<b id="show9">показать</b>)</b></u><div id="9" class="b">
+«123» &rarr; 123<br>
+«+123» &rarr; 123<br>
+«-123» &rarr; -123<br>
+«.325» &rarr; 0.325<br>
+«-1.25e+1» &rarr; -12.5 (-1.25 * 10^1)</div></p> 
+<hr noshade> 
+<p><a name="Str_set"></a>
+<font id="red"><b>S^Текст^</b></font><br>
+Установить текст текстовой переменной.</p> 
+<p><b><font id="red">S#</font></b><br>
+Копировать текст из переменной z# в текущую.<br>
+<u><b onclick="HideIt(15)" class="h">Комментарий (<b id="show15">показать</b>)</u></b><div id="15" class="b">
+Здесь можно указывать переменную без префикса <i>z</i>. ERM учитывает только индекс.<br>
+В <a href="../ERA/index.htm">ERA</a> рекомендовано писать с префиксом <i>z</i>.
+<script type="erm">!!VRz2:S1; аналогична !!VRz2:Sz1;</script>
+</div></p>
+<hr noshade>
+<p><a name="U"></a>
+<font id="red"><b>!!VRz#1:Uz#2<br>!!VRz#1:U^текст^</b></font><br>
+Подтекстный поиск в <i>z</i>-переменных.<br>
+Поиск слова/символа/знака из переменной z#2 или из строки ^текст^ в переменной z#1, 
+с последующей установой флага 1 на ИСТИНА, если найдено.<br> 
+В обоих случаях <i>z</i>-переменная может быть любого типа (обычная, локальная, ERT).<br>
+Эта команда может быть с лёгкостью ERT'ифицирована.<br>
+<u><b onclick="HideIt(10)" class="h">Комментарий (<b id="show10">показать</b>)</u></b><div id="10" class="b">
+Не зависит от регистра. Так &laquo;Меч&raquo; будет найден и в &laquo;мЕЧ&raquo;. Пробелы игнорируются, так что 
+&laquo;Привет&nbsp;&nbsp;&nbsp; &raquo;, &laquo;&nbsp;&nbsp; привЕт&raquo; и 
+&laquo;&nbsp;&nbsp; ПривЕт&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &raquo; - все будут значить просто &quot;привет&quot;. 
+Но эта команда не пропускает пробелы, если после них идёт какой-либо текст. Так что <br>
+&laquo;привет,&nbsp;&nbsp;&nbsp; это я&raquo; и &laquo;привет,&nbsp; это я&raquo; будут различными.<br>
+<u><b onclick="HideIt(11)" class="h">Пример (<b id="show11">показать</b>)</u></b><div id="11" class="b">
+Здесь вы получите два сообщения: &laquo;Да!&raquo; и &laquo;Снова да!&raquo;
+<script type="erm">ZVSE
+!#VRz100:S^  Меч
+
+^;
+!#VRz200:S^
+Это Текст про_меч
+
+^;
+!#VRz200:Uz100;
+!#IF&1:M^Да!^;
+!#VRz200:U^
+
+МеЧ
+^;
+!#IF&1:M^Снова да!^;</script></div></div></p>
+
+<hr noshade>
+<h3><a name="AddString"></a>Соединение текстовых переменных</h3>
+<p><font id="red"><b>+#</b></font><br>
+Соединить текстовую переменную z# с текущей (добавляется в конец)</p>
+<p><font id="red"><b>+^текст^</b></font><br>
+Соединить текстовую переменную z# с определённым текстом (добавляется в конец)</p>
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+<script src="../erm.js"></script></body></html>

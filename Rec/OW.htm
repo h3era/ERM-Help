@@ -1,0 +1,286 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>Ресивер OW</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;OW:&nbsp;&nbsp;</SPAN>
+
+	<A HREF="#A" title="Активный герой" CLASS="button">A</A>
+ <SPAN CLASS="buttoninactive">B</SPAN>
+	<A HREF="#C" title="Активный цвет" CLASS="button">C</A>
+	<A HREF="#D" title="Жизнь без замка" CLASS="button">D</A>
+ <SPAN CLASS="buttoninactive">E</SPAN>
+ <SPAN CLASS="buttoninactive">F</SPAN>
+	<A HREF="#G" title="Поддержка мультиплеера" CLASS="button">G</A>
+	<A HREF="#H" title="Кол-во и номера героев игрока" CLASS="button">H</A>
+	<A HREF="#I" title="Статус ИИ и статус жизни" CLASS="button">I</A>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+	<A HREF="#K" title="Палатка ключника" CLASS="button">K</A>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+ <SPAN CLASS="buttoninactive">M</SPAN>
+	<A HREF="#N" title="Активный город; кол-во городов, перетасовка городов" CLASS="button">N</A>
+	<A HREF="#O" title="Кол-во активных героев" CLASS="button">O</A>
+ <SPAN CLASS="buttoninactive">P</SPAN>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+	<A HREF="#R" title="Ресурсы" CLASS="button">R</A>
+	<A HREF="#S" title="Колдовать заклинание на карте" CLASS="button">S</A>
+	<A HREF="#T" title="Команды" CLASS="button">T</A>
+ <SPAN CLASS="buttoninactive">U</SPAN>
+	<A HREF="#V" title="Герои в таверне" CLASS="button">V</A>
+	<A HREF="#W" title="Номер города на карте" CLASS="button">W</A>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+	<A style="position:absolute; right:4" href="#UP" CLASS="button" title="Вернуться к началу">&uarr;</a>
+
+</DIV>
+
+<DIV id="text">
+<a name="up"></a>
+<p align="center"><font size="5">Ресивер <b>OW</b> (параметры игрока) </font></p>
+<p><br>
+<b><font id="red">!!OW:XXXX;</font> 
+- этот ресивер может применять действия к конкретному игроку.</b> <br>
+Используйте эту команду для применения действий к игроку, например, установки ресурсов, команд, кол-ва героев, контролируемых игроком, 
+и время, которое может прожить игрок без города.<br>
+Если вы хотите дать или забрать деньги у игрока, можно использовать упрощенный синтаксис:
+<script type="erm">!!OW../6/d100; – дать 100 золота
+!!OW../6/d-100; – забрать 100 золота</script></p>
+<hr noshade>
+<p>
+<font id="red"><b>
+<a name="A"></a>A#/$</b></font><br>
+Установить/проверить/получить активного героя<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # – <a target="form" href="../Form/GamersColor.htm">игрок</a> (-1 = текущий)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – <a target="form" href="../Form/NumberHeroes.htm">номер героя</a> (-1 = не выбран)</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="C"></a>C?$</b></font><br>
+Проверить/получить цвет текущего игрока<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ = <a target="form" href="../Form/GamersColor.htm">0..7</a><br>
+Можно только проверить или получить, но не установить.<br>
+<u><b onclick="HideIt(5)" class="h">Комментарий (<b id="show5">показать</b>)</b></u><div id="5" class="b">
+При мультиплеерной игре использование команды даст значение того игрока, кто сейчас ходит, и не важно, кто именно из игроков инициировал ERM-код.</div></p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="D"></a>D#1/#2</b></font><br>
+Установить кол-во дней, сколько может держаться игрок после потери последнего замка.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – <a target="form" href="../Form/GamersColor.htm">номер игрока</a> (-1 = текущий)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – дней до проигрыша (0..127) или вечная жизнь (128..254)<br>
+Если вы установили 128..254, игрок не будет получать сообщения с предупреждением о потери последнего города. 
+255 устанавливает стандарт в 7 дней.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 = -2 – установить стандартное время до проигрыша (обычно = 7).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 = дни (0..127; 128..255)<br>
+Если вы установили 128..254, игроки будут получать сообщения о необходимости захвата замка лишь одну неделю.<br>
+Если вы установите 255, игроки будут получать сообщение каждый день.<br>
+Если вы захватили замок и потеряли его, устанавливается обычное кол-во, настроенное этой командой при # = -2.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="G"></a>G$1/$2</b></font><br>
+Проверить, перед данным ли ПК сидит игрок. Мультиплеерная команда.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – <a target="form" href="../Form/GamersColor.htm">игрок</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – проверить на игрока (1 = да, это я; 0 = нет, это другой игрок-человек)<br>
+Имеет смысл только для мультиплеерной игры. Конечно, главный синтаксис – это получение значения, 
+но вы можете также и установить его (но мы бы не рекомендовали пытаться это сделать :-)<br>
+<b><u>Комментарий</u>:</b> эта команда схожа с действием <a href="../Cont/Flags.htm#999">флага 999</a>, но они неравнозначны.<br>
+<u>
+<b onclick="HideIt(3)" class="h">Пример (<b id="show3">показать</b>)</b></u>
+<div id="3" class="b">
+Допустим, вы играете по сети и вам надо запрещать пользоваться мышью в битве противнику, который ждёт своей очереди ходить..
+<script type="erm">!?CM4; - триггер клика мышью на поле боя
+!!BA:O?v1/?v2; - сохранить цвет игроков каждой стороны
+!!BG:Q?y1; - узнать чьей стороны сейчас ход
+!!VRy1:+1; - будем использовать косвенную переменную
+!!VRy2:Svy1; - записать в y2 цвет игрока, чей сейчас ход
+!!OW:Gy2/?y3;
+!!IF&y3=0:M^Извините, но сейчас не ваш ход! Ждите...^; - показать сообщение для ожидающей стороны</script>
+Итак, если в битве ходит левый герой, то, при попытке нажать мышью куда-либо игроком правой стороны, ему высветится 
+<i>&laquo;Извините, но сейчас не ваш ход! Ждите..&raquo;</i>
+</div></p>
+<hr noshade>
+<p><font id="red"><b><a name="H"></a>H#1/$2</b></font><br>
+Подсчитать и получить кол-во (номера) героев игрока.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – <a target="form" href="../Form/GamersColor.htm">игрок</a> (-1 = текущий)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – номер первой <i>v</i>-переменной для записи информации<br>
+В массив <i>v</i>-переменных, начиная с v[#2], запишет все номера героев, которые есть у игрока.<br>
+<i>Расширение синтаксиса:</i><br>
+<font id="red"><b>H#1/$2/#3</b></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – <a target="form" href="../Form/GamersColor.htm">игрок</a> (-1 = текущий)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – номер <i>v</i>-переменной для записи информации<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #3 – тип<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;= 0 - записать кол-во героев игрока в v[#2]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt; 0 - номер героя у игрока для записи его собственного номера в v[#2], 
+если у игрока нет героя с таким номером, v[#2] не изменится.<br>
+<u>
+<b onclick="HideIt(1)" class="h">Пример (<b id="show1">показать</b>)</b></u><div id="1" class="b">
+<script type="erm">!!OW:H1/99/0; – записать кол-во героев синего игрока в v99
+!!OW:H1/100/1; – записать номер первого героя синего игрока в v100
+!!OW:H1/101/2; – записать номер второго героя синего игрока в v101
+!!OW:H1/102/3; – записать номер третьего героя синего игрока в v102
+!!OW:H1/103/4; – записать номер четвёртого героя синего игрока в v103</script></div></p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="I"></a>I#1/$2</b></font><br>
+Установить/проверить/получить ИИ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – <a target="form" href="../Form/GamersColor.htm">цвет</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – контроллер<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1 – ИИ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;= 0 – человек<br>
+<i>Расширение синтаксиса:</i><br>
+<font id="red"><b>I#1/$1/$2</b></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – <a target="form" href="../Form/GamersColor.htm">цвет</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – ИИ/человек<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1 – ИИ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;= 0 – человек<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – игрок жив (0) или мёртв (1)</p>
+<hr noshade>
+<p><font id="red"><b><a name="K"></a>K#1/#2/$<br></b></font>
+Установить/проверить/получить статус палатки ключника<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – игрок (<a target="form" href="../Form/GamersColor.htm">0..7</a>, -1 = текущий)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – номер палатки (<a target="form" href="../Form/BG.htm">0..7</a>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – посещена (1) или нет (0)<br>
+<u>Пример:</u>
+<script type="erm">!!OW:K3/4/1; – установить, что зелёный посетил коричневую палатку
+!!OW:K3/4/?v123; – проверить, посетил ли зелёный коричневую палатку в v123</script></p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="N"></a>N#1/$2</b></font><br>
+Установить/проверить/получить активный город<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – хозяин (<a target="form" href="../Form/GamersColor.htm">0..7</a>, -1 = текущий)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – номер города (0..47, -1 – не выбран)</p>
+<hr noshade><p>
+<font id="red"><b>N#1/#2/$</b></font><br>
+Получить номер замка, находящегося в слоте #2 таблицы замков <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – <a target="form" href="../Form/GamersColor.htm">игрок</a> (-1 = текущий)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – номер слота (0..4)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – номер города (-1 = нет, 0..N – номер города)<br>
+Можно только проверить или получить номер города, показываемого в одном из пяти слотов справа. Нельзя установить данное значение.<br>
+<u>Пример:</u>
+<script type="erm">!!OW:N1/3/?y10; - получить номер города в третьем слоте Синего игрока и записать его в y10</script></p>
+<hr noshade>
+<p><font id="red"><b>N#1/#2/#3/#4<br></b></font>Двигать город в таблице 
+замков<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – <a target="form" href="../Form/GamersColor.htm">игрок</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – тип действия:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 – двигать в самый верх&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 – сдвинуть вверх на одну позицию<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 – сдвинуть вниз на одну позицию<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #3 – слот города в таблице городов (0..4)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #4 – фантомный параметр (0)</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="O"></a>O#/$1/$2/$3/$4/$5/$6/$7/$8/$9</b></font><br>
+Проверить кол-во всех активных героев<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # – <a target="form" href="../Form/GamersColor.htm">игрок</a> (-1 = текущий)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – кол-во героев<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2&hellip;$9 – <a target="form" href="../Form/NumberHeroes.htm">номер героя</a>, 
+принадлежащего этому игроку (-1 = нет героя)<br>
+Позволяет вам проверить номера всех активных (максимум 8) героев игрока, показанных в таблице героев 
+(справа от главного окна приключений). Они также могут быть установлены, если вы хотите изменить порядок героев в таблице. 
+Если у игрока менее 8 героев, их значения будут равны -1.</p>
+<hr noshade><p>
+<font id="red"><b>O#1/#2/$</b></font><br>
+Установить/проверить номер активного героя в таблице героев. Вы можете получить номер героя, показанного в одном из 5 слотов.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – <a target="form" href="../Form/GamersColor.htm">игрок</a> (-1 = текущий)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – номер слота (0..4)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ – <a target="form" href="../Form/NumberHeroes.htm">номер героя</a> (-1 = нет героя)<br>
+Этим синтаксисом можно только проверить или получить, но не установить.</p>
+<hr noshade><p>
+<font id="red"><b>O#1/#2/#3/#4</b></font><br>
+Сдвинуть героя в таблице<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – <a target="form" href="../Form/GamersColor.htm">игрок</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – тип действия:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 = сдвинуть героя на самый верх<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 = сдвинуть героя на одну позицию вверх<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 = сдвинуть героя на одну позицию вних<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #3 – слот героя (0..4)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #4 – фантомный параметр (0)</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="R"></a>R#1/#2/$3</b></font><br>
+Установить/проверить/получить ресурсы<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – <a target="form" href="../Form/GamersColor.htm">игрок</a> (-1 = текущий)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – <a target="form" href="../Form/Resource.htm">тип</a> ресурса<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $3 – кол-во ресурса<br>
+<i id="bold">Замечание:</i> не пытайтесь установить ресурсы во время загрузки карты 
+(т.е. инструкциями или пост-инструкциями), иначе игра вылетит.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="S"></a>S#1/#2</b></font><br>
+Колдовать заклинание на карте приключений<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – вариант (сейчас 1 или 2)<br>
+Вариант 1:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – номер заклинания (<a target="form" href="../Form/Spell.htm">0..9</a>). 
+Будет наколдовано текущим героем.<br>Вариант 2:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – фантомный параметр (скажем, 0). 
+Открывается Книга Заклинаний этого героя. Это путь для
+симулирования наложения заклинания на карте (что-то типа &laquo;руны обелисков&raquo;).<br>
+<u><b onclick="HideIt(2)" class="h">Комментарий (<b id="show2">показать</b>)</b></u><div id="2" class="b">
+1. Книга заклинаний не необходима, и герою необязательно знать заклинание<br>
+2. Уровень навыка всегда основывается на соответствующем элементальном навыке 
+героя.<br>
+3. Баллы заклинаний забираются у героя при окончании колдования, но если у героя 
+недостаточно маны, заклинание всё равно будет выполнено (и не приведет в 
+отрицательному кол-ву маны)<br>
+4. Герой всё же должен иметь немного очков хода для кастования &quot;Дверь Измерений&quot; 
+или &quot;Городской портал&quot; для их срабатывания.</div></p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="T"></a>T#1/$2</b></font><br>
+Установить/проверить/получить команды<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – <a target="form" href="../Form/GamersColor.htm">игрок</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – команда (0..6, -1)<br>
+<b><u>Комментарий</u>:</b> заметьте, что если хозяин - нейтрал (значение хозяина объекта равно -1), не нужно проверять команду. 
+Если вы всё же проделаете это, то получите 0 (который в большинстве случаев означает команду с красным игроком).<br>
+Если игрок не в команде, значение равно -1.<br>
+<i id="bold">Замечание:</i> Команды, настроенные в процессе игры, сбрасываются после каждой загрузки сохранения. 
+Поэтому любые изменения команд игроков следует делать в теле триггера <a href="../Tr/GM.htm">!?GM0</a>.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="V"></a>V#1/$1/$2</b></font><br>
+Установить/проверить/получить героев, доступных в таверне.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – <a target="form" href="../Form/GamersColor.htm">игрок</a> (-1 = текущий)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – левый <a target="form" href="../Form/NumberHeroes.htm">герой</a> в таверне (-1 = нет)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – правый <a target="form" href="../Form/NumberHeroes.htm">герой</a> в таверне (-1 = нет)<br>
+Мы не можем гарантировать, что всё будет работать корректно, если вы установите одного героя нескольким игрокам.</p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="W"></a>W#1/$1</b></font><br>
+Установить/проверить/получить кол-во городов под контролем игрока<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – <a target="form" href="../Form/GamersColor.htm">игрок</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – кол-во городов у игрока (0..48)<br>
+<u>
+<b onclick="HideIt(4)" class="h">Пример (<b id="show4">показать</b>)</b></u>
+<div id="4" class="b">
+Если вам надо быстро просмотреть все города красного игрока, то..<br>
+<script type="erm">!!OW:W0/?y1; - кол-во городов у красного игрока
+!!FU&y1<1:E; - стоп, если у игрока нет городов
+!!DO17/1/y1/1:P; - запустить цикл поиска городов
+!?FU17; тело цикла
+!!OW:W0/x16/?v1; - номер города на карте
+!!CA0/v1:P?v2/?v3/?v4; - получить координаты города
+!!UN:Lv2/v3/v4/1000; - показать город на карте мира на 1 сек</script>
+Кстати, в стандартных скриптах WoG, для этого обычно использовали команду <a href="UN.htm#U">UN:U</a> с перебором всех городов на карте 
+и последующей проверкой их на принадлежность игроку, что гораздо дольше по времени выполнения.
+</div></p>
+<hr noshade><p>
+<font id="red"><b>W#1/#2/$1</b></font><br>
+Установить/проверить/получить номер города из таблицы городов игрока #1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – <a target="form" href="../Form/GamersColor.htm">игрок</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 – номер города в таблице городов игрока (0..47)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $1 – номер города на карте (0..47)</p>
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+<script src="../erm.js"></script></body></html>

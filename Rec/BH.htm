@@ -1,0 +1,100 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Ресивер BH</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;BH:&nbsp;&nbsp;</SPAN>
+
+ <SPAN CLASS="buttoninactive">A</SPAN>
+ <SPAN CLASS="buttoninactive">B</SPAN>
+	<A HREF="#C" title="Наколдовать заклинание" CLASS="button">C</A>
+ <SPAN CLASS="buttoninactive">D</SPAN>
+ <SPAN CLASS="buttoninactive">E</SPAN>
+ <SPAN CLASS="buttoninactive">F</SPAN>
+ <SPAN CLASS="buttoninactive">G</SPAN>
+ <SPAN CLASS="buttoninactive">H</SPAN>
+ <SPAN CLASS="buttoninactive">I</SPAN>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+	<A HREF="#M" title="Активировать или запретить книгу заклинаний" CLASS="button">M</A>
+	<A HREF="#N" title="Номер ходящего героя" CLASS="button">N</A>
+ <SPAN CLASS="buttoninactive">O</SPAN>
+ <SPAN CLASS="buttoninactive">P</SPAN>
+	<A HREF="#Q" title="Поместить участок зыбучих песков или мин" CLASS="button">Q</A>
+ <SPAN CLASS="buttoninactive">R</SPAN>
+ <SPAN CLASS="buttoninactive">S</SPAN>
+ <SPAN CLASS="buttoninactive">T</SPAN>
+ <SPAN CLASS="buttoninactive">U</SPAN>
+ <SPAN CLASS="buttoninactive">V</SPAN>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+ <SPAN CLASS="buttoninactive">X</SPAN>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+
+</DIV>
+
+<DIV id="text">
+<p align="center"><font size="5">Ресивер 
+<b>BH </b>(действия героя)</font></p>
+<p>
+<b><font id="red"><br>
+!!BH#:XXXX;</font> 
+- в битве вы можете установить/проверить/получить параметры действия героя.</b><br>
+# – сторона, которая совершит действие (0 – атакующий, 1 – защищающийся)</p>
+<hr noshade>
+<p>
+<a name="C"></a><font id="red"><b>C#1/#2/#3/#4</b></font><br>
+Колдовать заклинание<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 –
+<a target="form" href="../Form/Spell.htm">заклинание</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 –
+<a target="form" href="../Form/BF.htm">позиция</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #3 – уровень навыка героя (0..3)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #4 – проверить существование 
+цели (0=игнорировать, заклинание будет срабатывать на всех союзных заклинателю)<br>
+<u><b onclick="HideIt(1)" class="h">Комментарий (<b id="show1">показать</b>)</b></u> <div id="1" class="b">
+	Вы можете наложить на всех союзных существ заклинания, не имеющих массового эффекта (например, Волшебное зеркало); для 
+этого используйте в качестве 4го параметра 0. Но не все заклинания работают корректно таким методом (например, Клон).<br>
+<u>Пример</u>:
+<script type="erm">!!BH:C36/0/0/0; - наложить Волшебное зеркало на 3 раунда на всю союзную армию
+!!BH:C36/18/3/1; - наложить Волшебное зеркало на 3 раунда на существо в квадрате 18, если оно там есть.</script>
+</div></p>
+<hr noshade><p>
+<font id="red"><b>
+<a name="M"></a>M$</b></font><br>
+Разрешить (0) или запретить (1) колдовство заклинания<br>
+<b><u onclick="HideIt(2)" class="h">Комментарий (<b id="show2">показать</b>)</u></b> 
+<div id="2" class="b">Если вы повторно разрешаете колдовство заклинания после произошедшего колдовства, то кнопка Книги Заклинаний станет активной только после совершения какого-либо игрового действия в бою (например, смена активного отряда). Однако, сам вызов Книги Заклинаний (щелчок на герое/клавиша C), будет доступен сразу же, как только вы повторно разрешите колдовство.</div></p>
+<hr noshade><p>
+<a name="N"></a><font id="red"><b>N?$</b></font><br>
+Получить или проверить 
+	<a target="form" href="../Form/NumberHeroes.htm">номер</a> ходящего героя (-1 если нет 
+героя)</p>
+<hr noshade><p>
+<a name="Q"></a><font id="red"><b>Q#1/#2/#3</b></font><br>
+Поместить участок Зыбучих песков или Мин в позицию<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – тип (0 = зыбучие пески, 1 
+= мины)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #2 –
+<a target="form" href="../Form/BF.htm">позиция</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #3 – обновить (1) или нет (0)<br>
+Позиция будет проверена автоматически на наличие препятствия (если оно есть, то заклинание ничего не разместит)</p>
+
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+<script src="../erm.js"></script></body></html>

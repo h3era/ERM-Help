@@ -1,0 +1,167 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
+Ресивер PA</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="script.js"></script></head>
+
+<body scroll="no">
+<DIV id="buttonMenu">
+<SPAN CLASS="options">Опции&nbsp;PA:&nbsp;&nbsp;</SPAN>
+
+	<A HREF="#A" title="Артефакты" CLASS="button">A</A>
+ <SPAN CLASS="buttoninactive">B</SPAN>
+	<A HREF="#C" title="Настройка кол-ва существ" CLASS="button">C</A>
+ <SPAN CLASS="buttoninactive">D</SPAN>
+	<A HREF="#E" title="Опыт" CLASS="button">E</A>
+	<A HREF="#F" title="Первичные навыки" CLASS="button">F</A>
+	<A HREF="#G" title="Настройка охраны" CLASS="button">G</A>
+ <SPAN CLASS="buttoninactive">H</SPAN>
+	<A HREF="#I" title="Инициализация объекта" CLASS="button">I</A>
+ <SPAN CLASS="buttoninactive">J</SPAN>
+ <SPAN CLASS="buttoninactive">K</SPAN>
+ <SPAN CLASS="buttoninactive">L</SPAN>
+	<A HREF="#M" title="Настройка текста" CLASS="button">M</A>
+	<A HREF="#N" title="Вторич.навыки" CLASS="button">N</A>
+	<A HREF="#O" title="Мораль" CLASS="button">O</A>
+ 	<a href="#P" title="Мана" class="button">P</a>
+ <SPAN CLASS="buttoninactive">Q</SPAN>
+	<A HREF="#R" title="Ресурсы" CLASS="button">R</A>
+	<A HREF="#S" title="Заклинания" CLASS="button">S</A>
+ <SPAN CLASS="buttoninactive">T</SPAN>
+	<A HREF="#U" title="Удача" CLASS="button">U</A>
+ <SPAN CLASS="buttoninactive">V</SPAN>
+ <SPAN CLASS="buttoninactive">W</SPAN>
+	<A HREF="#X" title="Управление охраной" CLASS="button">X</A>
+ <SPAN CLASS="buttoninactive">Y</SPAN>
+ <SPAN CLASS="buttoninactive">Z</SPAN>
+
+</DIV>
+
+<DIV id="text">
+
+<p align="center"><font size="5">Ресивер <b>PA</b><a href="../ERA/index.htm" title="Работает только с ERA.."><img src="../Img/era.gif" class="TE"></a>(Ящик Пандоры)</font></p>
+<p><br>
+<b><font id="red">!!PA#1/#2/#3:XXXX;</font> 
+- изменение атрибутов Ящика Пандоры на карте в координатах X Y L (#1/#2/#3).</b></i> Ящик Пандоры - <a target="form" href="../Form/Objects.htm">тип 6</a>.<br> 
+<i>Расширение синтаксиса:</i><br>
+<font id="red"><b>!!PA#:XXXX;</b></font> 
+- Ящик Пандоры по координатам в переменных v[#], v[#+1], v[#+2]</p>
+<p>Рисивер PA можно использовать для настройки Событий.<br>
+<u><b class="h" onclick="HideIt(1)" class="h">Комментарии (<b id="show1">показать</b>)</b></u><div id="1" class="b">
+При установке на карту Ящика Пандоры или События с помощью ERM, не забудьте вызвать <a href="#I">PA:I</a> после создания объекта. 
+В противном случае Вы не сможете настраивать или взаимодействовать с объектом (скорее всего игра вылетит).</div></p>
+<p id="Q1">См. также: ресивер <a href="../Rec/LE.htm">!!LE</a></p>
+<hr noshade>
+<p>
+<a name="A"></a><font id="red"><b>A</b></font><br>
+Очистить список артефактов.</p>
+<hr noshade>
+<p>
+<font id="red"><b>A#/$</b></font><br>
+Установить/проверить/получить кол-во <a href="../Form/A1.htm">артефактов #</a> в $.</p>
+<hr noshade><p>
+<a name="C"></a><font id="red"><b>C#1/$2/$3</b></font><br>
+Установить/проверить/получить кол-во существ в позиции:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – позиция (0..6)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – <a target="form" href="../Form/Creature.htm">тип монстра</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $3 – кол-во</p>
+<hr noshade>
+<p>
+<a name="E"></a><font id="red"><b>E$</b></font><br>
+Установить/проверить/получить опыт в $.</p>
+<hr noshade>
+<p>
+<a name="F"></a><font id="red"><b>F#1/$2/$3/$4</b></font><br>
+Установить/проверить/получить Атаку/Защиту/Силу Магии/Знание в $1/$2/$3/$4.</p>
+<hr noshade><p>
+<a name="G"></a><font id="red"><b>G#1/$2/$3</b></font><br>
+Установить/проверить/получить кол-во охранников<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #1 – позиция (0..6)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $2 – <a target="form" href="../Form/Creature.htm">тип монстра</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $3 – кол-во<br>
+<b><u>Комментарии</u>:</b> охрана включается и выключается вручную.</p>
+<hr noshade><p>
+<a name="I"></a><font id="red"><b>I</b></font><br>
+Произвести инициализацию Ящика Пандоры.<br>
+<b><u onclick="HideIt(3)" class="h">Комментарий (<b id="show3">показать</b>)</u></b><div id="3" class="b">
+Ящики Пандоры и События делят один список объектов и имеют общий лимит в 1024 объекта на карте.<br>
+PA:I вызовет ошибку при попытке добавить объект сверх лимита.</div></p>
+<hr noshade><p>
+<a name="M"></a><font id="red"><b>M^текст^</b></font><br>
+Установить стандартную строку ERM как текст сообщения. 
+Строка может содержать коды отображения переменных.</p>
+<hr noshade><p>
+<font id="red"><b>M$</b></font><br>
+Установить/получить текст сообщения в строковую переменную.<br>
+<i>Расширенный синтакс:</i><br>
+<font id="red"><b>M0</b></font><br>
+Удалить сообщение.<br>
+<i>Расширенный синтакс (для опытных пользователей):</i><br>
+<font id="red"><b>M$</b></font><br>
+Установить текст по указателю $ как текст сообщения или получить указатель на текст сообщения.</p>
+<hr noshade><p>
+<a name="N"></a><font id="red"><b>N</b></font><br>
+Очистить список вторичных навыков</p>
+<hr noshade><p>
+<font id="red"><b>N$</b></font><br>
+Установить/получить уровни всех вторичных навыков в 28 переменных, начиная с $:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 - нет<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 - базовый<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 - продвинутый<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 - экспертный<br>
+В качестве параметра необходимо передавать переменную, а не какой-либо индекс.<br>
+<b><u onclick="HideIt(2)" class="h">Пример (<b id="show2">показать</b>)</u></b><div id="2" class="b">
+<script type="erm">!!PAx/y/l:N?v1; получить уровни всех навыков в v1..v28
+!!PAx/y/l:Ny-17; установить уровни всех навыков из y-17..y-44</script></div></p>
+<hr noshade><p>
+<font id="red"><b>N#/$</b></font><br>
+Установить/проверить/получить уровень <a target="form" href="../Form/SecondarySkill.htm">вторичного навыка #</a> в $:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 - нет<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 - базовый<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2 - продвинутый<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 - экспертный</p>
+<hr noshade><p>
+<a name="O"></a><font id="red"><b>O$</b></font><br>
+Установить/проверить/получить мораль в $.</p>
+<hr noshade><p>
+<a name="P"></a><font id="red"><b>P$</b></font><br>
+Установить/проверить/получить очки заклинаний в $.</p>
+<hr noshade><p>
+<a name="R"></a><font id="red"><b>R#/$</b></font><br>
+Установить/проверить/получить кол-во <a href="../Form/Resource.htm" target="form">ресурса #</a> в $.</p>
+<hr noshade><p>
+<a name="S"></a><font id="red"><b>S</b></font><br>
+Очистить список заклинаний</p>
+<hr noshade><p>
+<font id="red"><b>S#/$</b></font><br>
+Установить/проверить/получить наличие <a href="../Form/Spell.htm" target="form">заклинания #</a> в $:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 – заклинание не даётся<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 – заклинание даётся</p>
+<hr noshade><p>
+<a name="U"></a><font id="red"><b>U$</b></font><br>
+Установить/проверить/получить удачу в $.</p>
+<hr noshade><p>
+<a name="X"></a><font id="red"><b>X$</b></font><br>
+Установить/проверить/получить включена ли охрана:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ = 0 – охрана выключена;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;всё остальное – охрана включена</p>
+
+<hr noshade>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</DIV>
+<script src="../erm.js"></script></body></html>
