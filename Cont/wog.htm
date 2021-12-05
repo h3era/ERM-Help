@@ -1,0 +1,94 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>Файлы *.wog</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="../Rec/script.js"></script>
+</head>
+<body>
+<h2 align="center">Файлы *.wog</h2>
+<p>Файлы <b>*.wog</b> – это переименованные архивы <b>*.rar</b>. Можно использовать любой уровень компрессии в <b>WinRAR</b>. 
+Внутри могут быть любые файлы, но архивы <u>должны</u> содержаться следующие управляющие файлы:
+<ul>
+<li><p><b id="N3">H3BITMAP.TXT</b><br>
+Список файлов для заливки в <i class="file">h3bitmap.lod</i>, каждый следующий файл на новой строке.</p></li>
+<li><p><b id="N3">H3SPRITE.TXT</b><br>
+Список файлов для заливки в <i class="file">h3sprite.lod</i>, каждый следующий файл на новой строке.</p></li>
+<li><p><b id="N3">INSTMULT.TXT</b><br>
+Назначение неизвестно. Во всех архивах имеют вот такой вид:
+<div class="erm" id="Q1"><code><p>[PICS]</p>
+<p>[MUSIC]</p></code></div></p></li>
+</ul>
+<p>Следующие файлы не являются обязательными, но с их помощью можно более гибко и информативно организовать процесс установки wog-файлов:</u></p>
+<ul>
+<li><p><b id="N3">INFORM.TXT</b><br>
+	<b>[GeneralName]</b><br>
+На новой строке идёт название файла, под которым он будет отображаться при установке.</p>
+	<p><b>[WhatAboutVrotAbout]</b><br>
+На новой строке идёт дополнительная информация - обычно это информация об авторе и краткое описание.<br>
+Переводов строки не должно быть, иначе текст на новой строке игнорируется.
+<div class="erm" id="Q1"><code><p>[GeneralName]<br>
+ERM Help &amp; Scripter</p>
+<p>[WhatAboutVrotAbout]<br>
+Packed on 25.08.2004</p></code></div></p>
+<li><p><b id="N3">ACTION.TXT</b><br>
+	<b>[REGEDIT]</b><br>
+Используется для изменения реестра.<br>
+На первой строке идёт путь к ключу. Ключ создаётся внутри <i class="file">HKEY_LOCAL_MACHINE</i>.<br>
+Затем идёт список присваиваемых атрибутов вида <i>&quot;Атрибут&quot;=&quot;Значение&quot;</i> для строковых ключей и <i>&quot;Атрибут&quot;=dword:значение</i> - для чисел.<br>
+Похоже, возможно создавать только один ключ и параметры внутри него.
+<div class="erm" id="Q1"><code><p>[REGEDIT]<br>
+Software\New Life of Heroes\Heroes of Might and Magic III\3.5<br>
+&quot;WoG_Version&quot;=&quot;3.53&quot;</p>
+<p>[REGEDIT]<br>
+Software\MegaSoft\ERM Scripter<br>
+&quot;SynCompletionProposal1_Width&quot;=dword:350<br>
+&quot;SynCompletionProposal2_Width&quot;=dword:350</p></code></div>
+Если атрибут пуст, устанавливается <i>(значение по умолчанию)</i> у ключа.
+<div class="erm" id="Q1"><code><p>[REGEDIT]</p>
+<p>Software\Hi<br>
+&quot;&quot;=&quot;Hi!&quot;</p></code></div></p>
+	<p><b>[INSTALL]</b><br>
+Здесь идут команды вида: <span class="erm"><b class="tr">XXXX</b> &quot;параметр&quot; <b class="re">W+</b>&quot;параметр 2&quot;</span>, где:<br>
+<b class="tr">XXXX</b> - определённая команда.<br>
+<b class="re">W+</b> означает, что операция производится в папке Героев.<br>
+Некоторые команды поддерживают другие базовые папки:<br>
+<b class="re">P+</b> – меню &quot;Пуск&quot; &rarr; &quot;Программы&quot;<br>
+<b class="re">I+</b> – Рабочий стол<br>
+Если ничего из вышеперечисленного не указано, операция производится во временной папке ОС.</p>
+<ul>
+	<li><p><b class="tr">VERS</b> &quot;параметр&quot;<br>
+Неизвестно. Возможно, версия синтаксиса. Обычно используется параметр &quot;C&quot; или &quot;A&quot; (латиница).</p></li>
+	<li><p><b class="tr">DELL</b> &quot;файл&quot; <b class="re">W+</b>&quot;путь к папке&quot;<br>
+Удаляет файл(ы) в папке. В параметре &quot;файл&quot; можно указать любую маску.
+<div class="erm" id="Q1"><code><p>DELL &quot;*.*&quot; W+&quot;erm_help\images\&quot;</p></code></div>
+<p>Можно удалять и папки:
+<div class="erm" id="Q1"><code><p>DELL &quot;format&quot; W+&quot;erm_help\&quot;</p></code></div></p></li>
+	<li><p><b class="tr">UNRA</b> &quot;файл&quot; <b class="re">W+</b>&quot;путь к папке&quot;<br>
+Извлекает файл из архива в заданную папку. Если папки, куда производится копирование, не существует, то она создаётся.<br>
+В качестве параметра &quot;файл&quot; могут идти некоторые маски, например, &quot;*.*&quot;.<br>
+<i id="bold">Замечание:</i> не все маски поддерживаются. Так, например, команда <span class="erm"><b class="tr">UNRA</b> &quot;script*.*&quot; <b class="re">W+</b></span> извлечёт все файлы, 
+а не только те, что начинаются на &quot;script&quot;.
+<div class="erm" id="Q1"><code><p>UNRA &quot;Mapmaker Tools.txt&quot; W+&quot;erm_s\&quot;</p></code></div></p></li>
+	<li><p><b class="tr">EXEC</b> &quot;файл&quot; <b class="re">W+</b>&quot;путь к папке&quot;<br>
+Запускает указанный файл из указанной папки. В параметре &quot;файл&quot; можно указывать маску.<br>
+<i id="bold">Замечание:</i> файлы запускаются в конце установки, поэтому вы не сможете удалить запущенные файлы после запуска.</p></li>
+	<li><p><b class="tr">CMPC</b> &quot;файлы&quot; <b class="re">W+</b>&quot;путь к папке&quot;<br>
+Копирует файлы в папку. В параметре &quot;файлы&quot; можно использовать маску. Он должен содержать полный путь к файлам относительно игровой папки.<br>
+<i id="bold">Замечание:</i> копирование не происходит, если папки, куда производится копирование, не существует.
+<div class="erm" id="Q1"><code><p>CMPC &quot;erm_help\*.*&quot; W+&quot;erm_help\backup\&quot;</p></code></div></p></li>
+	<li><p><b class="tr">SRCH</b> &quot;файл&quot; <b class="re">W+</b>&quot;сообщение&quot;<br>
+Проверяет существование указанного файла. Если файл не существует, выводит указанное сообщение. Может искать файл по маске. 
+Если хоть один файл, удовлетворяющий маске, существует, сообщение не выводится.<br>
+Сообщение может состоять из нескольких строк, но вместо перевода строки надо использовать &quot;@@&quot;.<br>
+Во всех официальных wog-файлах эта команда используется просто для вывода сообщений.
+<div class="erm" id="Q1"><code><p>SRCH &quot;--------.---&quot; W+&quot;ERM Help и Tools успешно установлены!@@Этот текст будет уже на новой строке.&quot;</p></code></div></p></li>
+	<li><p><b class="tr">MDIR</b> &quot;название папки&quot; <b class="re">W+</b>&quot;путь&quot;<br>
+Создаёт папку в указанном месте. Поддерживает и W+, и P+, и I+.
+<div class="erm" id="Q1"><code><p>MDIR &quot;New Life of Heroes&quot; P+</p></code></div></p></li>
+	<li><p><b class="tr">ICON</b> &quot;название ярлыка&quot; <b class="re">I+</b>&quot;путь к файлу&quot;<br>
+Создаёт ярлык. Поддерживает только P+ и I+. Если ранее шла команда MDIR, то ярлык создаётся внутри той папке, которая была указана в команде.
+<div class="erm" id="Q1"><code><p>MDIR &quot;New Life of Heroes&quot; P+<br>
+ICON &quot;ERM Script Editor для Heroes III In the Wake of Gods&quot; P+&quot;erm_s\erm_s.exe&quot;</p></code></div></p></li></ul>
+</li></ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p></body></html>

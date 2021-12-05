@@ -1,0 +1,407 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title></title>
+<script src="../Rec/script.js"></script>
+</head>
+<body  background="../Img/logo/intile.jpg">
+<p align="center"><font size="5">Инженерный анализ</font></p>
+<p></p>
+<p>Содержит выдержки из технической реализации игры, которые могут быть полезны 
+при более глубокой работе с Героями, а также <a href="../Rec/UN.htm#C">UN:C</a>.<br>
+Всё это, а также последние обновления, вы можете также найти <a target=_blank href="http://forum.df2.ru/index.php?act=ST&f=79&t=6803">здесь</a>.</p>
+<p>В <b>таблице монстров</b> используется следующая структура:<br>
+<u onclick="HideIt(101)" class="h"><b id=show101>Показать</u></b>
+<div id="101" class="b">
+<b>Town</b>: int; //соответственный город<br>
+<b>Level</b>: int; //уровень <br>
+<b>SoundName</b>: PChar; // 4 буквы, с которых начинаются звуки монстра<br>
+<b>DefName</b>: PChar; //имя дэфа монстра<br>
+<b>Flags</b>: int; //флаги<br>
+<b>Name</b>: PChar; //имя<br>
+<b>PluralName</b>: PChar; //множественное имя<br>
+<b>Features</b>: PChar; // (описание способностей)<br>
+<b>CostWood</b>: int; //цена деревом<br>
+<b>CostMercury</b>: int; //цена ртутью<br>
+<b>CostOre</b>: int; //цена рудой<br>
+<b>CostSulfor</b>: int; //цена серой<br>
+<b>CostCrystal</b>: int; //цена кристаллами<br>
+<b>CostGems</b>: int; //цена камнями<br>
+<b>CostGold</b>: int; //цена золотом<br>
+<b>FightValue</b>: int; //ценность в бою<br>
+<b>AIValue</b>: int; //ценность на карте<br>
+<b>Growth</b>: int; //прирост<br>
+<b>HordeGrowth</b>: int; //прирост от доп. строения<br>
+<b>HitPoints</b>: int; //здоровье<br>
+<b>Speed</b>: int; //скорость<br>
+<b>Attack</b>: int; //атака<br>
+<b>Defence</b>: int; //защита<br>
+<b>DamageLow</b>: int; //мин. урон<br>
+<b>DamageHigh</b>: int; //макс. урон<br>
+<b>Shots</b>: int; //выстрелов<br>
+<b>Spells</b>: int; //заклинаний<br>
+<b>AdvLow</b>: int; // ?<br>
+<b>AdvHigh</b>: int; // ?<br>
+<br>
+В файле h3wog.exe таблица стандартных монстров находится по адресу $<b>2703B8</b>, а 
+новые монстры – $<b>31C188</b>.<br>
+</div>
+
+<p><b>Таблица с типами стрелковых снарядов</b> (стрел и т. п.) для стандартных существ:
+
+<u onclick="HideIt(102)" class="h"><br>
+<b id=show102>Показать</u></b>
+<div id="102" class="b">
+Хранится в адресах <b>00797BB8–00797C7B</b> (неиспользующаяся оригинальная –
+<b>0043DBA4–0043DC34</b>). На каждое существо отводится один байт с номером типа 
+снаряда. Таблица начинается с лучника (существо № 2) и заканчивается неким 
+существом № 197 (оригинальная – баллистой, существом № 146).
+</div>
+<b><br>
+Имена изображений стрелковых снарядов</b> (стрел и т. п.) 
+
+<u onclick="HideIt(103)" class="h"><br>
+<b id=show103>Показать</u></b>
+<div id="103" class="b">
+В адресах <b>0043DAAA</b>–<b>0043DB1C</b> расположен оператор выбора (switch для любителей C-подобных языков, case для любителей Pascal-подобных). Он содержит 16 имен DEF-файлов (для типов снаряда №№ 00–0Fh), плюс один дополнительный пункт, выполняемый по умолчанию, то есть для всех остальных типов снаряда. При запуске WoG код оператора изменяется так, чтобы для типа 01 совершался прыжок на 
+<b>007649D0</b>, где проводится проверка на драколича – если это существо № 196, используется изображение дыхания драколича, если нет – стандартное изображение стрелы лучника из замка.
+</div>
+<p>
+<b>Регенерация существ</b>
+<u onclick="HideIt(104)" class="h"><br>
+<b id=show104>Показать</u></b>
+</p>
+<div id="104" class="b">
+002F55C7 83F8 3C CMP EAX,3C //призраки<br>
+002F55CA 0F84 BB000000 JE 002F568B<br>
+002F55D0 83F8 3D CMP EAX,3D //привидения<br>
+002F55D3 0F84 B2000000 JE 002F568B<br>
+002F55D9 3D 90000000 CMP EAX,90 //тролли<br>
+002F55DE 0F84 A7000000 JE 002F568B<br>
+002F55E4 3D 9D000000 CMP EAX,9D //кошмарные гидры<br>
+002F55E9 0F84 92000000 JE 002F5681<br>
+где 3C, 3D, 90, 9D - номер существа в шестнадцатеричной системе<br>
+<br>
+Для кошмарных гидр выполняется проверка вероятности регенерации<br>
+002F5681 E8 9A7EFFFF CALL 002ED520<br>
+002F5686 83F8 28 CMP EAX,28<br>
+где 28h = 40% вероятность. Ее можно убрать, если вместо JE 002F5681 поставить JE 
+002F568B.<br>
+<br>
+А вот тут находится кол-во регенерированных жизней<br>
+002F55BC BA 32000000 MOV EDX,32<br>
+где 32h = 50 HP</div>
+<p>
+<b>Атака с возвращением</b>
+<u onclick="HideIt(105)" class="h"><br>
+<b id=show105>Показать</u></b>
+<div id="105" class="b">
+002F57C6 83F8 48 CMP EAX,48 //гарпия<br>
+002F57C9 74 5D JE SHORT 002F5828<br>
+002F57CB 83F8 49 CMP EAX,49 //гарпия-ведьма<br>
+002F57CE 74 58 JE SHORT 002F5828<br>
+002F57D0 3D 9B000000 CMP EAX,9B //темный дракон<br>
+002F57D5 74 21 JE SHORT 002F57F8 //доп. проверка двуклеточности<br>
+<br>
+Для выбора режима нападения при нажатия правой кнопкой на защите (атаковать и 
+вернуться или атаковать и остаться там)<br>
+002FA2D7 837D F0 48 CMP DWORD PTR SS:[EBP-10],48 //гарпия<br>
+002FA2DB 74 23 JE SHORT 002FA300<br>
+002FA2DD 837D F0 49 CMP DWORD PTR SS:[EBP-10],49 //гарпия-ведьма<br>
+002FA2E1 74 1D JE SHORT 002FA300<br>
+002FA2E3 817D F0 9B000000 CMP DWORD PTR SS:[EBP-10],9B //темный дракон<br>
+002FA2EA 74 14 JE SHORT 002FA300</div>
+<br>
+<b>Возрождение фениксов</b>
+
+
+<u onclick="HideIt(106)" class="h"><br>
+<b id=show106>Показать</u></b>
+<div id="106" class="b">
+002F587C 817E 34 83000000 CMP DWORD PTR DS:[ESI+34],83 //феникс<br>
+002F5883 74 38 JE SHORT 002F58BD<br>
+002F5885 817E 34 9E000000 CMP DWORD PTR DS:[ESI+34],9E //священный феникс<br>
+002F588C 74 1C JE SHORT 002F58AA</div>
+&nbsp;<p><b>Бесстрашие</b>
+
+<u onclick="HideIt(107)" class="h"><br>
+<b id=show107>Показать</u></b>
+<p>
+<div id="107" class="b">
+002F7C6C 817F 34 84000000 CMP DWORD PTR DS:[EDI+34],84 //лазурный дракон<br>
+002F7C73 74 46 JE SHORT 002F7CBB<br>
+002F7C75 817F 34 96000000 CMP DWORD PTR DS:[EDI+34],96 //верховный архангел<br>
+002F7C7C 7C 09 JL SHORT 002F7C87<br>
+002F7C7E 817F 34 C0000000 CMP DWORD PTR DS:[EDI+34],0C0 //сильванский кентавр<br>
+002F7C85 7C 34 JL SHORT 002F7CBB<br>
+т.е. бесстрашием обладают Лазурный дракон и диапазон существ от Верховного 
+архангела (150) до командира Сопряжения (191).</div>
+<p>
+<b>Страх</b>
+
+<u onclick="HideIt(108)" class="h"><br>
+<b id=show108>Показать</u></b>
+<div id="108" class="b">
+002F7CEA 81FB 84000000 CMP EBX,84 //лазурный дракон<br>
+002F7CF0 74 75 JE SHORT 002F7D67<br>
+002F7CF2 81FB 99000000 CMP EBX,99 //антихрист<br>
+002F7CF8 74 6D JE SHORT 002F7D67<br>
+002F7CFA 81FB 9B000000 CMP EBX,9B //темный дракон<br>
+002F7D00 74 65 JE SHORT 002F7D67<br>
+<br>
+002F7D16 813D 68218302 AE000000 CMP DWORD PTR DS:[2832168],0AE<br>
+002F7D20 7C 21 JL SHORT 002F7D43<br>
+002F7D22 813D 68218302 BF000000 CMP DWORD PTR DS:[2832168],0BF<br>
+002F7D2C 7F 15 JG SHORT 002F7D43<br>
+все командиры сопряжения (в качестве монстров видимо)</div>
+<p>
+<b>Магическое зеркало</b>
+<u onclick="HideIt(109)" class="h"><br>
+<b id=show109>Показать</u></b>
+<div id="109" class="b">
+00048528 8179 34 86000000 CMP DWORD PTR DS:[ECX+34],86<br>
+0004852F 75 1E JNZ SHORT 0004854F<br>
+где 86h = 134 - Сказочный дракон</div>
+<p>
+<b>Атака огненным шаром</b>
+<u onclick="HideIt(110)" class="h"><br>
+<b id=show110>Показать</u></b>
+<div id="110" class="b">
+0003F72C 83F8 2D CMP EAX,2D<br>
+0003F72F 0F85 EA020000 JNZ 0003FA1F<br>
+где 2Dh = 45 - Магог</div>
+
+<p>
+<b>Атака облаком смерти</b>
+<u onclick="HideIt(111)" class="h"><br>
+<b id=show111>Показать</u></b>
+<div id="111" class="b">
+002FF990 83F8 40 CMP EAX,40 //лич<br>
+002FF993 74 12 JE SHORT 002FF9A7<br>
+002FF995 83F8 41 CMP EAX,41 //могущественный лич<br>
+002FF998 74 0D JE SHORT 002FF9A7<br>
+002FF99A 3D C4000000 CMP EAX,0C4 //драколич<br>
+002FF99F 74 06 JE SHORT 002FF9A7</div>
+
+<p>
+<b>Заклинания, даваемые артефактами</b>
+<u onclick="HideIt(112)" class="h"><br>
+<b id=show112>Показать</u></b>
+<div id="112" class="b">
+По адресу <b>004D95F2h</b> находится указатель на case, содержащий 9 записей.
+<br>
+По адресу <b>004D95EBh</b> находится указатель на таблицу однобайтных данных, 
+определяющих работу оператора. Таблица вмещает 49 значений, начиная с арта-86 и 
+заканчивая артом-135.<br>
+Типы значений в таблице:<br>
+0 - дать все заклинания Огня<br>
+1 - дать все заклинания Воздуха<br>
+2 - дать все заклинания Воды<br>
+3 - дать все заклинания Земли<br>
+4 - дать заклинания &quot;Вызвать Корабль&quot; и &quot;затопить Корабль&quot;<br>
+5 - дать все заклинания 5-го уровня<br>
+6 - дать &quot;Армагеддон&quot;<br>
+7 - дать &quot;Гром Титанов&quot;<br>
+8 - ничего</div>
+<p>
+<b>Боевые машины, покупаемые в кузнях</b>
+<u onclick="HideIt(113)" class="h"><br>
+<b id=show113>Показать</u></b>
+<div id="113" class="b">
+<b>6AAA60</b> - таблица боевых машин, покупаемых в Кузницах замков.<br>
+На каждую машину отводится по 4 байта, потом 4 байта - FF FF FF FF (итого - 8 
+байт). Боевая машина, покупаемая в Ballista Yard, совпадает с Замком.<br>
+<b>00642EA0</b> - таблица отображаемых в окне кузни существ.</div>
+<p>
+<b>Структура заклинаний</b>
+<u onclick="HideIt(114)" class="h"><br>
+<b id=show114>Показать</u></b>
+<div id="114" class="b">
+<b>Указатель</b> на таблицу заклинаний лежит в <b>687FA8</b>. Адрес в нём динамический.<br>
+struct<br>
+{<br>
+int null; //??<br>
+char *sound; //имя звука<br>
+int anim_id; //<a href="../Rec/SS.htm#X">SS:X</a>???<br>
+int flags; //флаги <br>
+char *name; //имя <br>
+int level;<br>
+int school;<br>
+int mana_cost[4];<br>
+int param_1;<br>
+int effects[4]; //<a href="../Rec/SS.htm#E">SS:E</a><br>
+int city_freq[9]; //вероятности появления в городах<br>
+int ai_val[4]; //<a href="../Rec/SS.htm#i">SS:I</a><br>
+char *desc[4]; //описания<br>
+}</div>
+<p>
+<b>Sharpshooter</b>
+<u onclick="HideIt(115)" class="h"><br>
+<b id=show115>Показать</u></b>
+<div id="115" class="b">
+75DD50 cmp eax,00000095h<br>
+75DD55 jz L0075DDD2<br>
+75DD57 cmp eax,00000089h<br>
+75DD5C jz L0075DDD2<br>
+75DD5E cmp eax,000000AAh<br>
+75DD63 jz L0075DDD2<br>
+75DD65 cmp eax,000000ABh<br>
+75DD6A jz L0075DDD2<br>
+То есть, прямой стрелой пуляют 3 снайпера + Стрелковая Башня.</div>
+<p>
+<b>Нет пенальти за препятствия</b>
+<u onclick="HideIt(116)" class="h"><br>
+<b id=show116>Показать</u></b>
+<div id="116" class="b">
+760590 cmp eax,00000022h //маг<br>
+760593 jz L00760622<br>
+760599 cmp eax,00000023h //архимаг<br>
+76059C jz L00760622<br>
+7605A2 cmp eax,00000088h //чародей<br>
+7605A7 jz L00760622<br>
+7605A9 cmp eax,00000089h //снайпер<br>
+7605AE jz L00760622<br>
+7605B0 cmp eax,00000095h //башня<br>
+7605B5 jz L00760622<br>
+7605B7 cmp eax,000000AAh //арктический снайпер<br>
+7605BC jz L00760622<br>
+7605BE cmp eax,000000ABh //закалённый снайпер<br>
+7605C3 jz L00760622</div>
+<p>
+<b>Ненависть</b>
+<u onclick="HideIt(117)" class="h"><br>
+<b id=show117>Показать</u></b>
+<div id="117" class="b">
+443138 mov dl,[eax+CASE_004434DC]<br>
+44313E jmp [CASE_PROCTABLE_004434C8+edx*4]<br>
+<br>
+В маленькой (монстры 112-129) таблице 5 значений. Значения 00-03 чисто для 
+элементалей - каждый элементаль ненавидит обоих элементалей противоположной 
+стихии. Управление, однако, всё равно передаётся на PROC0004 - она же для 
+остальных существ, т.е., там case вложен в case. Диапазон - от Ангела до Чёрного 
+Дракона.<br>
+SoD'овский код там имеет вид:<br>
+<br>
+CASE_004434C8_PROC0004:<br>
+<br>
+443195 mov eax,[edi+34h]<br>
+443198 add ecx,FFFFFFF4h<br>
+44319B cmp ecx,00000047h<br>
+44319E ja CASE_004434F0_PROC0006<br>
+4431A4 xor edx,edx<br>
+4431A6 mov dl,[ecx+CASE_0044350C]<br>
+4431AC jmp [CASE_PROCTABLE_004434F0+edx*4]<br>
+<br>
+Однако при запуске WoG код изменяется так:<br>
+<br>
+CASE_004434C8_PROC0004:<br>
+<br>
+443195 mov ecx,[ebp+08h]<br>
+443198 call SUB_L00766DE6<br>
+44319D or eax,eax<br>
+44319F jz L00443410<br>
+4431A5 mov ecx,[ebp-10h]<br>
+4431A8 jmp L00443211<br>
+4431AA nop<br>
+4431AB nop<br>
+<br>
+Код меняет отрезок WoG'овского копирования exe3273A4-3273AF 
+(78BD8Ch/443195h/17h).<br>
+В итоге ненавистью существ в WoG занимается SUB_L00766E14, куда скопирован и 
+case, и таблица SoD'а. Туда же, видимо, встроена и ненависть через опыт существ.<br>
+При условии, что тип существа соответствует &quot;ненавистному&quot;, задаётся процент 
+доп. урона. В SoD это унифицировано, в WoG же - рутинно задаётся одной и той же 
+командой:<br>
+<br>
+mov dword ptr [ebp-0Ch],00000032h<br>
+<br>
+Исключения - Титан и Чёрный Дракон. У них это:<br>
+<br>
+mov dword ptr [ebp-0Ch],00000005h<br>
+<br>
+Похоже на опечатку: вместо 150% урона - 105%. Несложный тест подтверждает, что 
+баг реален и мы с ним жили.<br>
+Кстати, и в SoD, и в WoG Чёрный Дракон равнодушен к Гигантам. Справедливо - 
+Титан тоже равнодушен к Красным.<br>
+Независимо от реальных процентов доп. урона, в логе битвы будет показано &quot;50%&quot;. 
+Проблема в упрощённом обращении к строке genrltxt.txt.</div>
+<p>
+<b>Кавалерийский бонус</b>
+<u onclick="HideIt(118)" class="h"><br>
+<b id=show118>Показать</u></b>
+<div id="118" class="b">
+75D823 cmp dword ptr [L028460C0],0000000Ah; - Каварелист<br>
+75D82A jnz L0075D838<br>
+75D82C mov dword ptr [L02846420],0000000Bh<br>
+75D836 jmp L0075D860<br>
+75D838 cmp dword ptr [L028460C0],0000000Bh; - Чемпион<br>
+75D83F jnz L0075D84D<br>
+75D841 mov dword ptr [L02846420],0000000Bh</div>
+<p>
+<b>Отсос 2-х очков маны</b>
+<u onclick="HideIt(119)" class="h"><br>
+<b id=show119>Показать</u></b>
+<div id="119" class="b">
+4650D0 sub eax,0000003Dh; - Привидение<br>
+&hellip;&hellip;&hellip;<br>
+465174 add eax,FFFFFFFEh; - кол-во забираемых очков</div>
+<p>
+<b>Магический канал</b>
+<u onclick="HideIt(120)" class="h"><br>
+<b id=show120>Показать</u></b>
+<div id="120" class="b">
+5A24DC cmp dword ptr [eax-000000C0h],0000002Bh; - Чёрт</div>
+<p>
+<b>Смертельный удар</b>
+<u onclick="HideIt(121)" class="h"><br>
+<b id=show121>Показать</u></b>
+<div id="121" class="b">
+766DB9 sub eax,43; - Рыцарь Смерти<br>
+4435C0 jz L004435D1<br>
+&hellip;&hellip;&hellip;&hellip;<br>
+4436DE cmp eax,00000014h; - шанс срабатывания абилки</div>
+<p>
+<b>Снижение стоимости заклинаний</b>
+<u onclick="HideIt(122)" class="h"><br>
+<b id=show122>Показать</u></b>
+<div id="122" class="b">
+766BFA cmp dword ptr [ebp-18h],00000022h - Маг<br>
+766BFE jz L00766C06<br>
+766C00 cmp dword ptr [ebp-18h],00000023h - АрхиМаг<br>
+766C04 jnz L00766C0D<br>
+766C06 mov dword ptr [ebp-0Ch],00000002h - кол-во очков на удешевление</div>
+<p>
+<b>Особые земли</b>
+<u onclick="HideIt(123)" class="h"><br>
+<b id=show123>Показать</u></b>
+<div id="123" class="b">
+Case:<br>
+4FD5A1 mov cl,[eax+CASE_004FD5E8]<br>
+4FD5A7 jmp [CASE_PROCTABLE_004FD5D0+ecx*4]<br>
+<br>
+Проверки для подсказок при наведении мыши, <img src="../Img/RBM.gif" id="vc"> и для <a href="../Rec/TR.htm">!!TR</a>:<br>
+<br>
+4FD52A cmp eax,00000015h<br>
+4FD52D lea ecx,[edi+ecx*4]<br>
+4FD530 jz L004FD57F<br>
+4FD532 cmp eax,0000002Eh<br>
+4FD535 jz L004FD57F<br>
+4FD537 cmp eax,000000E3h<br>
+4FD53C jz L004FD57F<br>
+4FD53E cmp eax,000000E0h<br>
+4FD543 jz L004FD57F<br>
+4FD545 cmp eax,000000DEh<br>
+4FD54A jz L004FD57F<br>
+4FD54C cmp eax,000000E1h<br>
+4FD551 jz L004FD57F<br>
+4FD553 cmp eax,000000E4h<br>
+4FD558 jz L004FD57F<br>
+4FD55A cmp eax,000000E2h<br>
+4FD55F jz L004FD57F<br>
+4FD561 cmp eax,000000E7h<br>
+4FD566 jz L004FD57F<br>
+4FD568 cmp eax,000000E5h<br>
+4FD56D jz L004FD57F</div>
+
+<p>За содержимое благодарим авторов: <b>sergroj, Chortos-2, major, MOP, feanor</b></p>
+
+</body></html>

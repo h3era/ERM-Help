@@ -1,0 +1,297 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>Логика срабатывания событий и триггеров</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="../Rec/script.js"></script>
+</head>
+<body>
+<h2 align="center">Логика срабатывания событий<a href="../ERA/index.htm" title="Работает только с ERA.."><img src="../Img/era.gif" class="TE"></a></h2>
+<p id="step">Ниже будет представлена проверенная на практике <b id="N1">Algor</b>'ом информация о том, КОГДА и КАК срабатывают события игры, 
+известные на момент публикации этого материала и назначенные в ERA соответствующие им именованные ф-ции (события), в том числе будут указаны и некоторые хуки из игрового кода.</p>
+<ul style="font-size:17">
+<li><p><a href="javascript:void(0)" onclick="hidepic(1)" class="h">Экран города</a><div id="1" class="b">
+<b class="event">OnTownMouseHint</b><br>
+ПОСЛЕ вывода любой подсказки в экране города, НЕ работает в экранах замка/городского холла/рынка/таверны/жилищ и пр.<br>
+<br>
+<b class="event">OnEnterTownHall</b> (<a href="../Tr/TH.htm">!?TH0</a>)<br>
+ПЕРЕД входом в городской холл из экране города<br>
+<br>
+<b class="event">OnLeaveTownHall</b> (<a href="../Tr/TH.htm">!?TH1</a>)<br>
+ПОСЛЕ выхода в экран города из экрана городского холла<br>
+при постройке здания срабатывает ПОСЛЕ <a href="../ERA/new_events.htm#2.31" class="event">OnBuildTownBuilding</a> и отрисовки здания в экране города<br>
+<br>
+<b class="event">OnBuildTownBuilding</b><br>
+после постройки здания и закрытия экрана городского холла, но до отрисовки здания в экране города<br>
+<br>
+<b class="event">OnSwitchTownScreen</b><br>
+перед переключением на другой город из окна города.<br>
+Срабатывают: <a href="../ERA/new_events.htm#2.34" class="event">OnSwitchTownScreen</a>, <a href="../ERA/new_events.htm#2.36" class="event">OnPostTownScreen</a>, <a href="../ERA/new_events.htm#2.35" class="event">OnPreTownScreen</a>.<br>
+События <a href="../ERA/new_events.htm#2.32" class="event">OnOpenTownScreen</a>, <a href="../ERA/new_events.htm#2.33" class="event">OnCloseTownScreen</a> при переключении НЕ срабатывают<br>
+<br>
+<b class="event">OnOpenTownScreen, OnPreTownScreen</b><br>
+перед открытием окна города, срабатывают в порядке: <a href="../ERA/new_events.htm#2.32" class="event">OnOpenTownScreen</a>, <a href="../ERA/new_events.htm#2.35" class="event">OnPreTownScreen</a> до появления окна города на экране<br>
+<br>
+<b class="event">OnPostTownScreen, OnCloseTownScreen</b><br>
+после закрытия окна города (после исчезновения с экрана) срабатывают в порядке: <a href="../ERA/new_events.htm#2.36" class="event">OnPostTownScreen</a>, <a href="../ERA/new_events.htm#2.33" class="event">OnCloseTownScreen</a> </div></p></li>
+
+<li><p><a href="javascript:void(0)" onclick="hidepic(2)" class="h">Герой, командир и их экраны</a><div id="2" class="b">
+<b class="event">OnOpenHeroScreen, OnLoadHeroScreen, OnPreHeroScreen</b><br>
+перед открытием окна героя срабатывают в порядке: <a href="../ERA/new_events.htm#2.4" class="event">OnOpenHeroScreen</a>, <a href="../ERA/new_events.htm#2.30" class="event">OnLoadHeroScreen</a>, <a href="../ERA/new_events.htm#2.37" class="event">OnPreHeroScreen</a> до появления окна героя на экране.<br>
+Срабатывают также при просмотре героя в таверне или из окна встречи героев<br>
+<br>
+<b class="event">OnPostHeroScreen, OnCloseHeroScreen</b><br>
+после закрытия окна героя (после исчезновения с экрана) срабатывают в порядке: <a href="../ERA/new_events.htm#2.38" class="event">OnPostHeroScreen</a>, <a href="../ERA/new_events.htm#2.5" class="event">OnCloseHeroScreen</a>.<br>
+Срабатывают также при просмотре героя в таверне или из окна встречи героев.<br>
+При переключении между героями ВНУТРИ окна героя отрабатывают события <a href="../ERA/new_events.htm#2.38" class="event">OnPostHeroScreen</a>, <a href="../ERA/new_events.htm#2.30" class="event">OnLoadHeroScreen</a>, 
+<a href="../ERA/new_events.htm#2.37" class="event">OnPreHeroScreen</a>, а события <a href="../ERA/new_events.htm#2.5" class="event">OnCloseHeroScreen</a> и <a href="../ERA/new_events.htm#2.4" class="event">OnOpenHeroScreen</a> не отрабатывают.<br>
+<br>
+<b class="event">OnHeroMove</b> (<a href="../Tr/HM.htm">!?HM#</a>)<br>
+при движении героя, срабатывает ПЕРЕД каждым шагом героя<br>
+<br>
+<b class="event">OnHeroGainLevel</b> (<a href="../Tr/HL.htm">!?HL#</a>)<br>
+перед повышением уровня героя, но после повышения уровня и закрытия окна командира.<br>
+Если повышается сразу на несколько уровней - перед каждым повышением<br>
+<br>
+<b>Хук в <span class="event">5090553</span></b> [диалог повышения уровня героя без выбора вторич. навыков]<br>
+<b>Хук в <span class="event">5090672</span></b> [диалог повышения уровня героя с 1 вторич.навыком]<br>
+<b>Хук в <span class="event">5090948</span></b> [диалог повышения уровня героя с 2 вторич.навыками]<br>
+перед открытием окна диалога повышения уровня героя с соответствующим кол-вом предлагаемых вторич. навыков<br>
+<br>
+<b class="event">OnEquipArt</b> (<a href="../Tr/AE.htm">!?AE1</a>)<br>
+при надевании артефакта, срабатывает даже до <i class="event">OnAfterErmInstructions</i> (<a href="../Tr/PI.htm">!?PI</a>) при получении героями стартовых артефактов<br>
+<br>
+<b class="event">OnUnequipArt</b> (<a href="../Tr/AE.htm">!?AE0</a>)<br>
+при снятии артефакта<br>
+<br>
+<b class="event">OnOpenCommanderWindow</b> (<a href="../Tr/CO.htm">!?CO0</a>)<br>
+перед открытием окна командира из окна героя (до появления окна командира на экране)<br>
+<br>
+<b class="event">OnCloseCommanderWindow</b> (<a href="../Tr/CO.htm">!?CO1</a>)<br>
+после закрытия (исчезновения с экрана) окна командира<br>
+
+<p id="Q1"><i id="bold">Замечание:</i> если командиры отключены или командир не нанят, !?CO0 и !?CO1 не отрабатывают</p>
+
+<b class="event">OnAfterCommanderBuy</b> (<a href="../Tr/CO.htm">!?CO2</a>)<br>
+после покупки командира при посещении города<br>
+<br>
+<b class="event">OnAfterCommanderResurrect</b> (<a href="../Tr/CO.htm">!?CO3</a>)<br>
+после воскрешение мёртвого командира при посещении города. НЕ срабатывает при воскрешении командира Шлемом бессмертия<br>
+<br>
+<b class="event">OnBeforeHeroInteraction</b><br>
+перед встречей героев (перед появлением окна встречи)<br>
+<br>
+<b class="event">OnAfterHeroInteraction</b><br>
+после встречи героев (после исчезновения окна встречи)</div></p></li>
+
+<li><p><a href="javascript:void(0)" onclick="hidepic(3)" class="h">Прочие экраны</a><div id="3" class="b">
+<b class="event">OnOpenRecruitDlg</b><br>
+перед открытием диалога найма существ.<br>
+НЕ срабатывает при открытии кузницы<br>
+<br>
+<b class="event">OnRecruitDlgRecalc</b><br>
+перед открытием диалога найма существ<br>
+перед изменением нанимаемого кол-ва в диалоге найма существ<br>
+после нажатии кнопки найма и <a href="../Rec/RD.HTM#action_29" class="event">OnRecruitDlgAction</a><br>
+<br>
+<b class="event">OnRecruitDlgAction</b><br>
+при нажатии кнопки найма в диалоге найма существ, ДО закрытия диалога<br>
+<br>
+<b class="event">OnCloseRecruitDlg</b><br>
+после закрытия диалога найма существ.<br>
+НЕ срабатывает при закрытии кузницы<br>
+<br>
+<b class="event">OnCustomDialogEvent</b><br>
+ПЕРЕД активацией любого события в пользовательском <a href="../Tr/DL.htm">DL</a>-диалоге</div></p></li>
+
+<li><p><a href="javascript:void(0)" onclick="hidepic(4)" class="h">Таймеры, начало дня, сохранения и загрузки</a><div id="4" class="b">
+<b class="event">OnEverySecond <b id="black">(<a href="../Tr/TL.htm">!?TL0</a>),</b> OnEvery2Seconds <b id="black">(<a href="../Tr/TL.htm">!?TL1</a>),
+</b> OnEvery5Seconds <b id="black">(<a href="../Tr/TL.htm">!?TL2</a>),</b> OnEvery10Seconds <b id="black">(<a href="../Tr/TL.htm">!?TL3</a>),</b> <br>OnEveryMinute</b> (<a href="../Tr/TL.htm">!?TL4</a>)<br>
+События начинают срабатывать сразу после инициализации ERM и отработки инструкций.<br>
+Сомневаюсь в целесообразнисти их использования <br>
+<br>
+<b class="event">OnEveryDay</b><br>
+в начале нового игрового дня (включая день 1) для каждого игрока до <a href="../Tr/TM.htm">!?TM1</a> и <a href="../Tr/TM.htm">!?TM2</a><br>
+<br>
+<b class="event">OnErmTimer1</b> [Распространённый WoG-таймер <a href="../Tr/TM.htm">!?TM1</a>]<br>
+в начале нового игрового дня (включая день 1) для каждого игрока после <a href="../ERA/new_events.htm#2.18" class="event">OnEveryDay</a> и до <a href="../Tr/TM.htm">!?TM2</a><br>
+<br>
+<b class="event">OnErmTimer2</b> [Распространённый WoG-таймер <a href="../Tr/TM.htm">!?TM2</a>]<br>
+в начале нового игрового дня (включая день 1) для каждого игрока после <a href="../ERA/new_events.htm#2.18" class="event">OnEveryDay</a> и <a href="../Tr/TM.htm">!?TM1</a><br>
+<br>
+<b class="event">OnGameEnter</b><br>
+при входе в игру после <a href="../ERA/new_events.htm#2.18" class="event">OnEveryDay</a>, <a href="../Tr/TM.htm">!?TM1</a>, <a href="../Tr/TM.htm">!?TM2</a> или после загрузки сохранённой игры и показа карты.<br>
+<br>
+<b class="event">OnSavegameRead</b><br>
+после выбора загружаемого сохранения и инициализации ERM в окне загрузки до показа карты, перед чтением файла сохранения<br>
+<br>
+<b class="event">OnAfterLoadGame</b> (<a href="../Tr/GM.htm">!?GM0</a>)<br>
+после чтения файла сохранения в окне загрузки до показа карты после <a href="../ERA/new_events.htm#2.2" class="event">OnSavegameRead</a><br>
+<br>
+<b class="event">OnBeforeSaveGame</b> (<a href="../Tr/GM.htm">!?GM1</a>)<br>
+перед сохранением игры после ввода имени сохранения и закрытия диалога выбора сохранения, но до создания файла<br>
+<br>
+<b class="event">OnSavegameWrite</b><br>
+после создания файла сохранения (~160КБ), но до записи данных<br>
+<br>
+<b class="event">OnAfterSaveGame</b><br>
+после записи всех данных в файл сохранения, но до сообщения <span id="dl3">&lt;<i id="dl2">имя сохранения</i>&gt; удалось сохранить.</span><br>
+<br>
+<b class="event">OnAfterErmInstructions</b> (<a href="../Tr/PI.htm">!?PI</a>)<br>
+непосредственно перед показом карты при старте НОВОЙ игры.<br>
+НЕ срабатывает при загрузке сохранённой игры<br>
+<br>
+<b class="event">OnGameLeave</b><br>
+после подтверждения выхода в главное меню (новая игра, загрузить игру).<br>
+НЕ срабатывает при закрытии окна "крестиком"или через <span class="key">Alt</span>+<span class="key">F4</span></div></p></li>
+
+<li><p><a href="javascript:void(0)" onclick="hidepic(5)" class="h">Клавиатура, мышь и прочие</a><div id="5" class="b">
+<b class="event">OnMp3MusicChange</b> (<a href="../Tr/MP.htm">!?MP</a>)<br>
+при изменении ФОНОВОЙ мелодии (mp3-трэка)<br>
+если мелодия не менялась, просто пошёл повтор, событие НЕ срабатывает<br>
+после воспроизведения звукового эффекта (например, звук движения героя, звук отстроенного здания), НЕ срабатывает после звука "щелчок" на элементах<br>
+<br>
+<b class="event">OnSoundPlay</b> (<a href="../Tr/SN.htm">!?SN</a>)<br>
+в начале воспроизведения мелодии (wav-звуки), например, при проигрывании мелодий посещаемых объектов -  камень знания и пр.<br>
+НЕ срабатывает на звук "щелчок" на элементах и прочие подобные звуковые эффекты<br>
+<br>
+<b class="event">OnKeyPressed</b><br>
+при нажатии любой клавиши на клавиатуре<br>
+<br>
+<b class="event">OnAdventureMapRightMouseClick</b> (<a href="../Tr/CM.htm">!?CM0</a>)<br>
+клик <img src="../Img/RBM.gif" id="vc"> на карте приключений<br>
+<br>
+<b class="event">OnAdventureMapLeftMouseClick</b> (<a href="../Tr/CM.htm">!?CM5</a>)<br>
+клик <img src="../Img/LBM.gif" id="vc"> на карте приключений<br>
+<br>
+<b class="event">OnBattleScreenMouseClick</b> (<a href="../Tr/CM.htm">!?CM4</a>)<br>
+любой клик в экране боя<br>
+<br>
+<b class="event">OnTownMouseClick</b> (<a href="../Tr/CM.htm">!?CM1</a>)<br>
+любой клик в ГЛАВНОМ экране города<br>
+<br>
+<b class="event">OnTownHallMouseClick</b><br>
+любой клик в экране Городской холл.<br>
+НЕ срабатывает вне экрана городского холла<br>
+<br>
+<b class="event">OnRecruitDlgMouseClick</b><br>
+любой клик в экране найма существ.<br>
+НЕ срабатывает в экране Кузницы<br>
+<br>
+<b class="event">OnKingdomOverviewMouseClick</b><br>
+любой клик в экране Обзор королевства<br>
+<br>
+<b class="event">OnHeroScreenMouseClick</b> (<a href="../Tr/CM.htm">!?CM2</a>)<br>
+любой клик в экране героя<br>
+<br>
+<b class="event">OnHeroesMeetScreenMouseClick</b> (<a href="../Tr/CM.htm">!?CM3</a>)<br>
+любой клик в экране встречи героев<br>
+<br>
+<b class="event">OnChat</b><br>
+перед входом в строку чата И перед отправкой написанного в окно игры.<br>
+НЕ срабатывает при выводе сообщений через <a href="../Rec/IF.htm#L">IF:L</a><br>
+<br>
+<b>Хук в <span class="event">6027880</span></b> [расчёт дохода города]<br>
+при выборе города в списке<br>
+при входе/выходе из обзора королевства<br>
+при входе в город<br>
+ПОСЛЕ выхода в экран города из экрана городского холла (до <a href="../Tr/TH.htm">!?TH1</a>), экранов Замка, жилищ существ (после <a href="../Rec/RD.htm#close_24" class="event">OnCloseRecruitDlg</a>)<br>
+НЕ срабатывает ПОСЛЕ выхода в экран города из экрана рынка<br>
+при постройке здания срабатывает до выхода из экрана городского холла И ДВАЖДЫ после отрисовки здания в экране города и <a href="../Tr/TH.htm">!?TH1</a><br>
+<br>
+<b class="event">AddGoldForArt</b> - <b>Хук в 5011264</b><br>
+срабатывает при входе в обзора королевства (<i class="event">AddResForArt</i> не срабатывает)<br>
+<br>
+<b class="event">AddResForArt</b> - <b>Хук в 4950687</b><br>
+в начале каждого дня каждого игрока в следующем порядке: <i class="event">AddResForArt</i>, расчёт дохода города, <i class="event">AddGoldForArt</i>.<br>
+Не срабатывают для первого дня первого игрока</div></p></li>
+
+<li><p><a href="javascript:void(0)" onclick="hidepic(13)" class="h">Срабатывание событий в бою</a><div id="13" class="b">
+<dl>
+<dt><b id="N2">Подготовка к бою</b></dt>
+<dd><b><u onclick="HideIt(6)" class="h">Начало боя (с тактической фазой) (<b id="show6">показать</b>)</u></b><div id="6" class="b">
+	<b>Хук в <span class="event">7710213</span></b> [перед битвой до <a href="../Tr/BA.htm">!?BA0</a>]<br>
+	<b class="event">OnBeforeBattle</b> (<a href="../Tr/BA.htm">!?BA0</a>)<br>
+	<b class="event">OnBeforeBattleUniversal</b> (<a href="../Tr/BA.htm">!?BA52</a>)<br>
+	<b class="event">OnBeforeBattlefieldVisible</b><br>
+	<b class="event">OnBattleRound</b> (<a href="../Tr/BR.htm">!?BR-1</a>)<br>
+	<b class="event">OnSetupBattlefield</b> (<a href="../Tr/BF.htm">!?BF</a>)<br>
+	появление поля боя<br>
+	<b class="event">OnBattlefieldVisible</b><br>
+	<b class="event">OnCombatRound</b><br>
+	<b>сообщение "Тактическая фаза"</b><br>
+	выполнение действий отрядов начиная с получения хода (расстановка)<br>
+	нажатие кнопки "Начать битву"<br>
+	<b class="event">OnAfterTacticsPhase</b><br>
+	<b class="event">OnCombatRound</b><br>
+	<b class="event">OnBattleRound</b> (<a href="../Tr/BR.htm">!?BR0</a>)<br>
+	выполнение действий отрядов начиная с получения хода</div></dd>
+<dd><b><u onclick="HideIt(7)" class="h">Начало боя (без тактической фазы) (<b id="show7">показать</b>)</u></b><div id="7" class="b">
+	<b>Хук в <span class="event">7710213</span></b> [перед битвой перед <a href="../Tr/BA.htm">!?BA0</a>]<br>
+	<b class="event">OnBeforeBattle</b> (<a href="../Tr/BA.htm">!?BA0</a>)<br>
+	<b class="event">OnBeforeBattleUniversal</b> (<a href="../Tr/BA.htm">!?BA52</a>)<br>
+	<b class="event">OnBeforeBattlefieldVisible</b><br>
+	<b class="event">OnBattleRound</b> (<a href="../Tr/BR.htm">!?BR-1</a>)<br>
+	<b class="event">OnSetupBattlefield</b> (<a href="../Tr/BF.htm">!?BF</a>)<br>
+	<b class="event">OnAfterTacticsPhase</b><br>
+	<b class="event">OnBattleRound</b> (<a href="../Tr/BR.htm">!?BR0</a>)<br>
+	появление поля боя<br>
+	<b class="event">OnBattlefieldVisible</b><br>
+	<b class="event">OnCombatRound</b><br>
+	<b class="event">OnBattleRound</b> (<a href="../Tr/BR.htm">!?BR0</a>) (да! еще раз нулевой раунд)<br>
+	выполнение действий отрядов начиная с получения хода</div></dd>
+<dd><b><u onclick="HideIt(8)" class="h">Смена раунда (<b id="show8">показать</b>)</u></b><div id="8" class="b">
+	<b class="event">OnBeforeBattleAction</b> (<a href="../Tr/BG.htm">!?BG0</a>) для последнего действующего отряда в раунде<br>
+	<b class="event">OnCombatRound</b><br>
+	<b class="event">OnBattleRound</b> (<a href="../Tr/BR.htm">!?BR</a>[раунд n+1])<br>
+	выполнение действий отрядов, начиная с получения хода</div></dd><br>
+<dt><b id="N2">Действия отрядов</b></dt>
+<dd><b><u onclick="HideIt(9)" class="h">Получение хода (<b id="show9">показать</b>)</u></b><div id="9" class="b">
+	<b class="event">OnBattleRegeneratePhase</b><br>
+	<b class="event">OnBattleStackObtainsTurn</b><br>
+	отряд выполняет спец. действие, например похищение маны призраками<br>
+	отряд получает ход и подсвечивается обводкой<br>
+	<b>Хук в <span class="event">4609014</span></b> [после фазы регенерации; проверки на мораль, страх; и после установки активного стека]<br>
+	<b class="event">OnAfterBattleAction</b> (<a href="../Tr/BG.htm">!?BG1</a>) - не срабатывает для самого первого действия первого отряда в бою<br>
+	выбор и выполнение действия</div></dd>
+<dd><b><u onclick="HideIt(10)" class="h">Перемещение/ожидание/оборона (<b id="show10">показать</b>)</u></b><div id="10" class="b">
+	анимация + звук перемещения отряда, если перемещение<br>
+	выполнение действий отрядов, начиная с получения хода</div></dd>
+<dd><b><u onclick="HideIt(11)" class="h">Атака врага (<b id="show11">показать</b>)</u></b><div id="11" class="b">
+	наведение курсора на врага<br>
+	<b class="event">OnStackToStackDamage</b> (срабатывает 2/3 раза для рукопашников/стрелков соответственно)<br>
+	выводится подсказка с оценкой урона, который может быть нанесен<br>
+	клик атаки<br>
+	<b class="event">OnBeforeBattleAction</b> (<a href="../Tr/BG.htm">!?BG0</a>)<br>
+	анимация + звук выстрела/подхода/подлета<br>
+	<b class="event">OnStackToStackDamage</b><br>
+	<b class="event">OnMonsterPhysicalDamage</b> (<a href="../Tr/MF.htm">!?MF1</a>)<br>
+	анимация + звук атаки нападающим и получения урона целью<br>
+	<b>Хук в <span class="event">4455129</span></b> [после выстрела] или <b>Хук в <span class="event">4462998</span></b> [после атаки]<br>
+	начало контратаки, если есть<br>
+	<b class="event">OnStackToStackDamage</b><br>
+	<b class="event">OnMonsterPhysicalDamage</b> (<a href="../Tr/MF.htm">!?MF1</a>)<br>
+	анимация + звук атаки нападающим и получения урона целью<br>
+	<b>Хук в <span class="event">4462998</span></b> [после атаки]<br>
+	конец контратаки<br>
+	анимация возврата для гарпий<br>
+	<font color="#0000CD">если атака/контратака уничтожила последний отряд какой-либо стороны:<br>
+	отображение окна результатов боя<br>
+	нажатие кнопки "ок" в окне результатов боя<br>
+	<b class="event">OnAfterBattleAction</b> (<a href="../Tr/BG.htm">!?BG1</a>)<br>
+	получение уровня командиром/героем, если получено достаточно опыта</font><br>
+	<b class="event">OnAfterBattle</b> (<a href="../Tr/BA.htm">!?BA1</a>)<br>
+	<b class="event">OnAfterBattleUniversal</b> (<a href="../Tr/BA.htm">!?BA53</a>)<br>
+	выполнение действий отрядов начиная с получения хода</div></dd>
+<dd><b><u onclick="HideIt(12)" class="h">Действие отряда ИИ (без героя) (<b id="show12">показать</b>)</u></b><div id="12" class="b">
+	<b class="event">OnStackToStackDamage x2/x3</b> <b id="black">+</b> <b class="event">OnAICalcStackAttackEffect</b> (срабатывает для каждой потенциальной цели, даже если она недосягаема)<br>
+	<b class="event">OnAICalcStackAttackEffect</b><br>
+	<b class="event">OnBeforeBattleAction</b> (<a href="../Tr/BG.htm">!?BG0</a>)<br>
+	выполнение действия как и для отряда человека<br>
+	выполнение действий отрядов начиная с получения хода</div></div></dd>
+</dl></p></li></ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p></body></html>

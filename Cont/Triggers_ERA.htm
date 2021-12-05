@@ -1,0 +1,170 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>Триггеры ERA</title>
+<LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
+<script language="JScript" src="../Rec/script.js"></script></head>
+<body scroll="no">
+<div>
+<h2 align="center">Триггеры (события) <span onclick="hidepic(17)">ERA</span>:</h2>
+<p id="Q1" class="erm"><font size="3"><a href="TriggerSol.htm">Триггеры: общая информация</a><br>
+<a href="EventsList.htm" target="form">Список триггеров и их именованных событий</a><br>
+<a href="Triggers.htm" target="main">Перечень основных триггеров</a></font></p></div>
+
+<div style="overflow:auto; height:100%">
+<table border="0" width="100%" style="font-size: 13pt">
+<tr id="N2">
+	<td width="14%">Наименование</td>
+	<td>Описание триггера</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.1" class="event">OnSavegameWrite</a></td>
+	<td> запись данных в сохранение</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.2" class="event">OnSavegameRead</a></td>
+	<td> загрузка данных из сохранения</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.3" class="event">OnKeyPressed</a></td>
+	<td> нажатие клавиши</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.4" class="event">OnOpenHeroScreen</a></td>
+	<td> открытие окна героя</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.5" class="event">OnCloseHeroScreen</a></td>
+	<td> закрытие окна героя</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.6" class="event">OnBattleStackObtainsTurn</a></td>
+	<td> отряд получает ход в бою</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.7" class="event">OnBattleRegeneratePhase</a></td>
+	<td> фаза регенерации в бою</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.8" class="event">OnAfterSaveGame</a></td>
+	<td> после сохранения игры</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.10" class="event">OnBeforeHeroInteraction</a></td>
+	<td> до взаимодействия героя с героем</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.11" class="event">OnAfterHeroInteraction</a></td>
+	<td> после взаимодействия героя с героем</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.12" class="event">OnStackToStackDamage</a></td>
+	<td> при получении урона стеком</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.13" class="event">OnAICalcStackAttackEffect</a></td>
+	<td> ИИ расчёт эффективности атаки по отряду</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.14" class="event">OnChat</a></td>
+	<td> событие чата (вход, выход, ввод)</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.15" class="event">OnGameEnter</a></td>
+	<td> начало обработки событий диалога карты приключений после загрузки/начала новой игры</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.16" class="event">OnGameLeave</a></td>
+	<td> при выходе в главное меню/закрытии игры</td>
+</tr>
+<tr id="17" class="b">
+	<td><span style="cursor:help" class="event" 
+	title="Информация удалена из справочника по просьбе автора ERA.&#10;Описание события есть в файле 'era2_changelog.txt'">OnRemoteEvent</span></td>
+	<td> генерирует ф-цию !?FU(OnRemoteEvent) на удаленном ПК</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.18" class="event">OnEveryDay</a></td>
+	<td> в начале нового игрового дня (до таймеров)</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.19" class="event">OnBeforeBattlefieldVisible</a></td>
+	<td> в тёмной фазе загрузки боя</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.20" class="event">OnBattlefieldVisible</a></td>
+	<td> при отображении поля боя</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.21" class="event">OnAfterTacticsPhase</a></td>
+	<td> после окончания тактической фазы</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.22" class="event">OnCombatRound</a></td>
+	<td> перед началом нового раунда</td>
+</tr>
+<tr>
+	<td><a href="../Rec/RD.htm#open_23" class="event">OnOpenRecruitDlg</a></td>
+	<td> когда открывается (создаётся) диалог найма рекрутов</td>
+</tr>
+<tr>
+	<td><a href="../Rec/RD.htm#close_24" class="event">OnCloseRecruitDlg</a></td>
+	<td> при закрытии диалога найма рекуртов</td>
+</tr>
+<tr>
+	<td><a href="../Rec/RD.htm#click_25" class="event">OnRecruitDlgMouseClick</a></td>
+	<td> при клике мышью в диалоге найма рекрутов</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.26" class="event" title="Начиная с ERA 3.4.0, перименовано в &quot;OnTownFortMouseClick&quot;">OnTownHallMouseClick</a></td>
+	<td> при клике в экране &quot;Городской холл&quot;</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.27" class="event">OnKingdomOverviewMouseClick</a></td>
+	<td> при клике в экране &quot;Обзор королевства&quot;</td>
+</tr>
+<tr>
+	<td><a href="../Rec/RD.htm#calc_28" class="event">OnRecruitDlgRecalc</a></td>
+	<td> пересчёт кол-ва существ в диалоге найма рекрутов</td>
+</tr>
+<tr>
+	<td><a href="../Rec/RD.htm#action_29" class="event">OnRecruitDlgAction</a></td>
+	<td> при найме существ в диалоге найма рекрутов</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.30" class="event">OnLoadHeroScreen</a></td>
+	<td> до открытия экрана героя (тёмная фаза)</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.31" class="event">OnBuildTownBuilding</a></td>
+	<td> постройка зданий в городе</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.32" class="event">OnOpenTownScreen</a></td>
+	<td> до загрузки экрана города (тёмная фаза)</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.33" class="event">OnCloseTownScreen</a></td>
+	<td> после закрытия экрана города (тёмная фаза)</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.34" class="event">OnSwitchTownScreen</a></td>
+	<td> при переключении городов в окне города</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.35" class="event">OnPreTownScreen</a></td>
+	<td> до отображения экрана города (тёмная фаза)</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.36" class="event">OnPostTownScreen</a></td>
+	<td> когда закрывается экран города (тёмная фаза)</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.37" class="event">OnPreHeroScreen</a></td>
+	<td> перед загрузкой экрана героя (тёмная фаза)</td>
+</tr>
+<tr>
+	<td><a href="../ERA/New_events.htm#2.38" class="event">OnPostHeroScreen</a></td>
+	<td> после закрытия экрана героя (тёмная фаза)</td>
+</tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div></body></html>
