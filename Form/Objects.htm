@@ -1,924 +1,924 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>
-Таблица типов объектов</title>
+РўР°Р±Р»РёС†Р° С‚РёРїРѕРІ РѕР±СЉРµРєС‚РѕРІ</title>
 <LINK REL="stylesheet" MEDIA="screen" TYPE="text/css" HREF="../style.css">
 </head>
 <body>
-<p align="left"><font size="5">Таблица объектов в игре</font></p>
+<p align="left"><font size="5">РўР°Р±Р»РёС†Р° РѕР±СЉРµРєС‚РѕРІ РІ РёРіСЂРµ</font></p>
 
-<p><code id="WT">Поиск объекта:</code><br>
+<p><code id="WT">РџРѕРёСЃРє РѕР±СЉРµРєС‚Р°:</code><br>
 
-<input class="obj_in" name="pole" type="text" id="text-to-find" value="" title="Введите номер (название) нужного объекта.."/>
-<input class="obj_go" type="button" onmouseover="this.style.cssText='color:maroon;background-color:#cfbfaf;cursor:hand'" onmouseout="this.style.cssText=null" onclick="javascript: FindOnPage('text-to-find'); return false;" value="Искать"/>
+<input class="obj_in" name="pole" type="text" id="text-to-find" value="" title="Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ (РЅР°Р·РІР°РЅРёРµ) РЅСѓР¶РЅРѕРіРѕ РѕР±СЉРµРєС‚Р°.."/>
+<input class="obj_go" type="button" onmouseover="this.style.cssText='color:maroon;background-color:#cfbfaf;cursor:hand'" onmouseout="this.style.cssText=null" onclick="javascript: FindOnPage('text-to-find'); return false;" value="РСЃРєР°С‚СЊ"/>
 </p>
 <table border="0" width="100%">
 	<tr id="N2">
-		<td width="5%">Номер</td>
-		<td><b id="step">Описание</b></td>
+		<td width="5%">РќРѕРјРµСЂ</td>
+		<td><b id="step">РћРїРёСЃР°РЅРёРµ</b></td>
 	</tr>
 	<tr>
 		<td>0</td>
-		<td>Значок &quot;Пусто&quot;<br><small>Обычно можно встретить вместо картинки героя, если графика не найдена.</small></td>
+		<td>Р—РЅР°С‡РѕРє &quot;РџСѓСЃС‚Рѕ&quot;<br><small>РћР±С‹С‡РЅРѕ РјРѕР¶РЅРѕ РІСЃС‚СЂРµС‚РёС‚СЊ РІРјРµСЃС‚Рѕ РєР°СЂС‚РёРЅРєРё РіРµСЂРѕСЏ, РµСЃР»Рё РіСЂР°С„РёРєР° РЅРµ РЅР°Р№РґРµРЅР°.</small></td>
 	</tr>
 	<tr>
 		<td><font color="#800000">1</font></td>
-		<td><font color="#800000">Пустышка</font></td>
+		<td><font color="#800000">РџСѓСЃС‚С‹С€РєР°</font></td>
 	</tr>
 	<tr>
 		<td>2</td>
-		<td>Жертвенный алтарь</td>
+		<td>Р–РµСЂС‚РІРµРЅРЅС‹Р№ Р°Р»С‚Р°СЂСЊ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">3</font></td>
-		<td><font color="#800000">Встать на якорь<br><small>Данный тип имеют все квадраты радом с водой, 
-		на которые можно высадиться, подтип = -1. 
-		Если квадрат имеет другой тип, на него высадиться нельзя.</small></font></td>
+		<td><font color="#800000">Р’СЃС‚Р°С‚СЊ РЅР° СЏРєРѕСЂСЊ<br><small>Р”Р°РЅРЅС‹Р№ С‚РёРї РёРјРµСЋС‚ РІСЃРµ РєРІР°РґСЂР°С‚С‹ СЂР°РґРѕРј СЃ РІРѕРґРѕР№, 
+		РЅР° РєРѕС‚РѕСЂС‹Рµ РјРѕР¶РЅРѕ РІС‹СЃР°РґРёС‚СЊСЃСЏ, РїРѕРґС‚РёРї = -1. 
+		Р•СЃР»Рё РєРІР°РґСЂР°С‚ РёРјРµРµС‚ РґСЂСѓРіРѕР№ С‚РёРї, РЅР° РЅРµРіРѕ РІС‹СЃР°РґРёС‚СЊСЃСЏ РЅРµР»СЊР·СЏ.</small></font></td>
 	</tr>
 	<tr>
 		<td>4</td>
-		<td>Арена</td>
+		<td>РђСЂРµРЅР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">5</font></td>
-		<td><font color="#800000">Артефакт [0..170] – </font><a href="A1.htm" class="red">таблица артефактов</a></td>
+		<td><font color="#800000">РђСЂС‚РµС„Р°РєС‚ [0..170] вЂ“ </font><a href="A1.htm" class="red">С‚Р°Р±Р»РёС†Р° Р°СЂС‚РµС„Р°РєС‚РѕРІ</a></td>
 	</tr>
 	<tr>
 		<td>6</td>
-		<td>Ящик Пандоры</td>
+		<td>РЇС‰РёРє РџР°РЅРґРѕСЂС‹</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">7</font></td>
-		<td><font color="#800000">Чёрный рынок</font></td>
+		<td><font color="#800000">Р§С‘СЂРЅС‹Р№ СЂС‹РЅРѕРє</font></td>
 	</tr>
 	<tr>
 		<td>8</td>
-		<td>Лодка [подтип 0..2]</td>
+		<td>Р›РѕРґРєР° [РїРѕРґС‚РёРї 0..2]</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">9</font></td>
-		<td><font color="#800000">Страж границы [0..7] – </font><a href="BG.htm" class="red">таблица стражей</a></td>
+		<td><font color="#800000">РЎС‚СЂР°Р¶ РіСЂР°РЅРёС†С‹ [0..7] вЂ“ </font><a href="BG.htm" class="red">С‚Р°Р±Р»РёС†Р° СЃС‚СЂР°Р¶РµР№</a></td>
 	</tr>
 	<tr>
 		<td>10</td>
-		<td>Палатка ключника [0..7] – <a href="BG.htm">таблица палаток ключника</a></td>
+		<td>РџР°Р»Р°С‚РєР° РєР»СЋС‡РЅРёРєР° [0..7] вЂ“ <a href="BG.htm">С‚Р°Р±Р»РёС†Р° РїР°Р»Р°С‚РѕРє РєР»СЋС‡РЅРёРєР°</a></td>
 	</tr>
 	<tr>
 		<td><font color="#800000">11</font></td>
-		<td><font color="#800000">Буй</font></td>
+		<td><font color="#800000">Р‘СѓР№</font></td>
 	</tr>
 	<tr>
 		<td>12</td>
-		<td>Костёр покинутого лагеря</td>
+		<td>РљРѕСЃС‚С‘СЂ РїРѕРєРёРЅСѓС‚РѕРіРѕ Р»Р°РіРµСЂСЏ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">13</font></td>
-		<td><font color="#800000">Картограф [0 - водяной, 1 - наземный, 2 - подземный]</font></td>
+		<td><font color="#800000">РљР°СЂС‚РѕРіСЂР°С„ [0 - РІРѕРґСЏРЅРѕР№, 1 - РЅР°Р·РµРјРЅС‹Р№, 2 - РїРѕРґР·РµРјРЅС‹Р№]</font></td>
 	</tr>
 	<tr>
 		<td>14</td>
-		<td>Лебединое озеро</td>
+		<td>Р›РµР±РµРґРёРЅРѕРµ РѕР·РµСЂРѕ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">15</font></td>
-		<td><font color="#800000">Вуаль Тьмы</font></td>
+		<td><font color="#800000">Р’СѓР°Р»СЊ РўСЊРјС‹</font></td>
 	</tr>
 	<tr>
 		<td>16</td>
-		<td><a name="cb"></a>Банк Существ [0..20] – <a href="CB.htm">таблица банков</a></td>
+		<td><a name="cb"></a>Р‘Р°РЅРє РЎСѓС‰РµСЃС‚РІ [0..20] вЂ“ <a href="CB.htm">С‚Р°Р±Р»РёС†Р° Р±Р°РЅРєРѕРІ</a></td>
 	</tr>
 	<tr>
 		<td><font color="#800000">17</font></td>
-		<td><font color="#800000">Генератор существ 1 [0..100] – </font><a class="red" href="CreatureDwellings.htm">таблица жилищ</a></td>
+		<td><font color="#800000">Р“РµРЅРµСЂР°С‚РѕСЂ СЃСѓС‰РµСЃС‚РІ 1 [0..100] вЂ“ </font><a class="red" href="CreatureDwellings.htm">С‚Р°Р±Р»РёС†Р° Р¶РёР»РёС‰</a></td>
 	</tr>
 	<tr>
 		<td>18</td>
-		<td>Генератор существ 2</td>
+		<td>Р“РµРЅРµСЂР°С‚РѕСЂ СЃСѓС‰РµСЃС‚РІ 2</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">19</font></td>
-		<td><font color="#800000">Генератор существ 3</font></td>
+		<td><font color="#800000">Р“РµРЅРµСЂР°С‚РѕСЂ СЃСѓС‰РµСЃС‚РІ 3</font></td>
 	</tr>
 	<tr>
 		<td>20</td>
-		<td><u>подтип 0</u> - Сопряжение Элементалей (все 4 существа);<br>
-		<u>подтип 1</u> - Фабрика Големов (все 4 существа)</td>
+		<td><u>РїРѕРґС‚РёРї 0</u> - РЎРѕРїСЂСЏР¶РµРЅРёРµ Р­Р»РµРјРµРЅС‚Р°Р»РµР№ (РІСЃРµ 4 СЃСѓС‰РµСЃС‚РІР°);<br>
+		<u>РїРѕРґС‚РёРї 1</u> - Р¤Р°Р±СЂРёРєР° Р“РѕР»РµРјРѕРІ (РІСЃРµ 4 СЃСѓС‰РµСЃС‚РІР°)</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">21</font></td>
-		<td><font color="#800000">Проклятая земля</font></td>
+		<td><font color="#800000">РџСЂРѕРєР»СЏС‚Р°СЏ Р·РµРјР»СЏ</font></td>
 	</tr>
 	<tr>
 		<td>22</td>
-		<td>Скелет</td>
+		<td>РЎРєРµР»РµС‚</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">23</font></td>
-		<td><font color="#800000">Башня Марлетто</font></td>
+		<td><font color="#800000">Р‘Р°С€РЅСЏ РњР°СЂР»РµС‚С‚Рѕ</font></td>
 	</tr>
 	<tr>
 		<td>24</td>
-		<td>Ветхий корабль</td>
+		<td>Р’РµС‚С…РёР№ РєРѕСЂР°Р±Р»СЊ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">25</font></td>
-		<td><font color="#800000">Утопия драконов</font></td>
+		<td><font color="#800000">РЈС‚РѕРїРёСЏ РґСЂР°РєРѕРЅРѕРІ</font></td>
 	</tr>
 	<tr>
 		<td>26</td>
-		<td>Событие</td>
+		<td>РЎРѕР±С‹С‚РёРµ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">27</font></td>
-		<td><font color="#800000">Глаз мага</font></td>
+		<td><font color="#800000">Р“Р»Р°Р· РјР°РіР°</font></td>
 	</tr>
 	<tr>
 		<td>28</td>
-		<td>Домик фей</td>
+		<td>Р”РѕРјРёРє С„РµР№</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">29</font></td>
-		<td><font color="#800000">Обломки</font></td>
+		<td><font color="#800000">РћР±Р»РѕРјРєРё</font></td>
 	</tr>
 	<tr>
 		<td>30</td>
-		<td>Фонтан удачи</td>
+		<td>Р¤РѕРЅС‚Р°РЅ СѓРґР°С‡Рё</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">31</font></td>
-		<td><font color="#800000">Фонтан молодости</font></td>
+		<td><font color="#800000">Р¤РѕРЅС‚Р°РЅ РјРѕР»РѕРґРѕСЃС‚Рё</font></td>
 	</tr>
 	<tr>
 		<td>32</td>
-		<td>Сад откровения</td>
+		<td>РЎР°Рґ РѕС‚РєСЂРѕРІРµРЅРёСЏ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">33</font></td>
-		<td><font color="#800000">Гарнизон [0 - обычный, 1 - антимагический]</font></td>
+		<td><font color="#800000">Р“Р°СЂРЅРёР·РѕРЅ [0 - РѕР±С‹С‡РЅС‹Р№, 1 - Р°РЅС‚РёРјР°РіРёС‡РµСЃРєРёР№]</font></td>
 	</tr>
 	<tr>
 		<td>34</td>
-		<td><a name="he"></a>Герой [0..155] – <a href="NumberHeroes.htm">таблица героев</a></td>
+		<td><a name="he"></a>Р“РµСЂРѕР№ [0..155] вЂ“ <a href="NumberHeroes.htm">С‚Р°Р±Р»РёС†Р° РіРµСЂРѕРµРІ</a></td>
 	</tr>
 	<tr>
 		<td><font color="#800000">35</font></td>
-		<td><font color="#800000">Форт на холме</font></td>
+		<td><font color="#800000">Р¤РѕСЂС‚ РЅР° С…РѕР»РјРµ</font></td>
 	</tr>
 	<tr>
 		<td>36</td>
-		<td>Грааль</td>
+		<td>Р“СЂР°Р°Р»СЊ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">37</font></td>
-		<td><font color="#800000">Хижина мага</font></td>
+		<td><font color="#800000">РҐРёР¶РёРЅР° РјР°РіР°</font></td>
 	</tr>
 	<tr>
 		<td>38</td>
-		<td>Идол Удачи [0 - обычный, 1 - заснеженный]</td>
+		<td>РРґРѕР» РЈРґР°С‡Рё [0 - РѕР±С‹С‡РЅС‹Р№, 1 - Р·Р°СЃРЅРµР¶РµРЅРЅС‹Р№]</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">39</font></td>
-		<td><font color="#800000">Навес</font></td>
+		<td><font color="#800000">РќР°РІРµСЃ</font></td>
 	</tr>
 	<tr>
 		<td>40</td>
-		<td>Декоративный объект [0 - снегопад, 1 - лавовая жижа, 2 - дождь]</td>
+		<td>Р”РµРєРѕСЂР°С‚РёРІРЅС‹Р№ РѕР±СЉРµРєС‚ [0 - СЃРЅРµРіРѕРїР°Рґ, 1 - Р»Р°РІРѕРІР°СЏ Р¶РёР¶Р°, 2 - РґРѕР¶РґСЊ]</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">41</font></td>
-		<td><font color="#800000">Библиотека Просвящения [0 - стандартная, 1 - заснеженная]</font></td>
+		<td><font color="#800000">Р‘РёР±Р»РёРѕС‚РµРєР° РџСЂРѕСЃРІСЏС‰РµРЅРёСЏ [0 - СЃС‚Р°РЅРґР°СЂС‚РЅР°СЏ, 1 - Р·Р°СЃРЅРµР¶РµРЅРЅР°СЏ]</font></td>
 	</tr>
 	<tr>
 		<td>42</td>
-		<td>Маяк [-1, 0..7 – по <a href="GamersColor.htm">цвету игрока</a>]</td>
+		<td>РњР°СЏРє [-1, 0..7 вЂ“ РїРѕ <a href="GamersColor.htm">С†РІРµС‚Сѓ РёРіСЂРѕРєР°</a>]</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">43</font></td>
-		<td><font color="#800000">Монолит входа [0..7] – </font><a class="red" href="One-way%20monolith.htm">таблица монолитов</a></td>
+		<td><font color="#800000">РњРѕРЅРѕР»РёС‚ РІС…РѕРґР° [0..7] вЂ“ </font><a class="red" href="One-way%20monolith.htm">С‚Р°Р±Р»РёС†Р° РјРѕРЅРѕР»РёС‚РѕРІ</a></td>
 	</tr>
 	<tr>
 		<td>44</td>
-		<td>Монолит выхода [0..7] – <a href="One-way%20monolith.htm">таблица монолитов</a></td>
+		<td>РњРѕРЅРѕР»РёС‚ РІС‹С…РѕРґР° [0..7] вЂ“ <a href="One-way%20monolith.htm">С‚Р°Р±Р»РёС†Р° РјРѕРЅРѕР»РёС‚РѕРІ</a></td>
 	</tr>
 	<tr>
 		<td><font color="#800000">45</font></td>
-		<td><font color="#800000">Двухсторонний монолит [0..7] – </font><a class="red" href="Two-way%20monolith.htm">таблица монолитов</a></td>
+		<td><font color="#800000">Р”РІСѓС…СЃС‚РѕСЂРѕРЅРЅРёР№ РјРѕРЅРѕР»РёС‚ [0..7] вЂ“ </font><a class="red" href="Two-way%20monolith.htm">С‚Р°Р±Р»РёС†Р° РјРѕРЅРѕР»РёС‚РѕРІ</a></td>
 	</tr>
 	<tr>
 		<td>46</td>
-		<td>Магические равнины</td>
+		<td>РњР°РіРёС‡РµСЃРєРёРµ СЂР°РІРЅРёРЅС‹</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">47</font></td>
-		<td><font color="#800000">Школа магии</font></td>
+		<td><font color="#800000">РЁРєРѕР»Р° РјР°РіРёРё</font></td>
 	</tr>
 	<tr>
 		<td>48</td>
-		<td>Магический источник</td>
+		<td>РњР°РіРёС‡РµСЃРєРёР№ РёСЃС‚РѕС‡РЅРёРє</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">49</font></td>
-		<td><font color="#800000">Магический колодец [0 - обычный, 1 - украшенный]</font></td>
+		<td><font color="#800000">РњР°РіРёС‡РµСЃРєРёР№ РєРѕР»РѕРґРµС† [0 - РѕР±С‹С‡РЅС‹Р№, 1 - СѓРєСЂР°С€РµРЅРЅС‹Р№]</font></td>
 	</tr>
 	<tr>
 		<td>50</td>
-		<td>Пустышка</td>
+		<td>РџСѓСЃС‚С‹С€РєР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">51</font></td>
-		<td><font color="#800000">Лагерь наёмников</font></td>
+		<td><font color="#800000">Р›Р°РіРµСЂСЊ РЅР°С‘РјРЅРёРєРѕРІ</font></td>
 	</tr>
 	<tr>
 		<td>52</td>
-		<td>Русалки</td>
+		<td>Р СѓСЃР°Р»РєРё</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">53</font></td>
-		<td><font color="#800000">Шахта [0..7] – </font><a class="red" href="Mines.htm">таблица шахт</a></td>
+		<td><font color="#800000">РЁР°С…С‚Р° [0..7] вЂ“ </font><a class="red" href="Mines.htm">С‚Р°Р±Р»РёС†Р° С€Р°С…С‚</a></td>
 	</tr>
 	<tr>
 		<td>54</td>
-		<td><a name="cr"></a>Монстр [0..196] – <a href="Creature.htm">таблица монстров</a></td>
+		<td><a name="cr"></a>РњРѕРЅСЃС‚СЂ [0..196] вЂ“ <a href="Creature.htm">С‚Р°Р±Р»РёС†Р° РјРѕРЅСЃС‚СЂРѕРІ</a></td>
 	</tr>
 	<tr>
 		<td><font color="#800000">55</font></td>
-		<td><font color="#800000">Мистический сад</font></td>
+		<td><font color="#800000">РњРёСЃС‚РёС‡РµСЃРєРёР№ СЃР°Рґ</font></td>
 	</tr>
 	<tr>
 		<td>56</td>
-		<td>Оазис</td>
+		<td>РћР°Р·РёСЃ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">57</font></td>
-		<td><font color="#800000">Обелиск</font></td>
+		<td><font color="#800000">РћР±РµР»РёСЃРє</font></td>
 	</tr>
 	<tr>
 		<td>58</td>
-		<td>Обсерватория красного дерева</td>
+		<td>РћР±СЃРµСЂРІР°С‚РѕСЂРёСЏ РєСЂР°СЃРЅРѕРіРѕ РґРµСЂРµРІР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">59</font></td>
-		<td><font color="#800000">Океанская бутыль</font></td>
+		<td><font color="#800000">РћРєРµР°РЅСЃРєР°СЏ Р±СѓС‚С‹Р»СЊ</font></td>
 	</tr>
 	<tr>
 		<td>60</td>
-		<td>Огненный столп</td>
+		<td>РћРіРЅРµРЅРЅС‹Р№ СЃС‚РѕР»Рї</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">61</font></td>
-		<td><font color="#800000">Звёздное колесо</font></td>
+		<td><font color="#800000">Р—РІС‘Р·РґРЅРѕРµ РєРѕР»РµСЃРѕ</font></td>
 	</tr>
 	<tr>
 		<td>62</td>
-		<td>Тюрьма</td>
+		<td>РўСЋСЂСЊРјР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">63</font></td>
-		<td><a name="pir"></a><font color="#800000">Пирамида [0..74] – </font><a class="red" href="NewObj.htm">таблица объектов WoG</a></td>
+		<td><a name="pir"></a><font color="#800000">РџРёСЂР°РјРёРґР° [0..74] вЂ“ </font><a class="red" href="NewObj.htm">С‚Р°Р±Р»РёС†Р° РѕР±СЉРµРєС‚РѕРІ WoG</a></td>
 	</tr>
 	<tr>
 		<td>64</td>
-		<td>Флаг единства</td>
+		<td>Р¤Р»Р°Рі РµРґРёРЅСЃС‚РІР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">65</font></td>
-		<td><font color="#800000">Случайный артефакт</font></td>
+		<td><font color="#800000">РЎР»СѓС‡Р°Р№РЅС‹Р№ Р°СЂС‚РµС„Р°РєС‚</font></td>
 	</tr>
 	<tr>
 		<td>66</td>
-		<td>Случайный артефакт сокровище</td>
+		<td>РЎР»СѓС‡Р°Р№РЅС‹Р№ Р°СЂС‚РµС„Р°РєС‚ СЃРѕРєСЂРѕРІРёС‰Рµ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">67</font></td>
-		<td><font color="#800000">Случайный малый артефакт</font></td>
+		<td><font color="#800000">РЎР»СѓС‡Р°Р№РЅС‹Р№ РјР°Р»С‹Р№ Р°СЂС‚РµС„Р°РєС‚</font></td>
 	</tr>
 	<tr>
 		<td>68</td>
-		<td>Случайный большой артефакт</td>
+		<td>РЎР»СѓС‡Р°Р№РЅС‹Р№ Р±РѕР»СЊС€РѕР№ Р°СЂС‚РµС„Р°РєС‚</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">69</font></td>
-		<td><font color="#800000">Случайная реликвия</font></td>
+		<td><font color="#800000">РЎР»СѓС‡Р°Р№РЅР°СЏ СЂРµР»РёРєРІРёСЏ</font></td>
 	</tr>
 	<tr>
 		<td>70</td>
-		<td>Случайный герой</td>
+		<td>РЎР»СѓС‡Р°Р№РЅС‹Р№ РіРµСЂРѕР№</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">71</font></td>
-		<td><font color="#800000">Случайный монстр</font></td>
+		<td><font color="#800000">РЎР»СѓС‡Р°Р№РЅС‹Р№ РјРѕРЅСЃС‚СЂ</font></td>
 	</tr>
 	<tr>
 		<td>72</td>
-		<td>Случайный монстр 1</td>
+		<td>РЎР»СѓС‡Р°Р№РЅС‹Р№ РјРѕРЅСЃС‚СЂ 1</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">73</font></td>
-		<td><font color="#800000">Случайный монстр 2</font></td>
+		<td><font color="#800000">РЎР»СѓС‡Р°Р№РЅС‹Р№ РјРѕРЅСЃС‚СЂ 2</font></td>
 	</tr>
 	<tr>
 		<td>74</td>
-		<td>Случайный монстр 3</td>
+		<td>РЎР»СѓС‡Р°Р№РЅС‹Р№ РјРѕРЅСЃС‚СЂ 3</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">75</font></td>
-		<td><font color="#800000">Случайный монстр 4</font></td>
+		<td><font color="#800000">РЎР»СѓС‡Р°Р№РЅС‹Р№ РјРѕРЅСЃС‚СЂ 4</font></td>
 	</tr>
 	<tr>
 		<td>76</td>
-		<td>Случайный ресурс</td>
+		<td>РЎР»СѓС‡Р°Р№РЅС‹Р№ СЂРµСЃСѓСЂСЃ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">77</font></td>
-		<td><font color="#800000">Случайный город</font></td>
+		<td><font color="#800000">РЎР»СѓС‡Р°Р№РЅС‹Р№ РіРѕСЂРѕРґ</font></td>
 	</tr>
 	<tr>
 		<td>78</td>
-		<td>Лагерь беженцев</td>
+		<td>Р›Р°РіРµСЂСЊ Р±РµР¶РµРЅС†РµРІ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">79</font></td>
-		<td><font color="#800000">Ресурс [0..7] – </font><a class="red" href="Resource.htm">таблица ресурсов</a></td>
+		<td><font color="#800000">Р РµСЃСѓСЂСЃ [0..7] вЂ“ </font><a class="red" href="Resource.htm">С‚Р°Р±Р»РёС†Р° СЂРµСЃСѓСЂСЃРѕРІ</a></td>
 	</tr>
 	<tr>
 		<td>80</td>
-		<td>Святилище</td>
+		<td>РЎРІСЏС‚РёР»РёС‰Рµ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">81</font></td>
-		<td><font color="#800000">Учёный</font></td>
+		<td><font color="#800000">РЈС‡С‘РЅС‹Р№</font></td>
 	</tr>
 	<tr>
 		<td>82</td>
-		<td>Морской сундук</td>
+		<td>РњРѕСЂСЃРєРѕР№ СЃСѓРЅРґСѓРє</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">83</font></td>
-		<td><a name="T83"></a><font color="#800000">Хижина провидца [0 - соломенная хижина, 1 - грибная, 2 - древоподобная]</font></td>
+		<td><a name="T83"></a><font color="#800000">РҐРёР¶РёРЅР° РїСЂРѕРІРёРґС†Р° [0 - СЃРѕР»РѕРјРµРЅРЅР°СЏ С…РёР¶РёРЅР°, 1 - РіСЂРёР±РЅР°СЏ, 2 - РґСЂРµРІРѕРїРѕРґРѕР±РЅР°СЏ]</font></td>
 	</tr>
 	<tr>
 		<td>84</td>
-		<td>Склеп [0 - заснеженный]</td>
+		<td>РЎРєР»РµРї [0 - Р·Р°СЃРЅРµР¶РµРЅРЅС‹Р№]</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">85</font></td>
-		<td><font color="#800000">Кораблекрушение</font></td>
+		<td><font color="#800000">РљРѕСЂР°Р±Р»РµРєСЂСѓС€РµРЅРёРµ</font></td>
 	</tr>
 	<tr>
 		<td>86</td>
-		<td>Потерпевший кораблекрушение</td>
+		<td>РџРѕС‚РµСЂРїРµРІС€РёР№ РєРѕСЂР°Р±Р»РµРєСЂСѓС€РµРЅРёРµ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">87</font></td>
-		<td><font color="#800000">Верфь [-1, 0..7 – по
-		<a href="GamersColor.htm" class="red">цвету игрока</a>]</font></td>
+		<td><font color="#800000">Р’РµСЂС„СЊ [-1, 0..7 вЂ“ РїРѕ
+		<a href="GamersColor.htm" class="red">С†РІРµС‚Сѓ РёРіСЂРѕРєР°</a>]</font></td>
 	</tr>
 	<tr>
 		<td>88</td>
-		<td>Святыня магического воплощения</td>
+		<td>РЎРІСЏС‚С‹РЅСЏ РјР°РіРёС‡РµСЃРєРѕРіРѕ РІРѕРїР»РѕС‰РµРЅРёСЏ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">89</font></td>
-		<td><font color="#800000">Святыня магического жеста</font></td>
+		<td><font color="#800000">РЎРІСЏС‚С‹РЅСЏ РјР°РіРёС‡РµСЃРєРѕРіРѕ Р¶РµСЃС‚Р°</font></td>
 	</tr>
 	<tr>
 		<td>90</td>
-		<td>Святыня магической мысли</td>
+		<td>РЎРІСЏС‚С‹РЅСЏ РјР°РіРёС‡РµСЃРєРѕР№ РјС‹СЃР»Рё</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">91</font></td>
-		<td><font color="#800000">Знак</font></td>
+		<td><font color="#800000">Р—РЅР°Рє</font></td>
 	</tr>
 	<tr>
 		<td>92</td>
-		<td>Сирены</td>
+		<td>РЎРёСЂРµРЅС‹</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">93</font></td>
-		<td><font color="#800000">Свиток с заклинанием [0..69] – </font><a class="red" href="Spell.htm">таблица заклинаний</a></td>
+		<td><font color="#800000">РЎРІРёС‚РѕРє СЃ Р·Р°РєР»РёРЅР°РЅРёРµРј [0..69] вЂ“ </font><a class="red" href="Spell.htm">С‚Р°Р±Р»РёС†Р° Р·Р°РєР»РёРЅР°РЅРёР№</a></td>
 	</tr>
 	<tr>
 		<td>94</td>
-		<td>Конюшня</td>
+		<td>РљРѕРЅСЋС€РЅСЏ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">95</font></td>
-		<td><font color="#800000">Таверна [0 - обычная, 1 - заснеженная]</font></td>
+		<td><font color="#800000">РўР°РІРµСЂРЅР° [0 - РѕР±С‹С‡РЅР°СЏ, 1 - Р·Р°СЃРЅРµР¶РµРЅРЅР°СЏ]</font></td>
 	</tr>
 	<tr>
 		<td>96</td>
-		<td>Храм</td>
+		<td>РҐСЂР°Рј</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">97</font></td>
-		<td><font color="#800000">Гильдия воров</font></td>
+		<td><font color="#800000">Р“РёР»СЊРґРёСЏ РІРѕСЂРѕРІ</font></td>
 	</tr>
 	<tr>
 		<td>98</td>
-		<td>Город [0..8] – <a href="Towns.htm">таблица городов</a></td>
+		<td>Р“РѕСЂРѕРґ [0..8] вЂ“ <a href="Towns.htm">С‚Р°Р±Р»РёС†Р° РіРѕСЂРѕРґРѕРІ</a></td>
 	</tr>
 	<tr>
 		<td><font color="#800000">99</font></td>
-		<td><font color="#800000">Рынок</font></td>
+		<td><font color="#800000">Р С‹РЅРѕРє</font></td>
 	</tr>
 	<tr>
 		<td>100</td>
-		<td>Камень знаний [0 - стандартный, 1 - заснеженный]</td>
+		<td>РљР°РјРµРЅСЊ Р·РЅР°РЅРёР№ [0 - СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№, 1 - Р·Р°СЃРЅРµР¶РµРЅРЅС‹Р№]</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">101</font></td>
-		<td><font color="#800000">Сундук с сокровищами [см. <a target="main" href="../Rec/UN.htm#B" class="red">!!UN:B</a>]</font></td>
+		<td><font color="#800000">РЎСѓРЅРґСѓРє СЃ СЃРѕРєСЂРѕРІРёС‰Р°РјРё [СЃРј. <a target="main" href="../Rec/UN.htm#B" class="red">!!UN:B</a>]</font></td>
 	</tr>
 	<tr>
 		<td>102</td>
-		<td>Древо знаний [0 - обычное, 1 - заснеженное]</td>
+		<td>Р”СЂРµРІРѕ Р·РЅР°РЅРёР№ [0 - РѕР±С‹С‡РЅРѕРµ, 1 - Р·Р°СЃРЅРµР¶РµРЅРЅРѕРµ]</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">103</font></td>
-		<td><font color="#800000">Врата подземного мира [0 - обычные, 1 - заснеженные]</font></td>
+		<td><font color="#800000">Р’СЂР°С‚Р° РїРѕРґР·РµРјРЅРѕРіРѕ РјРёСЂР° [0 - РѕР±С‹С‡РЅС‹Рµ, 1 - Р·Р°СЃРЅРµР¶РµРЅРЅС‹Рµ]</font></td>
 	</tr>
 	<tr>
 		<td>104</td>
-		<td>Университет</td>
+		<td>РЈРЅРёРІРµСЂСЃРёС‚РµС‚</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">105</font></td>
-		<td><font color="#800000">Телега</font></td>
+		<td><font color="#800000">РўРµР»РµРіР°</font></td>
 	</tr>
 	<tr>
 		<td>106</td>
-		<td>Фабрика военной техники</td>
+		<td>Р¤Р°Р±СЂРёРєР° РІРѕРµРЅРЅРѕР№ С‚РµС…РЅРёРєРё</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">107</font></td>
-		<td><font color="#800000">Школа войны</font></td>
+		<td><font color="#800000">РЁРєРѕР»Р° РІРѕР№РЅС‹</font></td>
 	</tr>
 	<tr>
 		<td>108</td>
-		<td>Гробница воина</td>
+		<td>Р“СЂРѕР±РЅРёС†Р° РІРѕРёРЅР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">109</font></td>
-		<td><font color="#800000">Водяная мельница</font></td>
+		<td><font color="#800000">Р’РѕРґСЏРЅР°СЏ РјРµР»СЊРЅРёС†Р°</font></td>
 	</tr>
 	<tr>
 		<td>110</td>
-		<td>Водоём</td>
+		<td>Р’РѕРґРѕС‘Рј</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">111</font></td>
-		<td><font color="#800000">Водоворот</font></td>
+		<td><font color="#800000">Р’РѕРґРѕРІРѕСЂРѕС‚</font></td>
 	</tr>
 	<tr>
 		<td>112</td>
-		<td>Ветряная мельница</td>
+		<td>Р’РµС‚СЂСЏРЅР°СЏ РјРµР»СЊРЅРёС†Р°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">113</font></td>
-		<td><font color="#800000">Хижина ведьмы [0..27] – </font><a class="red" href="SecondarySkill.htm">таблица вторич.навыков</a></td>
+		<td><font color="#800000">РҐРёР¶РёРЅР° РІРµРґСЊРјС‹ [0..27] вЂ“ </font><a class="red" href="SecondarySkill.htm">С‚Р°Р±Р»РёС†Р° РІС‚РѕСЂРёС‡.РЅР°РІС‹РєРѕРІ</a></td>
 	</tr>
 	<tr>
 		<td>114</td>
-		<td>Щетка</td>
+		<td>Р©РµС‚РєР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">115</font></td>
-		<td><font color="#800000">Куст</font></td>
+		<td><font color="#800000">РљСѓСЃС‚</font></td>
 	</tr>
 	<tr>
 		<td>116</td>
-		<td>Кактус</td>
+		<td>РљР°РєС‚СѓСЃ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">117</font></td>
-		<td><font color="#800000">Каньон </font> </td>
+		<td><font color="#800000">РљР°РЅСЊРѕРЅ </font> </td>
 	</tr>
 	<tr>
 		<td>118</td>
-		<td>Кратер</td>
+		<td>РљСЂР°С‚РµСЂ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">119</font></td>
-		<td><font color="#800000">Мёртвая растительность</font></td>
+		<td><font color="#800000">РњС‘СЂС‚РІР°СЏ СЂР°СЃС‚РёС‚РµР»СЊРЅРѕСЃС‚СЊ</font></td>
 	</tr>
 	<tr>
 		<td>120</td>
-		<td>Цветы</td>
+		<td>Р¦РІРµС‚С‹</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">121</font></td>
-		<td><font color="#800000">Замёрзшее озеро</font></td>
+		<td><font color="#800000">Р—Р°РјС‘СЂР·С€РµРµ РѕР·РµСЂРѕ</font></td>
 	</tr>
 	<tr>
 		<td>122</td>
-		<td>Изгородь</td>
+		<td>РР·РіРѕСЂРѕРґСЊ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">123</font></td>
-		<td><font color="#800000">Холм</font></td>
+		<td><font color="#800000">РҐРѕР»Рј</font></td>
 	</tr>
 	<tr>
 		<td>124</td>
-		<td>Нора</td>
+		<td>РќРѕСЂР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">125</font></td>
-		<td><font color="#800000">Водоросль</font></td>
+		<td><font color="#800000">Р’РѕРґРѕСЂРѕСЃР»СЊ</font></td>
 	</tr>
 	<tr>
 		<td>126</td>
-		<td>Озеро</td>
+		<td>РћР·РµСЂРѕ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">127</font></td>
-		<td><font color="#800000">Поток лавы</font></td>
+		<td><font color="#800000">РџРѕС‚РѕРє Р»Р°РІС‹</font></td>
 	</tr>
 	<tr>
 		<td>128</td>
-		<td>Озеро лавы</td>
+		<td>РћР·РµСЂРѕ Р»Р°РІС‹</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">129</font></td>
-		<td><font color="#800000">Гриб</font></td>
+		<td><font color="#800000">Р“СЂРёР±</font></td>
 	</tr>
 	<tr>
 		<td>130</td>
-		<td>Бревно</td>
+		<td>Р‘СЂРµРІРЅРѕ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">131</font></td>
-		<td><font color="#800000">Мандрагора</font></td>
+		<td><font color="#800000">РњР°РЅРґСЂР°РіРѕСЂР°</font></td>
 	</tr>
 	<tr>
 		<td>132</td>
-		<td>Мох</td>
+		<td>РњРѕС…</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">133</font></td>
-		<td><font color="#800000">Курган</font></td>
+		<td><font color="#800000">РљСѓСЂРіР°РЅ</font></td>
 	</tr>
 	<tr>
 		<td>134</td>
-		<td>Гора</td>
+		<td>Р“РѕСЂР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">135</font></td>
-		<td><font color="#800000">Дуб</font></td>
+		<td><font color="#800000">Р”СѓР±</font></td>
 	</tr>
 	<tr>
 		<td>136</td>
-		<td>Пласт породы</td>
+		<td>РџР»Р°СЃС‚ РїРѕСЂРѕРґС‹</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">137</font></td>
-		<td><font color="#800000">Сосна</font></td>
+		<td><font color="#800000">РЎРѕСЃРЅР°</font></td>
 	</tr>
 	<tr>
 		<td>138</td>
-		<td>Растение</td>
+		<td>Р Р°СЃС‚РµРЅРёРµ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">143</font></td>
-		<td><font color="#800000">Дельта реки</font></td>
+		<td><font color="#800000">Р”РµР»СЊС‚Р° СЂРµРєРё</font></td>
 	</tr>
 	<tr>
 		<td>147</td>
-		<td>Камни</td>
+		<td>РљР°РјРЅРё</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">148</font></td>
-		<td><font color="#800000">Песчаная дюна</font></td>
+		<td><font color="#800000">РџРµСЃС‡Р°РЅР°СЏ РґСЋРЅР°</font></td>
 	</tr>
 	<tr>
 		<td>149</td>
-		<td>Песчаная яма</td>
+		<td>РџРµСЃС‡Р°РЅР°СЏ СЏРјР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">150</font></td>
-		<td><font color="#800000">Куст</font></td>
+		<td><font color="#800000">РљСѓСЃС‚</font></td>
 	</tr>
 	<tr>
 		<td>151</td>
-		<td>Череп</td>
+		<td>Р§РµСЂРµРї</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">152</font></td>
-		<td><font color="#800000">Сталагмит</font></td>
+		<td><font color="#800000">РЎС‚Р°Р»Р°РіРјРёС‚</font></td>
 	</tr>
 	<tr>
 		<td>153</td>
-		<td>Пень</td>
+		<td>РџРµРЅСЊ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">154</font></td>
-		<td><font color="#800000">Смоляная шахта</font></td>
+		<td><font color="#800000">РЎРјРѕР»СЏРЅР°СЏ С€Р°С…С‚Р°</font></td>
 	</tr>
 	<tr>
 		<td>155</td>
-		<td>Деревья</td>
+		<td>Р”РµСЂРµРІСЊСЏ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">156</font></td>
-		<td><font color="#800000">Виноград</font></td>
+		<td><font color="#800000">Р’РёРЅРѕРіСЂР°Рґ</font></td>
 	</tr>
 	<tr>
 		<td>157</td>
-		<td>Жерло вулкана</td>
+		<td>Р–РµСЂР»Рѕ РІСѓР»РєР°РЅР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">158</font></td>
-		<td><font color="#800000">Вулкан</font></td>
+		<td><font color="#800000">Р’СѓР»РєР°РЅ</font></td>
 	</tr>
 	<tr>
 		<td>159</td>
-		<td>Ива</td>
+		<td>РРІР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">160</font></td>
-		<td><font color="#800000">Юкка</font></td>
+		<td><font color="#800000">Р®РєРєР°</font></td>
 	</tr>
 	<tr>
 		<td>161</td>
-		<td>Риф</td>
+		<td>Р РёС„</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">162</font></td>
-		<td><font color="#800000">Случайный монстр 5</font></td>
+		<td><font color="#800000">РЎР»СѓС‡Р°Р№РЅС‹Р№ РјРѕРЅСЃС‚СЂ 5</font></td>
 	</tr>
 	<tr>
 		<td>163</td>
-		<td>Случайный монстр 6</td>
+		<td>РЎР»СѓС‡Р°Р№РЅС‹Р№ РјРѕРЅСЃС‚СЂ 6</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">164</font></td>
-		<td><font color="#800000">Случайный монстр 7</font></td>
+		<td><font color="#800000">РЎР»СѓС‡Р°Р№РЅС‹Р№ РјРѕРЅСЃС‚СЂ 7</font></td>
 	</tr>
 	<tr>
 		<td>165</td>
-		<td>Щётка</td>
+		<td>Р©С‘С‚РєР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">166</font></td>
-		<td><font color="#800000">Куст</font></td>
+		<td><font color="#800000">РљСѓСЃС‚</font></td>
 	</tr>
 	<tr>
 		<td>167</td>
-		<td>Кактус</td>
+		<td>РљР°РєС‚СѓСЃ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">168</font></td>
-		<td><font color="#800000">Каньон</font></td>
+		<td><font color="#800000">РљР°РЅСЊРѕРЅ</font></td>
 	</tr>
 	<tr>
 		<td>169</td>
-		<td>Кратер</td>
+		<td>РљСЂР°С‚РµСЂ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">170</font></td>
-		<td><font color="#800000">Мёртвая растительность</font></td>
+		<td><font color="#800000">РњС‘СЂС‚РІР°СЏ СЂР°СЃС‚РёС‚РµР»СЊРЅРѕСЃС‚СЊ</font></td>
 	</tr>
 	<tr>
 		<td>171</td>
-		<td>Цветы</td>
+		<td>Р¦РІРµС‚С‹</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">172</font></td>
-		<td><font color="#800000">Замёрзшее озеро</font></td>
+		<td><font color="#800000">Р—Р°РјС‘СЂР·С€РµРµ РѕР·РµСЂРѕ</font></td>
 	</tr>
 	<tr>
 		<td>173</td>
-		<td>Ограда</td>
+		<td>РћРіСЂР°РґР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">174</font></td>
-		<td><font color="#800000">Холм</font></td>
+		<td><font color="#800000">РҐРѕР»Рј</font></td>
 	</tr>
 	<tr>
 		<td>175</td>
-		<td>Дыра</td>
+		<td>Р”С‹СЂР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">176</font></td>
-		<td><font color="#800000">Бурая водоросль</font></td>
+		<td><font color="#800000">Р‘СѓСЂР°СЏ РІРѕРґРѕСЂРѕСЃР»СЊ</font></td>
 	</tr>
 	<tr>
 		<td>177</td>
-		<td>Озеро</td>
+		<td>РћР·РµСЂРѕ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">178</font></td>
-		<td><font color="#800000">Поток лавы</font></td>
+		<td><font color="#800000">РџРѕС‚РѕРє Р»Р°РІС‹</font></td>
 	</tr>
 	<tr>
 		<td>179</td>
-		<td>Озеро лавы</td>
+		<td>РћР·РµСЂРѕ Р»Р°РІС‹</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">180</font></td>
-		<td><font color="#800000">Грибы</font></td>
+		<td><font color="#800000">Р“СЂРёР±С‹</font></td>
 	</tr>
 	<tr>
 		<td>181</td>
-		<td>Бревно</td>
+		<td>Р‘СЂРµРІРЅРѕ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">182</font></td>
-		<td><font color="#800000">Мандрагора</font></td>
+		<td><font color="#800000">РњР°РЅРґСЂР°РіРѕСЂР°</font></td>
 	</tr>
 	<tr>
 		<td>183</td>
-		<td>Мох</td>
+		<td>РњРѕС…</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">184</font></td>
-		<td><font color="#800000">Курган</font></td>
+		<td><font color="#800000">РљСѓСЂРіР°РЅ</font></td>
 	</tr>
 	<tr>
 		<td>185</td>
-		<td>Гора</td>
+		<td>Р“РѕСЂР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">186</font></td>
-		<td><font color="#800000">Дубовый лес</font></td>
+		<td><font color="#800000">Р”СѓР±РѕРІС‹Р№ Р»РµСЃ</font></td>
 	</tr>
 	<tr>
 		<td>187</td>
-		<td>Горная порода</td>
+		<td>Р“РѕСЂРЅР°СЏ РїРѕСЂРѕРґР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">188</font></td>
-		<td><font color="#800000">Сосновый лес</font></td>
+		<td><font color="#800000">РЎРѕСЃРЅРѕРІС‹Р№ Р»РµСЃ</font></td>
 	</tr>
 	<tr>
 		<td>189</td>
-		<td>Растение</td>
+		<td>Р Р°СЃС‚РµРЅРёРµ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">190</font></td>
-		<td><font color="#800000">Дельта реки</font></td>
+		<td><font color="#800000">Р”РµР»СЊС‚Р° СЂРµРєРё</font></td>
 	</tr>
 	<tr>
 		<td>191</td>
-		<td>Скала</td>
+		<td>РЎРєР°Р»Р°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">192</font></td>
-		<td><font color="#800000">Песчаные дюны</font></td>
+		<td><font color="#800000">РџРµСЃС‡Р°РЅС‹Рµ РґСЋРЅС‹</font></td>
 	</tr>
 	<tr>
 		<td>193</td>
-		<td>Песчаная впадина</td>
+		<td>РџРµСЃС‡Р°РЅР°СЏ РІРїР°РґРёРЅР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">194</font></td>
-		<td><font color="#800000">Кустарник</font></td>
+		<td><font color="#800000">РљСѓСЃС‚Р°СЂРЅРёРє</font></td>
 	</tr>
 	<tr>
 		<td>195</td>
-		<td>Череп</td>
+		<td>Р§РµСЂРµРї</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">196</font></td>
-		<td><font color="#800000">Сталагмит</font></td>
+		<td><font color="#800000">РЎС‚Р°Р»Р°РіРјРёС‚</font></td>
 	</tr>
 	<tr>
 		<td>197</td>
-		<td>Пень</td>
+		<td>РџРµРЅСЊ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">198</font></td>
-		<td><font color="#800000">Смоляная яма</font></td>
+		<td><font color="#800000">РЎРјРѕР»СЏРЅР°СЏ СЏРјР°</font></td>
 	</tr>
 	<tr>
 		<td>199</td>
-		<td>Деревья</td>
+		<td>Р”РµСЂРµРІСЊСЏ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">200</font></td>
-		<td><font color="#800000">Виноградная лоза</font></td>
+		<td><font color="#800000">Р’РёРЅРѕРіСЂР°РґРЅР°СЏ Р»РѕР·Р°</font></td>
 	</tr>
 	<tr>
 		<td>201</td>
-		<td>Вулканическое отверстие</td>
+		<td>Р’СѓР»РєР°РЅРёС‡РµСЃРєРѕРµ РѕС‚РІРµСЂСЃС‚РёРµ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">202</font></td>
-		<td><font color="#800000">Вулкан</font></td>
+		<td><font color="#800000">Р’СѓР»РєР°РЅ</font></td>
 	</tr>
 	<tr>
 		<td>203</td>
-		<td>Ивовый лес</td>
+		<td>РРІРѕРІС‹Р№ Р»РµСЃ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">204</font></td>
-		<td><font color="#800000">Юкковый лес</font></td>
+		<td><font color="#800000">Р®РєРєРѕРІС‹Р№ Р»РµСЃ</font></td>
 	</tr>
 	<tr>
 		<td>205</td>
-		<td>Риф</td>
+		<td>Р РёС„</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">206</font></td>
-		<td><font color="#800000">Необитаемые холмы</font></td>
+		<td><font color="#800000">РќРµРѕР±РёС‚Р°РµРјС‹Рµ С…РѕР»РјС‹</font></td>
 	</tr>
 	<tr>
 		<td>207</td>
-		<td>Грязевые холмы</td>
+		<td>Р“СЂСЏР·РµРІС‹Рµ С…РѕР»РјС‹</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">208</font></td>
-		<td><font color="#800000">Травяные холмы</font></td>
+		<td><font color="#800000">РўСЂР°РІСЏРЅС‹Рµ С…РѕР»РјС‹</font></td>
 	</tr>
 	<tr>
 		<td>209</td>
-		<td>Дикие холмы</td>
+		<td>Р”РёРєРёРµ С…РѕР»РјС‹</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">210</font></td>
-		<td><font color="#800000">Подземные скалы</font></td>
+		<td><font color="#800000">РџРѕРґР·РµРјРЅС‹Рµ СЃРєР°Р»С‹</font></td>
 	</tr>
 	<tr>
 		<td>211</td>
-		<td>Болотные листья</td>
+		<td>Р‘РѕР»РѕС‚РЅС‹Рµ Р»РёСЃС‚СЊСЏ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">212</font></td>
-		<td><font color="#800000">Пограничные ворота [<a href="BG.htm" class="red">0..7</a>]</font></td>
+		<td><font color="#800000">РџРѕРіСЂР°РЅРёС‡РЅС‹Рµ РІРѕСЂРѕС‚Р° [<a href="BG.htm" class="red">0..7</a>]</font></td>
 	</tr>
 	<tr>
 		<td>213</td>
-		<td>Гильдия наёмников</td>
+		<td>Р“РёР»СЊРґРёСЏ РЅР°С‘РјРЅРёРєРѕРІ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">214</font></td>
-		<td><font color="#800000">Лагерь героя</font></td>
+		<td><font color="#800000">Р›Р°РіРµСЂСЊ РіРµСЂРѕСЏ</font></td>
 	</tr>
 	<tr>
 		<td>215</td>
-		<td>Страж прохода</td>
+		<td>РЎС‚СЂР°Р¶ РїСЂРѕС…РѕРґР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">216</font></td>
-		<td><font color="#800000">Случайное жилище</font></td>
+		<td><font color="#800000">РЎР»СѓС‡Р°Р№РЅРѕРµ Р¶РёР»РёС‰Рµ</font></td>
 	</tr>
 	<tr>
 		<td>217</td>
-		<td>Жилище существ фиксированного уровня (подтип 0..6)</td>
+		<td>Р–РёР»РёС‰Рµ СЃСѓС‰РµСЃС‚РІ С„РёРєСЃРёСЂРѕРІР°РЅРЅРѕРіРѕ СѓСЂРѕРІРЅСЏ (РїРѕРґС‚РёРї 0..6)</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">218</font></td>
-		<td><font color="#800000">Жилище существ, привязанное к городу (подтип 
+		<td><font color="#800000">Р–РёР»РёС‰Рµ СЃСѓС‰РµСЃС‚РІ, РїСЂРёРІСЏР·Р°РЅРЅРѕРµ Рє РіРѕСЂРѕРґСѓ (РїРѕРґС‚РёРї 
 		 <a href="Towns.htm" class="red">0..8</a>)</font></td>
 	</tr>
 	<tr>
 		<td>219</td>
-		<td>Гарнизон (перпендикулярный).<br><small>Объект гарнизоном не является, и замещается игрой при загрузке карты.</small></td>
+		<td>Р“Р°СЂРЅРёР·РѕРЅ (РїРµСЂРїРµРЅРґРёРєСѓР»СЏСЂРЅС‹Р№).<br><small>РћР±СЉРµРєС‚ РіР°СЂРЅРёР·РѕРЅРѕРј РЅРµ СЏРІР»СЏРµС‚СЃСЏ, Рё Р·Р°РјРµС‰Р°РµС‚СЃСЏ РёРіСЂРѕР№ РїСЂРё Р·Р°РіСЂСѓР·РєРµ РєР°СЂС‚С‹.</small></td>
 	</tr>
 	<tr>
 		<td><font color="#800000">220</font></td>
-		<td><font color="#800000">Рудник</font></td>
+		<td><font color="#800000">Р СѓРґРЅРёРє</font></td>
 	</tr>
 	<tr>
 		<td>221</td>
-		<td>Торговый пост [0 - заснеженный рынок]</td>
+		<td>РўРѕСЂРіРѕРІС‹Р№ РїРѕСЃС‚ [0 - Р·Р°СЃРЅРµР¶РµРЅРЅС‹Р№ СЂС‹РЅРѕРє]</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">222</font></td>
-		<td><font color="#800000">Клеверное поле</font></td>
+		<td><font color="#800000">РљР»РµРІРµСЂРЅРѕРµ РїРѕР»Рµ</font></td>
 	</tr>
 	<tr>
 		<td>223</td>
-		<td>Проклятая земля</td>
+		<td>РџСЂРѕРєР»СЏС‚Р°СЏ Р·РµРјР»СЏ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">224</font></td>
-		<td><font color="#800000">Дьявольский туман</font></td>
+		<td><font color="#800000">Р”СЊСЏРІРѕР»СЊСЃРєРёР№ С‚СѓРјР°РЅ</font></td>
 	</tr>
 	<tr>
 		<td>225</td>
-		<td>Попутный ветер</td>
+		<td>РџРѕРїСѓС‚РЅС‹Р№ РІРµС‚РµСЂ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">226</font></td>
-		<td><font color="#800000">Огненные поля</font></td>
+		<td><font color="#800000">РћРіРЅРµРЅРЅС‹Рµ РїРѕР»СЏ</font></td>
 	</tr>
 	<tr>
 		<td>227</td>
-		<td>Святая земля</td>
+		<td>РЎРІСЏС‚Р°СЏ Р·РµРјР»СЏ</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">228</font></td>
-		<td><font color="#800000">Прозрачные пруды</font></td>
+		<td><font color="#800000">РџСЂРѕР·СЂР°С‡РЅС‹Рµ РїСЂСѓРґС‹</font></td>
 	</tr>
 	<tr>
 		<td>229</td>
-		<td>Магические облака</td>
+		<td>РњР°РіРёС‡РµСЃРєРёРµ РѕР±Р»Р°РєР°</td>
 	</tr>
 	<tr>
 		<td><font color="#800000">230</font></td>
-		<td><font color="#800000">Магические равнины</font></td>
+		<td><font color="#800000">РњР°РіРёС‡РµСЃРєРёРµ СЂР°РІРЅРёРЅС‹</font></td>
 	</tr>
 	<tr>
 		<td>231</td>
-		<td>Скалистая земля</td>
+		<td>РЎРєР°Р»РёСЃС‚Р°СЏ Р·РµРјР»СЏ</td>
 	</tr>
 </table>
 <script language="JScript" src="search.js"></script></body></html>
