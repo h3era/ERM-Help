@@ -1,2 +1,2 @@
 # H3ERA-Help
-version 2.10a
+version 2.10b
