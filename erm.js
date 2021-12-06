@@ -1,4 +1,4 @@
-function Assert (Cond)
+﻿function Assert (Cond)
 {
 	if (!Cond)
 	{
