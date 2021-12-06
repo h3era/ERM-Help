@@ -1,4 +1,4 @@
-// Filename: glossary.js
+п»ї// Filename: glossary.js
 // Version post beta 3 (7)
 // version 05.27.99
 
@@ -42,18 +42,18 @@ function HideIt (value)
     e.shown = true;
     e.style.display = 'block';
     if (value>99) 
-    txt.innerHTML = "Скрыть"
+    txt.innerHTML = "РЎРєСЂС‹С‚СЊ"
     else
-    txt.innerHTML = "скрыть"
+    txt.innerHTML = "СЃРєСЂС‹С‚СЊ"
   }
   else 
   {
     e.shown = false;
     e.style.display = 'none';
     if (value>99) 
-    txt.innerHTML = "Показать"
+    txt.innerHTML = "РџРѕРєР°Р·Р°С‚СЊ"
     else
-    txt.innerHTML = "показать"
+    txt.innerHTML = "РїРѕРєР°Р·Р°С‚СЊ"
   }
 } // .function HideIt
 
