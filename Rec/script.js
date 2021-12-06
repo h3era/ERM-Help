@@ -1,4 +1,4 @@
-﻿// Filename: glossary.js
+// Filename: glossary.js
 // Version post beta 3 (7)
 // version 05.27.99
 
