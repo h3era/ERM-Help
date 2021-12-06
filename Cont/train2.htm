@@ -1,0 +1,158 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>About</title>
+</head>
+
+<body>
+<p>Мы ввели множество команд в скрипте. Как вы можете видеть в справке, 
+многие команды имеют куда больше опций, чем мы использовали. Я хочу более 
+детально разобрать некоторые.<br>
+По скрипту, первая команда - VR.<br>
+Синтаксис начала строки<br>
+<a href="../Rec/VR.htm">!!VR</a>@:XXXX</p>
+<p>Знак @ - это символ, поясняющий, что 
+здесь находится некая переменная, с которой мы и будем работать. XXXX
+обозначает все возможные для использования с этой командой 
+опции.<br>
+Большая часть переменных документирована, но я разберу несколько:</p>
+<p>переменная <b><font color="#0000FF">c</font></b>
+хранит текущий день - не запоминая день, месяц и неделю. 
+Так, четвёртый день второго месяца и третьей недели будет 
+записан как 46, т.е. 46ой день игры. Если ам нужна неделя или месяц игры, вы 
+можете найти номер таким образом (записав в v1): <br>
+Месяц: <b><code>!!VRv1:Sc+27:28; </code></b> <br>
+Неделя: <b><code>!!VRv1:Sc+6:7; </code></b> <br>
+Неделя месяца: <b><code>!!VRv1:Sc-1:7%4+1;</code></b> <br>
+День недели: <b><code>!!VRv1:Sc%7+1;</code></b> </p>
+<p>переменная <font color="#0000FF">d</font>
+используется для работы с текущим значением. Вы можете добавлять 
+или отнимать числа, но можете лишь прибавлять переменные. 
+Так, если вы хотите вычесть переменную v1, вы должны 
+умножить её на -1 отдельной командой. В большинстве 
+случаев, лучше использовать другую, временную переменную для хранения 
+отрицательной величины. Если же вы ведете доскональный 
+учет использованных переменных, работайте с тем, что удобней.</p>
+<p>переменные <font color="#0000FF">e</font>
+- единственные переменные, которые могут хранить дробные 
+величины. В большинстве случаев, вам они не понадобятся, так как благодаря 
+числовому пространству обычных переменных, и вы можете умножить число на 
+числитель, а затем разделить на знаменатель дроби. Формат 
+будет выгоден лишь в случае использования громадных чисел. При показе в 
+сообщениях, такие переменные показывают только тысячные доли, но сохранённые 
+данные намного точнее.</p>
+<p>переменные <font color="#0000FF">w</font>
+- фактически, 155 переменных в одной - по одной для каждого 
+героя. Так, переменная w1 хранит 155 
+значений - по одной для каждого героя,
+w2 также, и так далее.&nbsp; Вы 
+должны использовать команду IF:W, что указать, какую из 
+155 вы хотите использовать.</p>
+<p>переменные <font color="#0000FF">z для ERT</font> 
+- особые переменные, хранящие тексты в отдельном файле. Введены для облегчения 
+переводов скриптов. В общем, вам не зачем заморачиваться 
+ими, т.к. они не относятся к основам скриптописания.</p>
+<p>Опции VR:
+<br>
+Идем по списку: <br>
+C$1/$2/&hellip;/$16 <br>
+Позволяет вам считать и/или установить 
+несколько значений в одной команде. Можно указать до 16 последовательных 
+<i>v</i>-переменных. Так, если вы используете 6 чисел в таблице, вы 
+можете установить их в переменные v57-v62 этой командой.</p>
+<p>Rx <br>
+Генерирует случайное целое между 0 и x, и 
+добавляет его к переменной. Вы можете использовать любое значение или 
+переменную в качестве x.<br>
+Если вы хотите генерировать число между 1 и 10, вы должны использовать 
+!!VRv1:S1 R9; Она установит v1 на 1, и добавит число между 0 и 9 к нему.</p>
+<p>S# <br>
+Устанавливает переменную на указанное число.</p>
+<p>T$ <br>
+Другой счётчик случайных чисел. Опять же, можете использовать любые значения или 
+переменные в качестве x. Есть свои преимущества и 
+недостатки использования T и R.
+Опция T основана на времени, что делает числа более случайными, чем в опции R. Но, 
+ели нужно сгенерировать несколько числе подряд без задержек (вроде сообщений), с 
+опцией T числа, скорее всего, будут одинаковы. Вы 
+можете даже получить одинаковые числа несколько раз подряд:<br>
+!!VRv1:S3 T5 T5 T5; </p>
+<p>сгенерирует число между 3 и 18 (симуляция трех костяшек), но на деле число 
+будет какое-то из этих 3,6,9,12,15,18. Если вам нужно число между 3 и 18 (с 
+теоретически точной симуляцией &quot;костей&quot;), используйте <br>
+!!VRv1:S3 R5 R5 R5; <br>
+<br>
+Логические операторы: <br>
+Они используются повсюду, где вы сравниваете переменные,
+These are actually used anywhere you want to use a conditional expression, but 
+since they are explained here in the help and are very useful to know in 
+general, I will list them here. They are explained quite well in the help file.
+<br>
+<br>
+Use &amp; to indicate a logical AND in your conditions <br>
+Use | to indicate a logical OR <br>
+Use X to indicate a logical XOR (exclusive or) <br>
+Use / to indicate the same operator as previously used.<br>
+You must have all AND conditions first, and ll OR conditions next. Note that if 
+you have both, All the ANDs are counted together first, and then the ORs, so if 
+at least one OR is true, the whole statement is true. This is because ERM 
+evaluates expressions left-to-right. This also makes multiple XORs very hard, if 
+at all possible, to code.<br>
+<br>
+Arithmetic operators <br>
+These were covered above, but in summary, <br>
++ is addition <br>
+- is subtraction <br>
+* is multiplication <br>
+: is division <br>
+% is modulus <br>
+<br>
+Again, all math is done left-to-right. Thus, <br>
+Code:<br>
+!!VRv1:S0+5+6*3+2; <br>
+<br>
+gives v1 the value of 35 (5+6=11; 11*3=33; 33+2=35) and not 25, as algebraic 
+order would say (6*3=18; 5+18+2=25) <br>
+<br>
+String operators <br>
+H# <br>
+Set flag # to true if the z-variable is empty, and false if not.<br>
+<br>
+S^TEXT^ <br>
+Set the z-variable to the text between the carats. Remember that ^ and ; cannot 
+be used in the text.<br>
+<br>
+Within the text string, you can show the contents of a variable by using a % 
+followed by the variable name, using a capitol letter instead of a lower-case 
+one. For flags, which have no letter normally, use an F. For common variables 
+that have no numbers, prefix them with a V. Although not listed in the help 
+file, %Z can be used for z-variables. To display a percent-sign, use %%.<br>
+<br>
++ <br>
+When working with strings, + is used to concatenate two strings. Either string 
+may be a z-variable or text (within carats).<br>
+<br>
+Questions and Answers <br>
+Question: I'm not sure what you mean when you're talking about the H# command. 
+You're talking about flags and variables in the same statement? <br>
+Answer: There is a very nicely described example of the H option in the help 
+file, but I will give a simple example here.<br>
+Code:<br>
+!!VRz1:H1; <br>
+<br>
+This takes a look at (text) variable z1. If it is a null string (say you set it 
+with !!VRz1:S^^;), then flag number 1 is set to false (0). If there are only 
+spaces, tabs, new lines, etc. in z1, flag 1 wil also be 0. If there is actual 
+text in z1, then flag 1 will be set to 1.<br>
+Copying from the help file: <br>
+<br>
+Code:<br>
+<br>
+!!VRz100:S^Hello!^; <br>
+!!VRz101:S^^; <br>
+!!VRz102:S^ ^; <br>
+!!VRz100:H300; flag300=1 <br>
+!!VRz101:H301; flag301=0 <br>
+!!VRz102:H302; flag302=0 <br>
+<br>
+<br>
+Note that anything after the ; in any given line is a comment.</p></body></html>
