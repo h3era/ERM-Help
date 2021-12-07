@@ -12,7 +12,7 @@ var oText= document.all.item("text");
 
 	if (oText ==null) return;
     if (oButtonMenu != null){
-	    document.all.text.style.overflow= "hidden";
+	    document.all.text.style.overflow= "auto";
   	    document.all.buttonMenu.style.width= document.body.offsetWidth;
 	    document.all.text.style.width= document.body.offsetWidth-4;
 	    document.all.text.style.top= document.all.buttonMenu.offsetHeight;
