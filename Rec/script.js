@@ -14,7 +14,7 @@ var oText= document.all.item("text");
     if (oButtonMenu != null){
 	    document.all.text.style.overflow= "auto";
   	    document.all.buttonMenu.style.width= document.body.offsetWidth;
-	    document.all.text.style.width= document.body.offsetWidth-4;
+	    document.all.text.style.width= document.body.offsetWidth-3;
 	    document.all.text.style.top= document.all.buttonMenu.offsetHeight;
 	    if (document.body.offsetHeight > document.all.buttonMenu.offsetHeight)
     	    document.all.text.style.height= document.body.offsetHeight - document.all.buttonMenu.offsetHeight; 
