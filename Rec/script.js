@@ -18,7 +18,7 @@ var oText= document.all.item("text");
 	    document.all.text.style.top= document.all.buttonMenu.offsetHeight;
 	    if (document.body.offsetHeight > document.all.buttonMenu.offsetHeight)
     	    document.all.text.style.height= document.body.offsetHeight - document.all.buttonMenu.offsetHeight; 
-	    else document.all.text.style.height=auto;	
+	    else document.all.text.style.height= "auto";	
 	}	
 }
 
