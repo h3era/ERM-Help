@@ -706,8 +706,8 @@ M3 – установить месяц чумы (все существа /2)<br>
 !#UN:N2/102/7/1;
 !#UN:N3/103/8/0;
 !#UN:N3/104/8/1;
-!#IF:M^=%Z100=%Z101=%Z102=%Z103=%Z104=^;</script></div><br>
-<font id="red"><b>N5/#1/#2/#3/#4</b></font><br>
+!#IF:M^=%Z100=%Z101=%Z102=%Z103=%Z104=^;</script></div></p>
+<p><font id="red"><b>N5/#1/#2/#3/#4</b></font><br>
 Записать <i>z</i>-переменную в общую секцию INI-файла:
 <pre>        #1 – номер <i>z</i>-переменной для записи
         #2 – номер опции (любое положительное значение)
@@ -715,7 +715,7 @@ M3 – установить месяц чумы (все существа /2)<br>
         #4 – опциональный параметр - номер <i>z</i>-переменной, хранящей имя файла (без части &quot;.INI&quot;), можно с абсолютным путём.
 <i>Примечание:</i> если вы используете параметр #4, вы должны использовать параметр #3.</pre></p>
 <p>
-<font id="red"><b>N6/#1/#2//#3/#4</b></font>
+<font id="red"><b>N6/#1/#2//#3/#4</b></font><br>
 Прочитать <i>z</i>-переменную из общей секции INI-файла:
 <pre>        #1 – номер <i>z</i>-переменной для сохранения текста
         #2 – номер опции (любое положительное значение)
@@ -788,18 +788,18 @@ M3 – установить месяц чумы (все существа /2)<br>
 Сейчас исправлена проблема с невозможностью включить командиров инструкцией <b id="erm"><font class="in">!#UN</font>:P3/0</b> при использовании в триггере таймера.</div>
 <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # = 4 – разрушение замков: запретить (1) или разрешить (0)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # = 5 – WoGифицировать: нет (0), все карты формата WoG (1), все карты любого формата (2)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # = 6 – герои начинают с командирами или нет (0 – с, 1 – без (должен быть нанят)</div><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # = 6 – герои начинают с командирами или нет (0 – с, 1 – без (должен быть нанят)</div>
 <u><b onclick="HideIt(26)" class="h">Комментарий (<b id="show26">показать</b>)</b></u><div id="26" class="b">Чтобы командир нанимался в городе за 100 золотых, вместо автоматического получения героем в начале игры, 
 нужно использовать <b id="erm"><font class="re">UN</font>:P6/1</b> перед командой <b id="erm"><font class="re">UN</font>:P3/0</b>.</div>
 <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # = 7 – жилища копят существ: 0 – нет, 1 – да<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # = 8 – жилища копят охранников: 0 – нет, 1 – да<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # = 9 – создание Сильванских Кентавров: 1 - разрешено, 0 - нет</div><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # = 9 – создание Сильванских Кентавров: 1 - разрешено, 0 - нет</div>
 <u><b onclick="HideIt(27)" class="h">Комментарий (<b id="show27">показать</b>)</b></u><div id="27" class="b">
 Если опция включена, Сильванские кентавры могут быть бесплатно созданы с помощью нажатия <span class="key">Ctrl</span> + <img src="../Img/LBM.gif" id="vc"> по отряду Капитанов-Кентавров или Благородных Эльфов в ОКНЕ ГЕРОЯ (!). 
 Равное число кентавров и эльфов будет заменено равным кол-вом Сильванских кентавров.<br>
 Т.е. 10 Благородных Эльфов плюс 10 Капитанов-Кентавров = 10 Сильванских кентавров.<br>
 <i id="bold">Замечание:</i> Сильванские кентавры не сохраняют никакого опыта от имеющегося у кентавров или эльфов перед слиянием.</div>
-<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # = 10 – оставленные отряды будут присоединятся обратно (1) или нет (0)</div><br>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # = 10 – оставленные отряды будут присоединятся обратно (1) или нет (0)</div>
 <u><b onclick="HideIt(28)" class="h">Комментарий (<b id="show28">показать</b>)</b></u><div id="28" class="b">Если активно, отряды, оставленные правым кликом, присоединятся обратно к герою, если он нападет на них.<br>
 <i id="bold">Замечание:</i> весь опыт отряда будет потерян при оставлении существ.</div></p>
 <p>
